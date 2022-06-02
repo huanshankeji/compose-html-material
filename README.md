@@ -14,7 +14,7 @@ implementation("com.huanshankeji:compose-web-material:$version")
 ### In code
 Call `mwcRequires()` in your `main` function before calling any component Composable functions.
 
-### Webpack configuration
+### Kotlin/JS Webpack configuration
 If you use this library in an app project with Webpack [which Kotlin/JS currently uses](https://kotlinlang.org/docs/js-project-setup.html), you might want to configure it as recommended by Material Web and Material Components for the web. Some instructions on how to do this simply are as below.
 
 This plugin helps add the dependency to this project (if you do this you can skip the "Add the dependency" step above) and the `devNpm` dependencies:
