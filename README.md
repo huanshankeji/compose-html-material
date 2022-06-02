@@ -1,4 +1,7 @@
 # Compose for Web Material
+
+[![Maven Central](https://img.shields.io/maven-central/v/com.huanshankeji/compose-web-material)](https://search.maven.org/artifact/com.huanshankeji/compose-web-material)
+
 Some Material components for Compose for Web, based on [Material Web (Web Components)](https://github.com/material-components/material-web) (preferred) and [Material Components for the web](https://github.com/material-components/material-components-web) (fallback)
 
 This project is in prototype and the components are not complete. More components will be added. It will probably go through huge refactors and API changes, too.
