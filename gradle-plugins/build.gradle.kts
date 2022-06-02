@@ -40,3 +40,9 @@ gradlePlugin {
         }
     }
 }
+
+pluginBundle {
+    website = "https://github.com/huanshankeji/compose-web-material"
+    vcsUrl = "$website.git"
+    tags = listOf("kotlin", "compose", "web")
+}
