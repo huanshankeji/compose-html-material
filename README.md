@@ -1,6 +1,7 @@
 # Compose for Web Material
 
 [![Maven Central](https://img.shields.io/maven-central/v/com.huanshankeji/compose-web-material)](https://search.maven.org/artifact/com.huanshankeji/compose-web-material)
+[![Gradle Plugin Portal](https://img.shields.io/gradle-plugin-portal/v/com.huanshankeji.compose-web-material-conventions)](https://plugins.gradle.org/plugin/com.huanshankeji.compose-web-material-conventions)
 
 Some Material components for Compose for Web, based on [Material Web (Web Components)](https://github.com/material-components/material-web) (preferred) and [Material Components for the web](https://github.com/material-components/material-components-web) (fallback)
 
