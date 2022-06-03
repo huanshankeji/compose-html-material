@@ -28,6 +28,4 @@ plugins {
 }
 ```
 
-It's not published to Gradle Plugin Portal yet, so you may need to publish it to Maven Local yourself and use it from there.
-
 However, the plugin doesn't [make further adjustments to the webpack configuration](https://kotlinlang.org/docs/js-project-setup.html#webpack-configuration-file), so you also need to refer to [the demo further adjustments](demo/webpack.config.d/further_adjustments.js) and [the demo HTML page](demo/html/demo.html) to add your own. Just copy and possibly adapt them as you like.
