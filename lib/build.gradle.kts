@@ -1,7 +1,11 @@
 plugins {
     id("com.huanshankeji.kotlin-multiplatform-js-browser-conventions")
-    id("org.jetbrains.compose") version "1.1.1"
+    id("org.jetbrains.compose") version "1.2.0-alpha01-dev748"
     id("com.huanshankeji.sonatype-ossrh-publish")
+}
+
+repositories {
+    maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
 }
 
 kotlin {
