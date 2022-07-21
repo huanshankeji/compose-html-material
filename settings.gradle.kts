@@ -10,6 +10,6 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath("com.huanshankeji:kotlin-common-gradle-plugins:0.1.5-kotlin-1.6.10")
+        classpath("com.huanshankeji:kotlin-common-gradle-plugins:0.1.8-kotlin-1.6.10")
     }
 }

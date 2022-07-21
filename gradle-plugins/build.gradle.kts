@@ -1,3 +1,6 @@
+import com.huanshankeji.SourceFile
+import com.huanshankeji.generateKotlinSources
+
 plugins {
     `kotlin-dsl`
     id("com.gradle.plugin-publish") version "1.0.0-rc-2"
@@ -12,20 +15,14 @@ dependencies {
 }
 
 
-val generateVersion = "generateVersion"
-val generatedSourcesDir = buildDir.resolve("gen/main/kotlin")
-
-tasks.register(generateVersion) {
-    generatedSourcesDir.mkdirs()
-    val generatedVersionsSourceFile = generatedSourcesDir.resolve("GeneratedVersions.kt")
-    generatedVersionsSourceFile.writeText("const val projectVersion = \"$projectVersion\"\n")
-}
-
-tasks.compileKotlin {
-    dependsOn(generateVersion)
-}
-
-kotlin.sourceSets["main"].kotlin.srcDir(generatedSourcesDir)
+generateKotlinSources(
+    sourceFiles = listOf(
+        SourceFile(
+            "GeneratedVersions.kt",
+            "const val projectVersion = \"$projectVersion\"\n"
+        )
+    )
+)
 
 
 group = "com.huanshankeji"
