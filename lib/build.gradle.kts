@@ -1,6 +1,6 @@
 plugins {
     id("com.huanshankeji.kotlin-multiplatform-js-browser-conventions")
-    id("org.jetbrains.compose") version "1.2.0-alpha01-dev748"
+    id("org.jetbrains.compose") version "1.2.0-alpha01-dev750"
     id("com.huanshankeji.sonatype-ossrh-publish")
 }
 
