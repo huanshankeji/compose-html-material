@@ -12,6 +12,6 @@ buildscript {
     }
     dependencies {
         classpath(kotlin("gradle-plugin", "1.7.20"))
-        classpath("com.huanshankeji:kotlin-common-gradle-plugins:0.1.8-kotlin-1.6.10")
+        classpath("com.huanshankeji:kotlin-common-gradle-plugins:0.3.2")
     }
 }
