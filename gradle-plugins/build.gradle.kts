@@ -3,7 +3,7 @@ import com.huanshankeji.generateKotlinSources
 
 plugins {
     `kotlin-dsl`
-    id("com.gradle.plugin-publish") version "1.0.0-rc-2"
+    id("com.gradle.plugin-publish") version "1.1.0"
 }
 
 repositories {
@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("gradle-plugin", "1.7.0"))
+    implementation(kotlin("gradle-plugin", "1.7.20"))
 }
 
 
