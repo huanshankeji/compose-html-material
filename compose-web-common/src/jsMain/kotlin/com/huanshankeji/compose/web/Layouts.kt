@@ -1,7 +1,6 @@
 package com.huanshankeji.compose.web
 
 import androidx.compose.runtime.Composable
-import com.huanshankeji.compose.web.material.defaultSpacing
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.ContentBuilder
 import org.jetbrains.compose.web.dom.Div
@@ -65,6 +64,29 @@ fun RowWithSpaceBetween(
     }, content)
 
 @Composable
+fun ColumnWithGaps(
+    styles: Styles? = null,
+    gap: CSSNumeric,
+    fitContent: Boolean = true,
+    content: ContentBuilder<HTMLDivElement>
+) =
+    Column({
+        gap(gap)
+        styles?.invoke(this)
+    }, fitContent, content)
+
+@Composable
+fun RowWithGaps(
+    styles: Styles? = null,
+    gap: CSSNumeric,
+    content: ContentBuilder<HTMLDivElement>
+) =
+    Row({
+        gap(gap)
+        styles?.invoke(this)
+    }, content)
+
+@Composable
 fun Centered(
     styles: Styles? = null,
     content: ContentBuilder<HTMLDivElement>
@@ -88,7 +110,7 @@ fun CenteredInViewport(
 @Composable
 fun FrGrid(
     numColumns: Int,
-    gap: CSSNumeric = defaultSpacing,
+    gap: CSSNumeric,
     content: HTMLElementContent
 ) =
     Div({
