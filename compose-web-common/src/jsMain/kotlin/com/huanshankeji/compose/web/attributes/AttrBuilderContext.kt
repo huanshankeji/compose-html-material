@@ -11,3 +11,8 @@ operator fun <TElement : Element> AttrBuilderContext<TElement>.plus(other: AttrB
             other()
         }
     }
+
+/** A helper function to create [AttrBuilderContext]s where type inference doesn't work */
+@Suppress("NOTHING_TO_INLINE")
+inline fun <TElement : Element> attrs(noinline attrs: AttrBuilderContext<TElement>) =
+    attrs
