@@ -1,7 +1,12 @@
 package com.huanshankeji.compose.web
 
 import androidx.compose.runtime.Composable
+import com.huanshankeji.compose.web.attributes.attrs
+import com.huanshankeji.compose.web.attributes.plus
+import com.huanshankeji.compose.web.css.Styles
+import com.huanshankeji.compose.web.css.wrapInAttrs
 import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.dom.AttrBuilderContext
 import org.jetbrains.compose.web.dom.ContentBuilder
 import org.jetbrains.compose.web.dom.Div
 import org.w3c.dom.HTMLDivElement
@@ -10,102 +15,125 @@ import org.w3c.dom.HTMLDivElement
 
 @Composable
 fun Flexbox(
-    styles: Styles? = null,
+    attrs: AttrBuilderContext<HTMLDivElement>? = null,
     content: ContentBuilder<HTMLDivElement>
 ) =
-    Div({
+    Div(attrs<HTMLDivElement> {
         style {
             display(DisplayStyle.Flex)
-            styles?.invoke(this)
         }
-    }, content)
+    } + attrs, content)
+
+@Composable
+fun Flexbox(styles: Styles? = null, content: ContentBuilder<HTMLDivElement>) =
+    Flexbox(styles.wrapInAttrs(), content)
 
 @Composable
 fun Column(
-    styles: Styles? = null,
+    attrs: AttrBuilderContext<HTMLDivElement>? = null,
     fitContent: Boolean = true,
     content: ContentBuilder<HTMLDivElement>
 ) =
-    Flexbox({
-        flexDirection(FlexDirection.Column)
-        if (fitContent) property("width", "fit-content")
-        styles?.invoke(this)
-    }, content)
+    Flexbox(attrs<HTMLDivElement> {
+        style {
+            flexDirection(FlexDirection.Column)
+            if (fitContent) property("width", "fit-content")
+        }
+    } + attrs, content)
+
+@Composable
+fun Column(styles: Styles? = null, fitContent: Boolean = true, content: ContentBuilder<HTMLDivElement>) =
+    Column(styles.wrapInAttrs(), fitContent, content)
 
 @Composable
 fun ColumnWithSpaceBetween(
-    styles: Styles? = null,
+    attrs: AttrBuilderContext<HTMLDivElement>? = null,
     fitContent: Boolean = true,
     content: ContentBuilder<HTMLDivElement>
 ) =
-    Column({
-        justifyContent(JustifyContent.SpaceBetween)
-        styles?.invoke(this)
-    }, fitContent, content)
+    Column(attrs<HTMLDivElement> {
+        style {
+            justifyContent(JustifyContent.SpaceBetween)
+        }
+    } + attrs, fitContent, content)
+
+
+@Composable
+fun Row(
+    attrs: AttrBuilderContext<HTMLDivElement>? = null,
+    content: ContentBuilder<HTMLDivElement>
+) =
+    Flexbox(attrs<HTMLDivElement> {
+        style {
+            flexDirection(FlexDirection.Row)
+        }
+    } + attrs, content)
 
 @Composable
 fun Row(
     styles: Styles? = null,
     content: ContentBuilder<HTMLDivElement>
 ) =
-    Flexbox({
-        flexDirection(FlexDirection.Row)
-        styles?.invoke(this)
-    }, content)
+    Row(styles.wrapInAttrs(), content)
 
 @Composable
 fun RowWithSpaceBetween(
-    styles: Styles? = null,
+    attrs: AttrBuilderContext<HTMLDivElement>? = null,
     content: ContentBuilder<HTMLDivElement>
 ) =
-    Row({
-        justifyContent(JustifyContent.SpaceBetween)
-        styles?.invoke(this)
-    }, content)
+    Row(attrs<HTMLDivElement> {
+        style {
+            justifyContent(JustifyContent.SpaceBetween)
+        }
+    } + attrs, content)
 
 @Composable
 fun ColumnWithGaps(
-    styles: Styles? = null,
+    attrs: AttrBuilderContext<HTMLDivElement>? = null,
     gap: CSSNumeric,
     fitContent: Boolean = true,
     content: ContentBuilder<HTMLDivElement>
 ) =
-    Column({
-        gap(gap)
-        styles?.invoke(this)
-    }, fitContent, content)
+    Column(attrs<HTMLDivElement> {
+        style {
+            gap(gap)
+        }
+    } + attrs, fitContent, content)
 
 @Composable
 fun RowWithGaps(
-    styles: Styles? = null,
+    attrs: AttrBuilderContext<HTMLDivElement>? = null,
     gap: CSSNumeric,
     content: ContentBuilder<HTMLDivElement>
 ) =
-    Row({
-        gap(gap)
-        styles?.invoke(this)
-    }, content)
+    Row(attrs<HTMLDivElement> {
+        style {
+            gap(gap)
+        }
+    } + attrs, content)
 
 @Composable
 fun Centered(
-    styles: Styles? = null,
+    attrs: AttrBuilderContext<HTMLDivElement>? = null,
     content: ContentBuilder<HTMLDivElement>
 ) =
-    Flexbox({
-        alignItems(AlignItems.Center)
-        justifyContent(JustifyContent.Center)
-        styles?.invoke(this)
-    }, content)
+    Flexbox(attrs<HTMLDivElement> {
+        style {
+            alignItems(AlignItems.Center)
+            justifyContent(JustifyContent.Center)
+        }
+    } + attrs, content)
 
 @Composable
 fun CenteredInViewport(
-    styles: Styles? = null,
+    attrs: AttrBuilderContext<HTMLDivElement>? = null,
     content: ContentBuilder<HTMLDivElement>
 ) =
-    Centered({
-        minHeight(100.vh)
-        styles?.invoke(this)
-    }, content)
+    Centered(attrs<HTMLDivElement> {
+        style {
+            minHeight(100.vh)
+        }
+    } + attrs, content)
 
 @Composable
 fun FrGrid(
