@@ -11,7 +11,7 @@ import org.jetbrains.compose.web.dom.ContentBuilder
 import org.jetbrains.compose.web.dom.Div
 import org.w3c.dom.HTMLDivElement
 
-// follow names in Android Jetpack Compose
+// try to follow names in Android Jetpack Compose
 
 @Composable
 fun Flexbox(
