@@ -14,20 +14,25 @@ Some Material components for Compose for Web, based on [Material Web (with Web C
 1. We are currently focusing more on [compose-multiplatform-material](https://github.com/huanshankeji/compose-multiplatform-material) to provide multiplatform Compose Material wrappers, whose web portion depends on KMDC and [the `:compose-web-common` subproject](compose-web-common), which may be occasionally updated for the dependent project.
 
 ## Instructions on how to use
+
 Some configurations are needed to use this library due to the immaturities of this project and Kotlin/JS.
 
 ### Add the dependency
+
 ```kotlin
 implementation("com.huanshankeji:compose-web-material:$version")
 ```
 
 ### In code
+
 Call `mwcRequires()` in your `main` function before calling any component Composable functions.
 
 ### Kotlin/JS Webpack configuration
+
 If you use this library in an app project with Webpack [which Kotlin/JS currently uses](https://kotlinlang.org/docs/js-project-setup.html), you might want to configure it as recommended by Material Web and Material Components for the web. Some instructions on how to do this simply are as below.
 
 This plugin helps add the dependency to this project (if you do this you can skip the "Add the dependency" step above) and the `devNpm` dependencies:
+
 ```kotlin
 plugins {
     id("com.huanshankeji.compose-web-material-conventions") version someVersion
