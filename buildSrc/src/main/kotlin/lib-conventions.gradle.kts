@@ -14,6 +14,17 @@ repositories {
     maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
 }
 
+kotlin {
+    sourceSets {
+        val jsMain by getting {
+            dependencies {
+                implementation(compose.web.core)
+                implementation(compose.runtime)
+            }
+        }
+    }
+}
+
 group = "com.huanshankeji"
 version = projectVersion
 

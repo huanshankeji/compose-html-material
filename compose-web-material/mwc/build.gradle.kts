@@ -9,9 +9,7 @@ kotlin {
     sourceSets {
         val jsMain by getting {
             dependencies {
-                implementation(compose.web.core)
-                implementation(compose.runtime)
-                implementation(project(":compose-web-common"))
+                api(project(":compose-web-material:compose-web-material-common"))
 
                 implementation(npm("@webcomponents/webcomponentsjs", DependencyVersions.webcomponents))
 
@@ -31,8 +29,6 @@ kotlin {
                     "circular-progress",
                     "circular-progress-four-color"
                 )
-
-                implementation(npm("@material/card", DependencyVersions.mdc))
             }
         }
     }
@@ -41,8 +37,8 @@ kotlin {
 publishing.publications.withType<MavenPublication> {
     pomForTeamDefaultOpenSource(
         project,
-        "Compose for Web Material",
-        "Some Material components for Compose for Web"
+        "Compose for Web Material, mwc",
+        "Some component wrappers of Material Web (`mwc`) components for Compose for Web"
     ) {
         `Shreck Ye`()
     }

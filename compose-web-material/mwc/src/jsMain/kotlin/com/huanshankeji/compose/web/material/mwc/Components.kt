@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalComposeWebApi::class)
 
-package com.huanshankeji.compose.web.material
+package com.huanshankeji.compose.web.material.mwc
 
 import androidx.compose.runtime.*
 import androidx.compose.web.events.SyntheticEvent
@@ -13,10 +13,8 @@ import org.jetbrains.compose.web.ExperimentalComposeWebApi
 import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.attributes.EventsListenerScope
 import org.jetbrains.compose.web.css.CSSNumeric
-import org.jetbrains.compose.web.css.padding
 import org.jetbrains.compose.web.dom.*
 import org.jetbrains.compose.web.events.SyntheticChangeEvent
-import org.w3c.dom.HTMLDivElement
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.HTMLSelectElement
 import org.w3c.dom.events.EventTarget
@@ -232,20 +230,6 @@ fun <E : Enum<E>> MwcSelectWithEnumItems(
         values.map(text), selected?.ordinal, { onSelected(if (it !== null) values[it] else null) },
         selectAttrs, selectHtmlAttrs, listItemAttrs, listItemHtmlAttrs
     )
-
-@Composable
-fun MdcCard(
-    attrs: (AttrsScope<HTMLDivElement>.() -> Unit)? = null,
-    padding: CSSNumeric = defaultSpacing,
-    content: ContentBuilder<HTMLDivElement>? = null
-) =
-    Div({
-        classes("mdc-card")
-        style {
-            padding(padding)
-        }
-        attrs?.invoke(this)
-    }, content)
 
 
 class MwcIconButtonAttrsScopeBuilder(htmlAttrsScope: AttrsScope<HTMLElement>) : MwcAttrsScopeBuilder(htmlAttrsScope) {

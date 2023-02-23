@@ -5,17 +5,6 @@ plugins {
     `lib-conventions`
 }
 
-kotlin {
-    sourceSets {
-        val jsMain by getting {
-            dependencies {
-                implementation(compose.web.core)
-                implementation(compose.runtime)
-            }
-        }
-    }
-}
-
 publishing.publications.withType<MavenPublication> {
     pomForTeamDefaultOpenSource(
         project,

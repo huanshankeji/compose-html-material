@@ -1,4 +1,4 @@
-package com.huanshankeji.compose.web.material
+package com.huanshankeji.compose.web.material.mwc
 
 external fun require(module: String): dynamic
 
