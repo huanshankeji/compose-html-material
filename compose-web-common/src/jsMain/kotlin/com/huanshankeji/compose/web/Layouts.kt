@@ -15,6 +15,10 @@ import org.w3c.dom.HTMLDivElement
 
 // try to follow names in Android Jetpack Compose
 
+// TODO: remove these deprecated functions
+
+const val WITH_STYLES_DEPRECATED_MESSAGE = "The functions with `withStyles` suffixes are deprecated."
+
 @Composable
 fun Flexbox(
     attrs: AttrBuilderContext<HTMLDivElement>? = null,
@@ -27,7 +31,8 @@ fun Flexbox(
     } + attrs, content)
 
 @Composable
-fun Flexbox(styles: Styles? = null, content: ContentBuilder<HTMLDivElement>) =
+@Deprecated(WITH_STYLES_DEPRECATED_MESSAGE)
+fun FlexboxS(styles: Styles? = null, content: ContentBuilder<HTMLDivElement>) =
     Flexbox(styles.wrapInAttrs(), content)
 
 @Composable
@@ -44,7 +49,8 @@ fun Column(
     } + attrs, content)
 
 @Composable
-fun Column(styles: Styles? = null, fitContent: Boolean = true, content: ContentBuilder<HTMLDivElement>) =
+@Deprecated(WITH_STYLES_DEPRECATED_MESSAGE)
+fun ColumnS(styles: Styles? = null, fitContent: Boolean = true, content: ContentBuilder<HTMLDivElement>) =
     Column(styles.wrapInAttrs(), fitContent, content)
 
 @Composable
@@ -72,7 +78,8 @@ fun Row(
     } + attrs, content)
 
 @Composable
-fun Row(
+@Deprecated(WITH_STYLES_DEPRECATED_MESSAGE)
+fun RowS(
     styles: Styles? = null,
     content: ContentBuilder<HTMLDivElement>
 ) =
