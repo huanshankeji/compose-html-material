@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("gradle-plugin", "1.7.20"))
+    implementation(kotlin("gradle-plugin"))
 }
 
 
@@ -29,17 +29,15 @@ group = "com.huanshankeji"
 version = projectVersion
 
 gradlePlugin {
+    website.set("https://github.com/huanshankeji/compose-web-material")
+    vcsUrl.set("$website.git")
+
     plugins {
         getByName("com.huanshankeji.compose-web-material-conventions") {
             displayName = "Compose for Web Material conventions"
             description =
                 "This plugin adds the needed Maven dependencies and npm devDependencies (mainly for Webpack) for a Compose for Web project with Material components."
+            tags.set(listOf("kotlin", "kotlin-js", "compose-multiplatform", "compose-web"))
         }
     }
-}
-
-pluginBundle {
-    website = "https://github.com/huanshankeji/compose-web-material"
-    vcsUrl = "$website.git"
-    tags = listOf("kotlin", "compose", "web")
 }
