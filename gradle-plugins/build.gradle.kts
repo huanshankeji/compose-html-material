@@ -30,7 +30,7 @@ version = projectVersion
 
 gradlePlugin {
     website.set("https://github.com/huanshankeji/compose-web-material")
-    vcsUrl.set("$website.git")
+    vcsUrl.set("${website.get()}.git")
 
     plugins {
         getByName("com.huanshankeji.compose-web-material-conventions") {
