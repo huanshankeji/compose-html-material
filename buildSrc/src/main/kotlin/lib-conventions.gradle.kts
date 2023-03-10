@@ -7,7 +7,7 @@ import org.gradle.kotlin.dsl.*
 plugins {
     id("com.huanshankeji.kotlin-multiplatform-js-browser-conventions")
     id("org.jetbrains.compose")
-    id("com.huanshankeji.sonatype-ossrh-publish")
+    id("com.huanshankeji.kotlin-multiplatform-sonatype-ossrh-publish-conventions")
 }
 
 repositories {
@@ -16,11 +16,3 @@ repositories {
 
 group = "com.huanshankeji"
 version = projectVersion
-
-val javadocJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("javadoc")
-}
-
-publishing.publications.withType<MavenPublication> {
-    artifact(javadocJar)
-}

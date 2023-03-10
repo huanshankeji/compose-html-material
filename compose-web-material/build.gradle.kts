@@ -39,7 +39,11 @@ kotlin {
 }
 
 publishing.publications.withType<MavenPublication> {
-    pomForTeamDefaultOpenSource(project, "Compose for Web Material", "Some Material components for Compose for Web") {
+    pomForTeamDefaultOpenSource(
+        project,
+        "Compose for Web Material",
+        "Some Material components for Compose for Web"
+    ) {
         `Shreck Ye`()
     }
 }

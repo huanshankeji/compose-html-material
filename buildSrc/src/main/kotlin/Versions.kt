@@ -1,4 +1,4 @@
-const val projectVersion = "0.2.0"
+const val projectVersion = "0.2.1"
 
 object DependencyVersions {
     val webcomponents = "2.6.0"
