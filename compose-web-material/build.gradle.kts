@@ -9,7 +9,7 @@ kotlin {
     sourceSets {
         val jsMain by getting {
             dependencies {
-                implementation(compose.web.core)
+                implementation(compose.html.core)
                 implementation(compose.runtime)
                 implementation(project(":compose-web-common"))
 
@@ -33,6 +33,8 @@ kotlin {
                 )
 
                 implementation(npm("@material/card", DependencyVersions.mdc))
+
+                implementation(commonDependencies.kotlinx.coroutines.core())
             }
         }
     }

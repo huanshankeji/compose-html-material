@@ -1,4 +1,4 @@
-# Compose for Web Material
+# Compose for Web (now Compose HTML) Material
 
 [![Maven Central](https://img.shields.io/maven-central/v/com.huanshankeji/compose-web-material)](https://search.maven.org/artifact/com.huanshankeji/compose-web-material)
 [![Gradle Plugin Portal](https://img.shields.io/gradle-plugin-portal/v/com.huanshankeji.compose-web-material-conventions)](https://plugins.gradle.org/plugin/com.huanshankeji.compose-web-material-conventions)
