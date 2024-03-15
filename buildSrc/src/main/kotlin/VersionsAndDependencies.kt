@@ -1,3 +1,5 @@
+import com.huanshankeji.CommonDependencies
+
 const val projectVersion = "0.2.2-SNAPSHOT"
 
 object DependencyVersions {
@@ -6,3 +8,5 @@ object DependencyVersions {
 
     val mdc = "13.0.0"
 }
+
+val commonDependencies = CommonDependencies()

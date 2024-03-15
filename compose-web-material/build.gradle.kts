@@ -33,6 +33,8 @@ kotlin {
                 )
 
                 implementation(npm("@material/card", DependencyVersions.mdc))
+
+                implementation(commonDependencies.kotlinx.coroutines.core())
             }
         }
     }
