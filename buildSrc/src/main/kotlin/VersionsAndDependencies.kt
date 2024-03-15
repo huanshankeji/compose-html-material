@@ -1,6 +1,6 @@
 import com.huanshankeji.CommonDependencies
 
-const val projectVersion = "0.2.2-SNAPSHOT"
+const val projectVersion = "0.2.2"
 
 object DependencyVersions {
     val webcomponents = "2.6.0"
