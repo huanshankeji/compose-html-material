@@ -7,12 +7,13 @@ plugins {
 
 kotlin {
     sourceSets {
-        val jsMain by getting {
+        jsMain {
             dependencies {
                 implementation(compose.html.core)
                 implementation(compose.runtime)
-                api("com.varabyte.kobweb:compose-html-ext:${DependencyVersions.kobweb}")
-                implementation(commonDependencies.kotlinx.coroutines.core()) // TODO consider removing this to reduce the bundle size when possible
+                implementation(project(":compose-html-common"))
+
+                implementation(npm("@material/web", DependencyVersions.materialWeb))
             }
         }
     }
@@ -21,8 +22,8 @@ kotlin {
 publishing.publications.withType<MavenPublication> {
     pomForTeamDefaultOpenSource(
         project,
-        "Huanshankeji Compose HTML common",
-        "Huanshankeji's common code for Compose HTML"
+        "Compose HTML Material 3",
+        "Material 3 components for Compose HTML"
     ) {
         `Shreck Ye`()
     }
