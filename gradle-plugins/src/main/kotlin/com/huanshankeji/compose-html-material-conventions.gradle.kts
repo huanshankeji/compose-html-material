@@ -10,7 +10,7 @@ kotlin {
     sourceSets {
         val jsMain by getting {
             dependencies {
-                implementation("com.huanshankeji:compose-web-material:$projectVersion")
+                implementation("com.huanshankeji:compose-html-material:$projectVersion")
 
                 implementation(devNpm("css-loader", NpmDevDependencyVersions.cssLoader))
                 implementation(devNpm("extract-loader", NpmDevDependencyVersions.extractLoader))

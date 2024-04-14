@@ -20,8 +20,8 @@ kotlin {
 publishing.publications.withType<MavenPublication> {
     pomForTeamDefaultOpenSource(
         project,
-        "Huanshankeji Compose for Web common",
-        "Huanshankeji's common code for Compose for Web"
+        "Huanshankeji Compose HTML common",
+        "Huanshankeji's common code for Compose HTML"
     ) {
         `Shreck Ye`()
     }
