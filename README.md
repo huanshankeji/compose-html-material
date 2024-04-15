@@ -1,6 +1,6 @@
 # Compose HTML Material
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.huanshankeji/compose-html-material)](https://search.maven.org/artifact/com.huanshankeji/compose-html-material)
+[![Maven Central](https://img.shields.io/maven-central/v/com.huanshankeji/compose-html-material3)](https://search.maven.org/artifact/com.huanshankeji/compose-html-material)
 [![Gradle Plugin Portal](https://img.shields.io/gradle-plugin-portal/v/com.huanshankeji.compose-html-material-conventions)](https://plugins.gradle.org/plugin/com.huanshankeji.compose-html-material-conventions)
 
 Some Material components for Compose HTML, with legacy Material 2 wrapper components based on [the obsolete `mwc` branch of Material Web](https://github.com/material-components/material-web/tree/mwc) (preferred) and [Material Components for the web (or material-components-web, or `mdc`)](https://github.com/material-components/material-components-web) (fallback), and Material 3 wrapper components based on [Material Web](https://github.com/material-components/material-web)
@@ -9,7 +9,7 @@ Some Material components for Compose HTML, with legacy Material 2 wrapper compon
 
 **The Material 2 portion of this project is not currently under active development. Here is a list of reasons and alternatives:**
 
-1. The [material-web](https://github.com/material-components/material-web) team is working on Material 3 support and [the Material 2 branch (`mwc`)](https://github.com/material-components/material-web/tree/mwc) is no longer under active development. Existing Compose wrappers of their Material 2 components are still kept in [the `:compose-html-material` subproject](compose-html-material) but not updated.
+1. The [material-web](https://github.com/material-components/material-web) team is working on Material 3 support and [the Material 2 branch (`mwc`)](https://github.com/material-components/material-web/tree/mwc) is no longer under active development. Existing Compose wrappers of their Material 2 components are still kept in [the `:compose-html-material-legacy` subproject](compose-html-material-legacy) but not updated.
 1. [KMDC](https://github.com/mpetuska/kmdc) wrapping around [material-components-web (`mdc`)](https://github.com/material-components/material-components-web) provides a much more complete set of Material Design components for Compose HTML.
 1. We are currently focusing more on [compose-multiplatform-material](https://github.com/huanshankeji/compose-multiplatform-material) to provide multiplatform Compose Material wrappers, whose web portion depends on KMDC and [the `:compose-html-common` subproject](compose-html-common), which may be occasionally updated for the dependent project.
 
@@ -22,13 +22,17 @@ Some configurations are needed to use this library due to the immaturities of th
 Prior to v0.3.0:
 
 ```kotlin
+implementation("com.huanshankeji:compose-web-common:$version")
 implementation("com.huanshankeji:compose-web-material:$version")
 ```
 
 Since v0.3.0:
 
 ```kotlin
-implementation("com.huanshankeji:compose-html-material:$version")
+implementation("com.huanshankeji:compose-html-common:$version")
+implementation("com.huanshankeji:compose-html-material3:$version")
+
+implementation("com.huanshankeji:compose-html-material-legacy:$version") // Legacy Material 2
 ```
 
 ### In code
