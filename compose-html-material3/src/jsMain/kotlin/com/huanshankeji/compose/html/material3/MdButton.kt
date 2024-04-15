@@ -6,7 +6,6 @@ import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
-import org.w3c.dom.HTMLFormElement
 
 external fun require(module: String): dynamic
 
@@ -29,8 +28,7 @@ fun MdElevatedButton(
     type: String? = null,
     value: String? = null,
     name: String? = null,
-    form: HTMLFormElement? = null,
-    ariaLabel: String? = null,
+    form: String? = null, // The form ID
     attrs: (AttrsScope<HTMLElement>.() -> Unit)?,
     content: (@Composable MdButtonScope.() -> Unit)?
 ) {
@@ -55,8 +53,7 @@ fun MdElevatedButton(
         type?.let { attr("type", it) }
         value?.let { attr("value", it) }
         name?.let { attr("name", it) }
-        form?.let { TODO() }
-        // ariaLabel?.let { TODO() } // TODO remove as it's a universal attribute
+        form?.let { attr("form", it) }
         attrs?.invoke(this)
     }, content?.let {
         { MdButtonScope(this).it() }
