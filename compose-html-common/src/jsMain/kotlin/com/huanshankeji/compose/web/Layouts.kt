@@ -30,11 +30,13 @@ fun Flexbox(
         }
     } + attrs, content)
 
-@Composable
+@PreferringKobwebComposeLayoutApi
 @Deprecated(WITH_STYLES_DEPRECATED_MESSAGE)
+@Composable
 fun FlexboxS(styles: Styles? = null, content: ContentBuilder<HTMLDivElement>) =
     Flexbox(styles.wrapInAttrs(), content)
 
+@PreferringKobwebComposeLayoutApi
 @Composable
 fun Column(
     attrs: AttrBuilderContext<HTMLDivElement>? = null,
@@ -48,11 +50,13 @@ fun Column(
         }
     } + attrs, content)
 
-@Composable
+@PreferringKobwebComposeLayoutApi
 @Deprecated(WITH_STYLES_DEPRECATED_MESSAGE)
+@Composable
 fun ColumnS(styles: Styles? = null, fitContent: Boolean = true, content: ContentBuilder<HTMLDivElement>) =
     Column(styles.wrapInAttrs(), fitContent, content)
 
+@PreferringKobwebComposeLayoutApi
 @Composable
 fun ColumnWithSpaceBetween(
     attrs: AttrBuilderContext<HTMLDivElement>? = null,
@@ -66,6 +70,7 @@ fun ColumnWithSpaceBetween(
     } + attrs, fitContent, content)
 
 
+@PreferringKobwebComposeLayoutApi
 @Composable
 fun Row(
     attrs: AttrBuilderContext<HTMLDivElement>? = null,
@@ -77,14 +82,16 @@ fun Row(
         }
     } + attrs, content)
 
-@Composable
+@PreferringKobwebComposeLayoutApi
 @Deprecated(WITH_STYLES_DEPRECATED_MESSAGE)
+@Composable
 fun RowS(
     styles: Styles? = null,
     content: ContentBuilder<HTMLDivElement>
 ) =
     Row(styles.wrapInAttrs(), content)
 
+@PreferringKobwebComposeLayoutApi
 @Composable
 fun RowWithSpaceBetween(
     attrs: AttrBuilderContext<HTMLDivElement>? = null,
@@ -96,6 +103,7 @@ fun RowWithSpaceBetween(
         }
     } + attrs, content)
 
+@PreferringKobwebComposeLayoutApi
 @Composable
 fun ColumnWithGaps(
     attrs: AttrBuilderContext<HTMLDivElement>? = null,
@@ -109,6 +117,7 @@ fun ColumnWithGaps(
         }
     } + attrs, fitContent, content)
 
+@PreferringKobwebComposeLayoutApi
 @Composable
 fun RowWithGaps(
     attrs: AttrBuilderContext<HTMLDivElement>? = null,
@@ -158,6 +167,8 @@ fun FrGrid(
         }
     }, content)
 
+@PreferringKobwebComposeLayoutApi
+@Deprecated("This API is not implemented yet.")
 @Composable
 fun Spacer(numPxs: Int) =
     TODO() as Unit

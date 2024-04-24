@@ -2,10 +2,10 @@
 
 package com.huanshankeji.compose.web.css
 
-import org.jetbrains.compose.web.css.StyleBuilder
 import org.jetbrains.compose.web.css.StylePropertyEnum
+import org.jetbrains.compose.web.css.StyleScope
 
-fun StyleBuilder.visibility(visibility: Visibility) =
+fun StyleScope.visibility(visibility: Visibility) =
     property("visibility", visibility)
 
 interface Visibility : StylePropertyEnum {
