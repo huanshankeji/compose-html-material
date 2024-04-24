@@ -12,7 +12,7 @@ kotlin {
                 implementation(compose.html.core)
                 implementation(compose.runtime)
                 api("com.varabyte.kobweb:compose-html-ext:${DependencyVersions.kobweb}")
-                implementation(commonDependencies.kotlinx.coroutines.core()) // TODO consider removing this to reduce the bundle size when possible
+                //implementation(commonDependencies.kotlinx.coroutines.core())
             }
         }
     }
