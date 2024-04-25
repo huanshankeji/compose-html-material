@@ -7,8 +7,6 @@ import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
 
-external fun require(module: String): dynamic
-
 // https://github.com/material-components/material-web/blob/main/docs/components/button.md
 
 /*
