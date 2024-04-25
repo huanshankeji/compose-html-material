@@ -51,7 +51,6 @@ private fun (@Composable MdButtonScope.() -> Unit)?.toElementScopeContent(): (@C
 
 @Composable
 private fun CommonButton(
-    module: String,
     tagName: String,
     disabled: Boolean?,
     href: String?,
@@ -64,24 +63,13 @@ private fun CommonButton(
     form: String?, // The form ID
     attrs: Attrs<HTMLElement>?,
     content: (@Composable MdButtonScope.() -> Unit)?
-) {
-    /*
-        // TODO not working
-        if (toImport) {
-            MdElevatedButton()
-            toImport = false
-        }
-        */
-    // It seems there is no need to put this in an effect block, because it seems on Compose HTML recomposition happens exactly when there is a need to re-invoke a composable.
-    require(module)
-
+) =
     //TagElement({ MdElevatedButton().asDynamic() }, { TODO() }) { TODO() }
     TagElement(
         tagName,
         commonButtonAttrs(disabled, href, target, trailingIcon, hasIcon, type, value, name, form, attrs),
         content.toElementScopeContent()
     )
-}
 
 @Composable
 fun MdElevatedButton(
@@ -96,12 +84,24 @@ fun MdElevatedButton(
     form: String? = null,
     attrs: Attrs<HTMLElement>?,
     content: (@Composable MdButtonScope.() -> Unit)?
-) =
+) {
+    /*
+        // TODO not working
+        if (toImport) {
+            MdElevatedButton()
+            toImport = false
+        }
+        */
+    // `require` can't be wrapped in `CommonButton` taken a `module` parameter because it seems to be processed by Webpack, JS `require` only takes constants.
+    // It seems there is no need to put this in an effect block, because it seems on Compose HTML recomposition happens exactly when there is a need to re-invoke a composable.
+    require("@material/web/button/elevated-button.js")
+
     CommonButton(
-        "@material/web/button/elevated-button.js", "md-elevated-button",
+        "md-elevated-button",
         disabled, href, target, trailingIcon, hasIcon, type, value, name, form,
         attrs, content
     )
+}
 
 @Composable
 fun MdFilledButton(
@@ -116,12 +116,15 @@ fun MdFilledButton(
     form: String? = null, // The form ID
     attrs: Attrs<HTMLElement>?,
     content: (@Composable MdButtonScope.() -> Unit)?
-) =
+) {
+    require("@material/web/button/filled-button.js")
+
     CommonButton(
-        "@material/web/button/filled-button.js", "md-filled-button",
+        "md-filled-button",
         disabled, href, target, trailingIcon, hasIcon, type, value, name, form,
         attrs, content
     )
+}
 
 @Composable
 fun MdFilledTonalButton(
@@ -136,12 +139,15 @@ fun MdFilledTonalButton(
     form: String? = null, // The form ID
     attrs: Attrs<HTMLElement>?,
     content: (@Composable MdButtonScope.() -> Unit)?
-) =
+) {
+    require("@material/web/button/filled-tonal-button.js")
+
     CommonButton(
-        "@material/web/button/filled-tonal-button.js", "md-filled-tonal-button",
+        "md-filled-tonal-button",
         disabled, href, target, trailingIcon, hasIcon, type, value, name, form,
         attrs, content
     )
+}
 
 @Composable
 fun MdOutlinedButton(
@@ -156,12 +162,15 @@ fun MdOutlinedButton(
     form: String? = null, // The form ID
     attrs: Attrs<HTMLElement>?,
     content: (@Composable MdButtonScope.() -> Unit)?
-) =
+) {
+    require("@material/web/button/outlined-button.js")
+
     CommonButton(
-        "@material/web/button/outlined-button.js", "md-outlined-button",
+        "md-outlined-button",
         disabled, href, target, trailingIcon, hasIcon, type, value, name, form,
         attrs, content
     )
+}
 
 @Composable
 fun MdTextButton(
@@ -176,12 +185,15 @@ fun MdTextButton(
     form: String? = null, // The form ID
     attrs: Attrs<HTMLElement>?,
     content: (@Composable MdButtonScope.() -> Unit)?
-) =
+) {
+    require("@material/web/button/text-button.js")
+
     CommonButton(
-        "@material/web/button/text-button.js", "md-text-button",
+        "md-text-button",
         disabled, href, target, trailingIcon, hasIcon, type, value, name, form,
         attrs, content
     )
+}
 
 
 class MdButtonScope(val elementScope: ElementScope<HTMLElement>) {
