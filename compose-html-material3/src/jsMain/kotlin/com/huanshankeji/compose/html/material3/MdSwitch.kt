@@ -26,7 +26,7 @@ fun MdSwitch(
 ) {
     require("@material/web/switch/switch.js")
 
-    TagElement<HTMLElement>("md-switch", {
+    TagElement("md-switch", {
         disabled(disabled)
         selected?.let { attr("selected", it) }
         icons?.let { attr("icons", it) }
