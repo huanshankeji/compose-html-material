@@ -10,6 +10,7 @@ import org.jetbrains.compose.web.attributes.InputType
 Attributes in this package are for `HTMLElement`s which don't implement the interfaces (such as `HTMLInputElement`) of the elements they behave like,
 such as the `HTMLElement`s of those components in Material Web.
 These attributes should not be universally available on most elements.
+Also consider moving to a `compose-html-material-common` module and depend on them with `implementation`.
  */
 
 
@@ -18,7 +19,6 @@ These attributes should not be universally available on most elements.
 fun AttrsScope<*>.ariaLabel(value: String) =
     attr("aria-label", value)
 
-// Consider moving what's below to a `InputAttrs.kt` file in a `compose-html-material-common` module and depend on them with `implementation`.
 
 // https://www.w3schools.com/tags/att_disabled.asp
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled
