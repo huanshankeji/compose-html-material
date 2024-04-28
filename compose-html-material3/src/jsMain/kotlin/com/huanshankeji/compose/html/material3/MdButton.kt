@@ -6,6 +6,7 @@ import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
+
 /*
 https://github.com/material-components/material-web/blob/main/docs/components/button.md
 https://material-web.dev/components/button/
@@ -42,6 +43,7 @@ private fun commonButtonAttrs(
         value(value)
         name(name)
         form(form)
+
         attrs?.invoke(this)
     }
 
@@ -198,6 +200,6 @@ fun MdTextButton(
 
 
 class MdButtonScope(val elementScope: ElementScope<HTMLElement>) {
-    fun AttrsScope<*>.slotIcon() =
+    fun AttrsScope<*>.slotEqIcon() =
         attr("slot", "icon")
 }

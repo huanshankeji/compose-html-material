@@ -30,11 +30,12 @@ fun MdSwitch(
         disabled(disabled)
         selected?.let { attr("selected", it) }
         icons?.let { attr("icons", it) }
-        showOnlySelectedIcon?.let { attr("showOnlySelectedIcon", it) }
+        showOnlySelectedIcon?.let { attr("show-only-selected-icon", it) }
         required(required)
         value(value)
         name(name)
         form(form)
+
         attrs?.invoke(this)
     }, null)
 }

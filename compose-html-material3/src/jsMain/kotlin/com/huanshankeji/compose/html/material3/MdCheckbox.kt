@@ -17,11 +17,8 @@ fun MdCheckbox(
     indeterminate: Boolean? = null,
     required: Boolean? = null,
     value: String? = null,
+    name: String? = null,
     form: String? = null,
-    //labels : NodeList? = null, // This is a read-only property. See https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/labels.
-    //validity : ValidityState? = null, // This is a read-only property. See https://developer.mozilla.org/en-US/docs/Web/API/HTMLObjectElement/validity.
-    //validationMessage : String? = null, // This is a read-only property. See https://developer.mozilla.org/en-US/docs/Web/API/HTMLObjectElement/validationMessage.
-    //willValidate : Boolean? = null, // This is a read-only property. See https://developer.mozilla.org/en-US/docs/Web/API/HTMLObjectElement/willValidate.
     attrs: Attrs<HTMLElement>? = null
 ) {
     require("@material/web/checkbox/checkbox.js")
@@ -33,7 +30,9 @@ fun MdCheckbox(
         indeterminate?.let { attr("indeterminate", it) }
         required(required)
         value(value)
+        name(name)
         form(form)
+
         attrs?.invoke(this)
     }, null)
 }
@@ -49,6 +48,7 @@ fun MdCheckbox(
     disabled: Boolean? = null,
     required: Boolean? = null,
     value: String? = null,
+    name: String? = null,
     form: String? = null,
     attrs: Attrs<HTMLElement>? = null
 ) {
@@ -71,5 +71,5 @@ fun MdCheckbox(
         }
     }
 
-    MdCheckbox(checked, disabled, indeterminate, required, value, form, attrs)
+    MdCheckbox(checked, disabled, indeterminate, required, value, name, form, attrs)
 }
