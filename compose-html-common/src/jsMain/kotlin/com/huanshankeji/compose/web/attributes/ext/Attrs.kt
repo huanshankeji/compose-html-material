@@ -13,6 +13,7 @@ These attributes should not be universally available on most elements.
 1. Those taking nullable values.
 
 Also consider moving to a `compose-html-material-common` module and depend on them with `implementation`.
+Consider reordering them.
  */
 
 
