@@ -1,7 +1,10 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
-import com.huanshankeji.compose.web.attributes.*
+import com.huanshankeji.compose.web.attributes.Attrs
+import com.huanshankeji.compose.web.attributes.attr
+import com.huanshankeji.compose.web.attributes.ext.*
+import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.attributes.AutoComplete
 import org.jetbrains.compose.web.attributes.InputMode
@@ -22,7 +25,7 @@ private fun CommonTextField(
     disabled: Boolean?,
     error: Boolean?,
     errorText: String?,
-    label: String?,
+    label: String?, // This attribute seems to have different semantics here from its original semantics in HTML.
     required: Boolean?,
     value: String?,
     prefixText: String?,

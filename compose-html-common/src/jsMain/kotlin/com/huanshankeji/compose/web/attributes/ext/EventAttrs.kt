@@ -1,4 +1,4 @@
-package com.huanshankeji.compose.web.attributes
+package com.huanshankeji.compose.web.attributes.ext
 
 import androidx.compose.web.events.SyntheticEvent
 import org.jetbrains.compose.web.attributes.AttrsScope

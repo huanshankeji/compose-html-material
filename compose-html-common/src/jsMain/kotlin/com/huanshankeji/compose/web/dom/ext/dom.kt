@@ -1,4 +1,4 @@
-package com.huanshankeji.compose.web.dom
+package com.huanshankeji.compose.web.dom.ext
 
 import org.w3c.dom.HTMLElement
 
