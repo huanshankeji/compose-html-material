@@ -6,7 +6,7 @@ import org.jetbrains.compose.web.attributes.EventsListenerScope
 import org.w3c.dom.HTMLElement
 
 /**
- * @see com.huanshankeji.compose.web.dom.value
+ * @see com.huanshankeji.compose.web.dom.ext.value
  */
 //fun <Element : EventTarget> EventsListenerScope.onInput(
 fun <TElement : HTMLElement> AttrsScope<TElement>.onInput(

@@ -1,6 +1,10 @@
 package com.huanshankeji.compose.web.attributes.ext
 
+import com.huanshankeji.compose.web.attributes.AutoCapitalize
+import com.huanshankeji.compose.web.attributes.EnterKeyHint
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
+import com.huanshankeji.compose.web.attributes.autoCapitalize
+import com.huanshankeji.compose.web.attributes.enterKeyHint
 import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.attributes.AutoComplete
 import org.jetbrains.compose.web.attributes.InputType
@@ -116,4 +120,20 @@ fun AttrsScope<*>.type(value: InputType<*>?) {
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
 fun AttrsScope<*>.autoComplete(value: AutoComplete?) {
     value?.let { attr("autocomplete", it.unsafeCast<String>()) }
+}
+
+
+// This is actually a global attribute
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autocapitalize
+fun AttrsScope<*>.autoCapitalize(value: String?) =
+    value?.let { this@autoCapitalize.autoCapitalize(value) }
+
+fun AttrsScope<*>.autoCapitalizeRequiringValid(value: String) {
+    require(value in AutoCapitalize.valueSet)
+    autoCapitalize(value)
+}
+
+
+fun AttrsScope<*>.enterKeyHintIfValid(value: String) {
+    if (value in EnterKeyHint.valueSet) enterKeyHint(value)
 }
