@@ -52,3 +52,41 @@ plugins {
 ```
 
 However, the plugin doesn't [make further adjustments to the webpack configuration](https://kotlinlang.org/docs/js-project-setup.html#webpack-configuration-file), so you also need to refer to [the demo further adjustments](demo/webpack.config.d/further_adjustments.js) and [the demo HTML page](demo/html/demo.html) to add your own. Just copy and possibly adapt them as you like.
+
+### Material Symbols & Icons
+
+The Material 3 module uses [Material Symbols & Icons](https://fonts.google.com/icons), but doesn't depend on the stylesheet directly. For Material Icons to work properly, you may need to configure your project following the quick instructions below or [the developer guide](https://developers.google.com/fonts/docs/material_symbols).
+
+#### Quick instructions
+
+In short, there are 3 ways to add the Material Symbols & Icons dependency:
+
+1. Add the stylesheet hosted by Google directly in your HTML file `head`:
+
+   ```html
+   <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+   ```
+
+1. Use [Marella's self-hosted Material Symbols](https://www.npmjs.com/package/material-symbols).
+
+   First add the dependency in your build script:
+   ```kotlin
+   implementation(npm("material-symbols", "0.17.4"))
+   ```
+   
+   And then import the icons in your program. For example you can use CommonJS `require`:
+   ```kotlin
+   external fun require(module: String): dynamic
+   fun main() {
+       require("material-symbols/outlined.css")
+       renderComposableInBody { App() }
+   }
+   ```
+   
+   If you are familiar with web development and Kotlin/JS, you can depend on the stylesheet in any way that works and you prefer. For example, you can use `@JsModule` corresponding to the UMD import, or configure it as a Webpack entry point. See the following docs fore more details:
+   1. [JavaScript modules | Kotlin Documentation](https://kotlinlang.org/docs/js-modules.html)
+   1. [the "webpack configuration file" section in Set up a Kotlin/JS project | Kotlin Documentation](https://kotlinlang.org/docs/js-project-setup.html#webpack-configuration-file)
+   1. [Code Splitting | webpack](https://webpack.js.org/guides/code-splitting/)
+   1. [Advanced entry | webpack](https://webpack.js.org/guides/entry-advanced/)
+
+1. [Download and self-host the latest font](https://developers.google.com/fonts/docs/material_symbols#self-hosting_the_font).
