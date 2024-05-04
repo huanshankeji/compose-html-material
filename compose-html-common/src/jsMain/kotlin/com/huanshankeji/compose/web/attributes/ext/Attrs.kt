@@ -137,3 +137,7 @@ fun AttrsScope<*>.autoCapitalizeRequiringValid(value: String) {
 fun AttrsScope<*>.enterKeyHintIfValid(value: String) {
     if (value in EnterKeyHint.valueSet) enterKeyHint(value)
 }
+
+
+fun AttrsScope<*>.selected(value: Boolean?) =
+    attrIfNotNull("selected", value)

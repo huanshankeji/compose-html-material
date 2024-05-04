@@ -3,6 +3,7 @@ package com.huanshankeji.compose.html.material3
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.ext.*
+import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
@@ -202,5 +203,5 @@ fun MdTextButton(
 
 class MdButtonScope(val elementScope: ElementScope<HTMLElement>) {
     fun AttrsScope<*>.slotEqIcon() =
-        attr("slot", "icon")
+        slot("icon")
 }
