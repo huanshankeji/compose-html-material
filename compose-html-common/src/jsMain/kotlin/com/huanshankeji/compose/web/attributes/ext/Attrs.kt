@@ -69,6 +69,7 @@ fun AttrsScope<*>.required(value: Boolean?) =
     attrIfNotNull("required", value)
 
 // https://www.geeksforgeeks.org/html-label-attribute/
+// https://www.w3schools.com/tags/att_label.asp
 fun AttrsScope<*>.label(value: String?) =
     attrIfNotNull("label", value)
 
