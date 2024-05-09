@@ -26,8 +26,8 @@ fun AttrsScope<*>.attrIfNotNull(attr: String, value: String?) {
     value?.let { attr(attr, it) }
 }
 
-fun AttrsScope<*>.attrIfNotNull(attr: String, isPresent: Boolean?) {
-    isPresent?.let { attr(attr, it) }
+fun AttrsScope<*>.attrIfNotNull(attr: String, value: Boolean?) {
+    value?.let { attr(attr, it) }
 }
 
 fun AttrsScope<*>.attrIfNotNull(attr: String, value: Int?) {
