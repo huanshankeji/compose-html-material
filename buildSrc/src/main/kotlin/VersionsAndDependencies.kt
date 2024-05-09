@@ -3,6 +3,12 @@ import com.huanshankeji.CommonDependencies
 const val projectVersion = "0.3.0-SNAPSHOT"
 
 object DependencyVersions {
+    val kobweb = "0.17.3"
+    val materialWeb = "1.4.1"
+
+
+    // legacy versions that don't need to be updated
+
     val webcomponents = "2.6.0"
     val mwc = "0.25.3"
 

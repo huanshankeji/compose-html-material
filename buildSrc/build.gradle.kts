@@ -11,7 +11,7 @@ val huanshankejiGradlePluginsVersion = "0.5.1"
 
 dependencies {
     implementation(kotlin("gradle-plugin", "1.9.23"))
-    implementation("org.jetbrains.compose:compose-gradle-plugin:1.6.1")
+    implementation("org.jetbrains.compose:compose-gradle-plugin:1.6.2")
     implementation("com.huanshankeji:kotlin-common-gradle-plugins:$huanshankejiGradlePluginsVersion")
     implementation("com.huanshankeji.team:gradle-plugins:$huanshankejiGradlePluginsVersion")
     implementation("com.huanshankeji:common-gradle-dependencies:0.7.1-20240314")

@@ -7,7 +7,7 @@ plugins {
 
 kotlin {
     sourceSets {
-        val jsMain by getting {
+        jsMain {
             dependencies {
                 implementation(compose.html.core)
                 implementation(compose.runtime)
@@ -43,8 +43,8 @@ kotlin {
 publishing.publications.withType<MavenPublication> {
     pomForTeamDefaultOpenSource(
         project,
-        "Compose HTML Material",
-        "Some Material components for Compose HTML"
+        "Compose HTML Material 2",
+        "Legacy Material 2 components for Compose HTML"
     ) {
         `Shreck Ye`()
     }
