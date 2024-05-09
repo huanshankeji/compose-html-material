@@ -35,7 +35,7 @@ gradlePlugin {
     vcsUrl.set("${website.get()}.git")
 
     plugins {
-        getByName("com.huanshankeji.compose-html-material-conventions") {
+        getByName("com.huanshankeji.compose-html-material-conventions-legacy") {
             displayName = "Compose HTML Material conventions"
             description =
                 "This plugin adds the needed Maven dependencies and npm devDependencies (mainly for Webpack) for a Compose HTML project with Material components."
