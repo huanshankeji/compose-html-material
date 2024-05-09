@@ -11,7 +11,8 @@ kotlin {
             dependencies {
                 implementation(compose.html.core)
                 implementation(compose.runtime)
-                implementation(commonDependencies.kotlinx.coroutines.core())
+                api("com.varabyte.kobweb:compose-html-ext:${DependencyVersions.kobweb}")
+                //implementation(commonDependencies.kotlinx.coroutines.core())
             }
         }
     }
@@ -20,8 +21,8 @@ kotlin {
 publishing.publications.withType<MavenPublication> {
     pomForTeamDefaultOpenSource(
         project,
-        "Huanshankeji Compose for Web common",
-        "Huanshankeji's common code for Compose for Web"
+        "Huanshankeji Compose HTML common",
+        "Huanshankeji's common code for Compose HTML"
     ) {
         `Shreck Ye`()
     }
