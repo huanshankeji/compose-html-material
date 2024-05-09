@@ -70,11 +70,13 @@ In short, there are 3 ways to add the Material Symbols & Icons dependency:
 1. Use [Marella's self-hosted Material Symbols](https://www.npmjs.com/package/material-symbols).
 
    First add the dependency in your build script:
+
    ```kotlin
    implementation(npm("material-symbols", "0.17.4"))
    ```
-   
+
    And then import the icons in your program. For example you can use CommonJS `require`:
+
    ```kotlin
    external fun require(module: String): dynamic
    fun main() {
@@ -82,7 +84,7 @@ In short, there are 3 ways to add the Material Symbols & Icons dependency:
        renderComposableInBody { App() }
    }
    ```
-   
+
    If you are familiar with web development and Kotlin/JS, you can depend on the stylesheet in any way that works and you prefer. For example, you can use `@JsModule` corresponding to the UMD import, or configure it as a Webpack entry point. See the following docs fore more details:
    1. [JavaScript modules | Kotlin Documentation](https://kotlinlang.org/docs/js-modules.html)
    1. [the "webpack configuration file" section in Set up a Kotlin/JS project | Kotlin Documentation](https://kotlinlang.org/docs/js-project-setup.html#webpack-configuration-file)
