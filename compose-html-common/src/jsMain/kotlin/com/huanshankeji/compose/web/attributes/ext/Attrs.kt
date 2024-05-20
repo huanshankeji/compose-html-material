@@ -140,5 +140,6 @@ fun AttrsScope<*>.enterKeyHintIfValid(value: String) {
 }
 
 
+// https://www.w3schools.com/tags/att_selected.asp
 fun AttrsScope<*>.selected(value: Boolean?) =
     attrIfNotNull("selected", value)

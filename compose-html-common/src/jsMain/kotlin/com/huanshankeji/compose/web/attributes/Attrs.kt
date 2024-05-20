@@ -15,6 +15,9 @@ fun AttrsScope<*>.attr(attr: String, value: Boolean = true) =
 fun AttrsScope<*>.attr(attr: String, value: Int) =
     attr(attr, value.toString())
 
+fun AttrsScope<*>.attr(attr: String, value: Number) =
+    attr(attr, value.toString())
+
 /**
  * Adds an attribute that has an explicit [Boolean] value unlike [attr].
  */
@@ -31,6 +34,10 @@ fun AttrsScope<*>.attrIfNotNull(attr: String, value: Boolean?) {
 }
 
 fun AttrsScope<*>.attrIfNotNull(attr: String, value: Int?) {
+    value?.let { attr(attr, it) }
+}
+
+fun AttrsScope<*>.attrIfNotNull(attr: String, value: Number?) {
     value?.let { attr(attr, it) }
 }
 

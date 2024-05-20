@@ -20,6 +20,7 @@ Here is a list of supported compoent APIs:
 - `MdIcon`
 - `MdIconButton`, `MdFilledIconButton`, `MdFilledTonalIconButton`, `MdOutlinedIconButton`
 - `MdList`, `MdListItem`
+- `MdMenu`, `MdMenuItem`, `MdSubMenu`
 - `MdSwitch`, `LabelWithMdSwitch`
 - `MdFilledTextField`, `MdOutlinedTextField`
 
@@ -49,6 +50,15 @@ kotlin {
             }
         }
     }
+}
+```
+
+This project depends on [Kobweb](https://github.com/varabyte/kobweb) which is not published to Maven Central yet, so you have to add the following Maven repository:
+
+```kotlin
+repositories {
+    mavenCentral()
+    maven("https://us-central1-maven.pkg.dev/varabyte-repos/public")
 }
 ```
 
