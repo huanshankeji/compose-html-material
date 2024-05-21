@@ -21,6 +21,7 @@ Here is a list of supported compoent APIs:
 - `MdIconButton`, `MdFilledIconButton`, `MdFilledTonalIconButton`, `MdOutlinedIconButton`
 - `MdList`, `MdListItem`
 - `MdMenu`, `MdMenuItem`, `MdSubMenu`
+- `MdLinearProgress`, `MdCircularProgress`
 - `MdSwitch`, `LabelWithMdSwitch`
 - `MdFilledTextField`, `MdOutlinedTextField`
 
