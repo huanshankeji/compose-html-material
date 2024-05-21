@@ -1,6 +1,7 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
+import com.huanshankeji.compose.html.material3.attributes.indeterminate
 import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attr
 import com.huanshankeji.compose.web.attributes.ext.*
@@ -29,7 +30,7 @@ fun MdCheckbox(
         attr("touch-target", "wrapper")
         checked?.let { attr("checked", it) }
         disabled(disabled)
-        indeterminate?.let { attr("indeterminate", it) }
+        indeterminate(indeterminate)
         required(required)
         value(value)
         name(name)
