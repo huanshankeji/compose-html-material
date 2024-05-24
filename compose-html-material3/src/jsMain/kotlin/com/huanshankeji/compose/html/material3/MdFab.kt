@@ -16,6 +16,10 @@ https://material-web.dev/components/fab/
 https://material-web.dev/components/fab/stories/
  */
 
+// a workaround for probably a bug, needed since Kotlin 2.0.0 because of "Cannot infer type for this parameter. Please specify it explicitly."
+private fun (@Composable MdFabScope.() -> Unit).toHTMLElementContent(): @Composable ElementScope<HTMLElement>.() -> Unit =
+    { MdFabScope(this).this@toHTMLElementContent() }
+
 @Composable
 private fun CommonMdFab(
     tagName: String,
@@ -33,9 +37,7 @@ private fun CommonMdFab(
         lowered?.let { attr("lowered", it) }
 
         attrs?.invoke(this)
-    }, content?.let {
-        { MdFabScope(this).it() }
-    })
+    }, content?.toHTMLElementContent())
 
 @Composable
 fun MdFab(

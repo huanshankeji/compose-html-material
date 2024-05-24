@@ -16,6 +16,10 @@ https://github.com/material-components/material-web/blob/main/labs/navigationtab
 https://github.com/material-components/material-web/blob/main/labs/navigationbar/demo/stories.ts (navigation bar storybook)
  */
 
+// a workaround for probably a bug, needed since Kotlin 2.0.0 because of "Cannot infer type for this parameter. Please specify it explicitly."
+private fun (@Composable MdNavigationTabScope.() -> Unit).toHTMLElementContent(): @Composable ElementScope<HTMLElement>.() -> Unit =
+    { MdNavigationTabScope(this).(this@toHTMLElementContent)() }
+
 @MaterialWebLabsApi
 @Composable
 fun MdNavigationTab(
@@ -39,7 +43,7 @@ fun MdNavigationTab(
         attrIfNotNull("show-badge", showBadge)
 
         attrs?.invoke(this)
-    }, content?.let { { MdNavigationTabScope(this).it() } })
+    }, content?.toHTMLElementContent())
 }
 
 class MdNavigationTabScope(val elementScope: ElementScope<HTMLElement>) {
