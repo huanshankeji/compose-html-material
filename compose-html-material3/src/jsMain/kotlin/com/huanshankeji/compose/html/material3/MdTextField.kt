@@ -227,3 +227,5 @@ class MdTextFieldScope(val elementScope: ElementScope<HTMLElement>) {
     fun AttrsScope<*>.slot(value: Slot) =
         slot(value.value)
 }
+
+object TextareaInputType : InputType.InputTypeWithStringValue("textarea")
