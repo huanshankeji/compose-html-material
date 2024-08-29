@@ -10,7 +10,8 @@ repositories {
 val huanshankejiGradlePluginsVersion = "0.5.1"
 
 dependencies {
-    val kotlinVersion = "2.0.0"
+    // With Kotlin 2.0.20, a "Could not parse POM" build error occurs in the JVM projects of some dependent projects.
+    val kotlinVersion = "2.0.10"
     implementation(kotlin("gradle-plugin", kotlinVersion))
     implementation("org.jetbrains.kotlin:compose-compiler-gradle-plugin:$kotlinVersion")
     implementation("org.jetbrains.compose:compose-gradle-plugin:1.6.10")
