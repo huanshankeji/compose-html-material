@@ -2,7 +2,7 @@ import com.huanshankeji.team.`Shreck Ye`
 import com.huanshankeji.team.pomForTeamDefaultOpenSource
 
 plugins {
-    `lib-conventions`
+    `lib-conventions-without-publishing`
 }
 
 kotlin {
