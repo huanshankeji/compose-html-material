@@ -708,10 +708,10 @@
     "@material/theme" "14.0.0-canary.261f2db59.0"
     tslib "^2.1.0"
 
-"@material/web@1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@material/web/-/web-1.4.1.tgz#116480759d0b5815ea181086d32cc3ccb54a30f6"
-  integrity sha512-17MZA6Bt7ie6uDc5cVEGtm6frQfm7ASLGVJhJuYJ0W2Fs7Zogd8wJ3ExoYU8jyzv8LEXcfvnZKcvr8dlquGsig==
+"@material/web@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@material/web/-/web-2.2.0.tgz#b98d57fc863301fe6c0036cc6f04869386067e08"
+  integrity sha512-k1Pi7f04qDRkHfIEdcnL++udN+x5Oq34R47n0Fk7Xo49uz9aKb6ZkO42jC6uvMH0ahOiFDktX9txHgYMDvNa+A==
   dependencies:
     lit "^2.7.4 || ^3.0.0"
     tslib "^2.4.0"
