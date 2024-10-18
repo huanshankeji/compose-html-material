@@ -16,5 +16,5 @@ dependencies {
     val huanshankejiGradlePluginsVersion = "0.6.0-SNAPSHOT" // TODO don't use a snapshot version in a main branch
     implementation("com.huanshankeji:kotlin-common-gradle-plugins:$huanshankejiGradlePluginsVersion")
     implementation("com.huanshankeji.team:gradle-plugins:$huanshankejiGradlePluginsVersion")
-    implementation("com.huanshankeji:common-gradle-dependencies:0.7.2-20241016-SNAPSHOT") // TODO don't use a snapshot version in a main branch
+    implementation("com.huanshankeji:common-gradle-dependencies:0.8.0-20241016-SNAPSHOT") // TODO don't use a snapshot version in a main branch
 }
