@@ -4,7 +4,7 @@
 
 Material 3 wrapper components for Compose HTML based on [Material Web](https://github.com/material-components/material-web)
 
-For unified multiplatform APIs which are more akin to those in `androidx.compose`, check out [Compose Multiplatform Material](https://github.com/huanshankeji/compose-multiplatform-material).
+For unified multiplatform APIs which are more akin to those in `androidx.compose`, check out [Compose Multiplatform Material](https://github.com/huanshankeji/compose-multiplatform-material) which also depends on this library.
 
 For Material 2 support, you are recommended to check out [KMDC](https://github.com/mpetuska/kmdc) instead. For information on our obsolete work on legacy Material 2 components, check out [the legacy README](/legacy/README.md).
 
@@ -20,6 +20,8 @@ Here is a list of supported compoent APIs:
 - `MdIcon`
 - `MdIconButton`, `MdFilledIconButton`, `MdFilledTonalIconButton`, `MdOutlinedIconButton`
 - `MdList`, `MdListItem`
+- `MdMenu`, `MdMenuItem`, `MdSubMenu`
+- `MdLinearProgress`, `MdCircularProgress`
 - `MdSwitch`, `LabelWithMdSwitch`
 - `MdFilledTextField`, `MdOutlinedTextField`
 
@@ -49,6 +51,15 @@ kotlin {
             }
         }
     }
+}
+```
+
+This project depends on [Kobweb](https://github.com/varabyte/kobweb) which is not published to Maven Central yet, so you have to add the following Maven repository:
+
+```kotlin
+repositories {
+    mavenCentral()
+    maven("https://us-central1-maven.pkg.dev/varabyte-repos/public")
 }
 ```
 

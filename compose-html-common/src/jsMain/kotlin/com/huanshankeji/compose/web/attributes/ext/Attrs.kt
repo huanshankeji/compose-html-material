@@ -29,9 +29,8 @@ fun AttrsScope<*>.ariaLabel(value: String) =
 
 // https://www.w3schools.com/tags/att_disabled.asp
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled
-fun AttrsScope<*>.disabled(disabled: Boolean?) {
-    disabled?.let { disabled(it) }
-}
+fun AttrsScope<*>.disabled(value: Boolean?) =
+    attrIfNotNull("disabled", value)
 
 // https://www.w3schools.com/tags/att_href.asp
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#href
@@ -140,5 +139,6 @@ fun AttrsScope<*>.enterKeyHintIfValid(value: String) {
 }
 
 
+// https://www.w3schools.com/tags/att_selected.asp
 fun AttrsScope<*>.selected(value: Boolean?) =
     attrIfNotNull("selected", value)
