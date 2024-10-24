@@ -2,7 +2,7 @@ plugins {
     `kotlin-dsl`
 }
 repositories {
-    mavenLocal() // TODO comment out when not needed
+    //mavenLocal() // comment out when not needed
     gradlePluginPortal()
     //maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
 }
