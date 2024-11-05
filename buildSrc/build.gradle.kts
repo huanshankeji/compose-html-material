@@ -17,4 +17,5 @@ dependencies {
     implementation("com.huanshankeji:kotlin-common-gradle-plugins:$huanshankejiGradlePluginsVersion")
     implementation("com.huanshankeji.team:gradle-plugins:$huanshankejiGradlePluginsVersion")
     implementation("com.huanshankeji:common-gradle-dependencies:0.8.0-20241016") // don't use a snapshot version in a main branch
+    implementation("org.jetbrains.dokka:dokka-gradle-plugin:2.0.0-Beta")
 }
