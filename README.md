@@ -8,6 +8,8 @@ For unified multiplatform APIs which are more akin to those in `androidx.compose
 
 For Material 2 support, you are recommended to check out [KMDC](https://github.com/mpetuska/kmdc) instead. For information on our obsolete work on legacy Material 2 components, check out [the legacy README](/legacy/README.md).
 
+[Check out the API documentation here.](https://huanshankeji.github.io/compose-html-material/api-documentation/index.html)
+
 ## Supported components
 
 Not all components of Material Web are supported yet. Also, not all Material Design components are supported by Material Web yet (see [their roadmap](https://github.com/material-components/material-web/blob/main/docs/roadmap.md)).
