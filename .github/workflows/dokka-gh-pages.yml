@@ -1,4 +1,4 @@
-name: Deploy the API documentation to GitHub Pages with Dokka
+name: Deploy the site to GitHub Pages
 
 on:
   push:
@@ -41,12 +41,12 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Build the distribution with Gradle Wrapper
-        run: ./gradlew :dokkaGeneratePublicationHtml
+        run: ./gradlew :generateSite
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: build/dokka/html/
+          path: build/site/
 
   # Deployment job
   deploy:
