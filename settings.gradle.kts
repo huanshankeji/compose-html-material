@@ -5,3 +5,11 @@ include("compose-html-material-legacy")
 include("compose-html-material3")
 include("gradle-plugins")
 project(":gradle-plugins").name = "compose-html-material-gradle-plugins-legacy"
+
+// for Dokka
+@Suppress("UnstableApiUsage")
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+    }
+}
