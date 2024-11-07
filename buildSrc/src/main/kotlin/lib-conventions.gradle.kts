@@ -1,5 +1,5 @@
 plugins {
     id("lib-conventions-without-publishing")
     id("com.huanshankeji.kotlin-multiplatform-sonatype-ossrh-publish-conventions")
-    id("dokka-convention")
+    id("com.huanshankeji.team.dokka.github-dokka-convention")
 }
