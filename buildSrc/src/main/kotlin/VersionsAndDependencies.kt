@@ -1,6 +1,6 @@
 import com.huanshankeji.CommonDependencies
 
-const val projectVersion = "0.4.1-SNAPSHOT"
+const val projectVersion = "0.4.1-kotlin-2.1.0-SNAPSHOT"
 
 object DependencyVersions {
     val kobweb = "0.19.2"
