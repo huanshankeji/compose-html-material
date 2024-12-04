@@ -4,7 +4,7 @@
 
 Material 3 wrapper components for Compose HTML based on [Material Web](https://github.com/material-components/material-web)
 
-For unified multiplatform APIs which are more akin to those in `androidx.compose`, check out [Compose Multiplatform Material](https://github.com/huanshankeji/compose-multiplatform-material) which also depends on this library. Also see its [side-by-side demo site](https://huanshankeji.github.io/compose-multiplatform-material/) for the visual effects of the components.
+For unified multiplatform APIs which are more akin to those in `androidx.compose`, check out [Compose Multiplatform HTML Unified](https://github.com/huanshankeji/compose-multiplatform-html-unified) which also depends on this library. Also see its [side-by-side demo site](https://huanshankeji.github.io/compose-multiplatform-html-unified/) for the visual effects of the components.
 
 For Material 2 support, you are recommended to check out [KMDC](https://github.com/mpetuska/kmdc) instead. For information on our obsolete work on legacy Material 2 components, check out [the legacy README](/legacy/README.md).
 
