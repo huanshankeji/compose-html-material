@@ -3,7 +3,7 @@ import com.huanshankeji.CommonDependencies
 const val projectVersion = "0.4.1-SNAPSHOT"
 
 object DependencyVersions {
-    val kobweb = "0.19.2"
+    val kobweb = "0.20.0"
     val materialWeb = "2.2.0"
 
 
