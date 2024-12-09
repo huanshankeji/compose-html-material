@@ -12,7 +12,7 @@ For Material 2 support, you are recommended to check out [KMDC](https://github.c
 
 ## Supported components
 
-Not all components of Material Web are supported yet. Also, not all Material Design components are supported by Material Web yet (see [their roadmap](https://github.com/material-components/material-web/blob/main/docs/roadmap.md)).
+Not all components of Material Web are supported yet (see #11). Also, not all Material Design components are supported by Material Web yet (see [their roadmap](https://github.com/material-components/material-web/blob/main/docs/roadmap.md)).
 
 Here is a list of supported compoent APIs:
 
