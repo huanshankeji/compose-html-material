@@ -11,7 +11,7 @@ https://material-web.dev/components/fab/stories/
  */
 
 fun <TElement : Element> SimplifiedTagElement(
-    content: (ElementScope<TElement>.() -> Unit)?
+    content: (ElementScope<TElement>.() -> Unit)
 ) {
     TODO()
 }
@@ -19,8 +19,8 @@ fun <TElement : Element> SimplifiedTagElement(
 class MdFabScope(val elementScope: ElementScope<HTMLElement>)
 
 private fun SimplifiedMdFab(
-    content: (MdFabScope.() -> Unit)?
+    content: (MdFabScope.() -> Unit)
 ) =
-    SimplifiedTagElement(content?.let {
+    SimplifiedTagElement(content.let {
         { MdFabScope(this).it() }
     })
