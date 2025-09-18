@@ -24,6 +24,6 @@ jobs:
       contents: write
 
     steps:
-      - uses: huanshankeji/.github/actions/dependency-submission@v0.2.0
+      - uses: huanshankeji/.github/actions/gradle-dependency-submission@v0.2.0
         with:
           jdk-versions: 17-temurin
