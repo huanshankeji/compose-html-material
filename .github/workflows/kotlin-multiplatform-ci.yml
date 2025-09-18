@@ -14,9 +14,9 @@ jobs:
       contents: read
 
     steps:
-      - uses: huanshankeji/.github/actions/gradle-test-and-check@v0.1.0
+      - uses: huanshankeji/.github/actions/gradle-test-and-check@v0.2.0
         with:
-          jdk-versions: 11-temurin
+          jdk-versions: 17-temurin
 
   dependency-submission:
     runs-on: ubuntu-latest
@@ -24,7 +24,6 @@ jobs:
       contents: write
 
     steps:
-      - uses: huanshankeji/.github/actions/dependency-submission@v0.1.0
+      - uses: huanshankeji/.github/actions/dependency-submission@v0.2.0
         with:
-          java-version: 11
-          distribution: temurin
+          jdk-versions: 17-temurin
