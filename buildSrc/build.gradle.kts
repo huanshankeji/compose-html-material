@@ -11,7 +11,7 @@ dependencies {
     val kotlinVersion = "2.2.20"
     implementation(kotlin("gradle-plugin", kotlinVersion))
     implementation("org.jetbrains.kotlin:compose-compiler-gradle-plugin:$kotlinVersion")
-    implementation("org.jetbrains.compose:compose-gradle-plugin:1.9.0")
+    implementation("org.jetbrains.compose:compose-gradle-plugin:1.10.0-alpha01")
     val huanshankejiGradlePluginsVersion = "0.10.0-SNAPSHOT" // TODO don't use a snapshot version in a main branch
     implementation("com.huanshankeji:kotlin-common-gradle-plugins:$huanshankejiGradlePluginsVersion")
     implementation("com.huanshankeji.team:gradle-plugins:$huanshankejiGradlePluginsVersion")
