@@ -1,6 +1,6 @@
 import com.huanshankeji.CommonDependencies
 
-const val projectVersion = "0.4.1-SNAPSHOT"
+const val projectVersion = "0.5.0-SNAPSHOT"
 
 object DependencyVersions {
     val kobweb = "0.23.3"
