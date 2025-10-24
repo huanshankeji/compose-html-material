@@ -1,4 +1,4 @@
-import com.huanshankeji.team.`Shreck Ye`
+import com.huanshankeji.team.ShreckYe
 import com.huanshankeji.team.pomForTeamDefaultOpenSource
 
 plugins {
@@ -25,6 +25,6 @@ publishing.publications.withType<MavenPublication> {
         "Compose HTML Material 3",
         "Material 3 components for Compose HTML"
     ) {
-        `Shreck Ye`()
+        ShreckYe()
     }
 }

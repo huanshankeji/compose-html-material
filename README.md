@@ -56,15 +56,6 @@ kotlin {
 }
 ```
 
-This project depends on [Kobweb](https://github.com/varabyte/kobweb) which is not published to Maven Central yet, so you have to add the following Maven repository:
-
-```kotlin
-repositories {
-    mavenCentral()
-    maven("https://us-central1-maven.pkg.dev/varabyte-repos/public")
-}
-```
-
 ### Material Symbols & Icons
 
 The Material 3 module uses [Material Symbols & Icons](https://fonts.google.com/icons), but doesn't depend on the stylesheet directly. For Material Icons to work properly, you may need to configure your project following the quick instructions below or [the developer guide](https://developers.google.com/fonts/docs/material_symbols).
