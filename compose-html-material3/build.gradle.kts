@@ -23,7 +23,8 @@ publishing.publications.withType<MavenPublication> {
     pomForTeamDefaultOpenSource(
         project,
         "Compose HTML Material 3",
-        "Material 3 components for Compose HTML"
+        "Material 3 components for Compose HTML",
+        "2024"
     ) {
         ShreckYe()
     }

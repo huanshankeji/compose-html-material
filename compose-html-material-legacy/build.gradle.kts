@@ -44,7 +44,8 @@ publishing.publications.withType<MavenPublication> {
     pomForTeamDefaultOpenSource(
         project,
         "Compose HTML Material 2",
-        "Legacy Material 2 components for Compose HTML"
+        "Legacy Material 2 components for Compose HTML",
+        "2022"
     ) {
         ShreckYe()
     }
