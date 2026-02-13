@@ -6,7 +6,7 @@ object DependencyVersions {
     // https://github.com/varabyte/kobweb/releases
     val kobweb = "0.23.3"
     // https://github.com/material-components/material-web/releases
-    val materialWeb = "2.4.0"
+    val materialWeb = "2.4.1"
 
 
     // legacy versions that don't need to be updated
