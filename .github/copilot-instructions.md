@@ -7,9 +7,9 @@ This repository provides **Material 3 wrapper components for Compose HTML** base
 **Key Points:**
 - **Type:** Kotlin/JS library (not an application)
 - **Size:** Small to medium (~3 main modules)
-- **Language:** Kotlin 2.1.0
-- **Frameworks:** Compose HTML 1.7.1, Kobweb 0.20.0
-- **Build System:** Gradle 9.0.0 with Kotlin DSL
+- **Language:** Kotlin 2.3.10
+- **Frameworks:** Compose HTML 1.10.1, Kobweb 0.23.3
+- **Build System:** Gradle 9.3.1 with Kotlin DSL
 - **Target Runtime:** JavaScript/Browser (Kotlin/JS)
 - **Published to:** Maven Central
 
@@ -18,7 +18,7 @@ This repository provides **Material 3 wrapper components for Compose HTML** base
 ### Root Directory Files
 - `build.gradle.kts` - Root build configuration (Dokka, API validation)
 - `settings.gradle.kts` - Multi-module project settings
-- `gradle.properties` - Dokka V2 configuration
+- `gradle.properties` - Gradle configuration cache enabled
 - `gradlew` / `gradlew.bat` - Gradle wrapper scripts
 - `CONTRIBUTING.md` - Development guidelines
 - `README.md` - User documentation
@@ -57,14 +57,13 @@ This repository provides **Material 3 wrapper components for Compose HTML** base
 
 ### Environment Requirements
 - **JDK 17** (Temurin distribution recommended) - CRITICAL: The CI uses JDK 17, always ensure compatibility
-- **Gradle 9.0.0** (via wrapper, automatically downloaded)
+- **Gradle 9.3.1** (via wrapper, automatically downloaded)
 - **Internet access** for downloading dependencies from:
-  - Maven Central
+  - Maven Central (includes Kobweb dependencies as of recent versions)
   - `https://maven.pkg.jetbrains.space/public/p/compose/dev` (Compose dependencies)
-  - `https://us-central1-maven.pkg.dev/varabyte-repos/public` (Kobweb dependencies)
 
 ### CRITICAL: Network Dependencies
-This project requires external repositories that may not be accessible in restricted environments. If you encounter DNS resolution errors (e.g., "No address associated with hostname") for `maven.pkg.jetbrains.space` or `us-central1-maven.pkg.dev`, builds will fail. These are known limitations in sandboxed environments.
+This project requires external repositories that may not be accessible in restricted environments. If you encounter DNS resolution errors (e.g., "No address associated with hostname") for `maven.pkg.jetbrains.space`, builds will fail. These are known limitations in sandboxed environments. Note: Kobweb is now published to Maven Central, so the Google Artifact Registry dependency is no longer required.
 
 ### Build Commands
 
@@ -117,7 +116,7 @@ This project requires external repositories that may not be accessible in restri
 
 1. **Gradle Daemon startup delays**: First build in a session takes longer while Gradle daemon starts. Subsequent builds are much faster.
 
-2. **Kotlin compiler warnings about version mismatch**: You may see warnings like "WARNING: Unsupported Kotlin plugin version" in the buildSrc compilation. These are typically non-fatal and relate to the Kotlin version mismatch between buildSrc (2.1.0) and Gradle's embedded Kotlin (2.2.0).
+2. **Kotlin compiler warnings about version mismatch**: You may see warnings like "WARNING: Unsupported Kotlin plugin version" in the buildSrc compilation. These are typically non-fatal and relate to the Kotlin version mismatch between buildSrc (2.3.10) and Gradle's embedded Kotlin version.
 
 3. **Network/dependency resolution failures**: Builds WILL fail in environments without access to the required Maven repositories. There is no workaround other than ensuring network access.
 
@@ -220,11 +219,11 @@ fun MdComponentName(
 ## Dependencies
 
 ### Key Dependencies
-- **Kotlin:** 2.1.0
-- **Compose Multiplatform:** 1.7.1
-- **Kobweb:** 0.20.0 (provides Compose HTML extensions)
-- **Material Web:** 2.2.0 (NPM dependency)
-- **Dokka:** 2.0.0-Beta (documentation generation)
+- **Kotlin:** 2.3.10
+- **Compose Multiplatform:** 1.10.1
+- **Kobweb:** 0.23.3 (provides Compose HTML extensions, now published to Maven Central)
+- **Material Web:** 2.4.1 (NPM dependency)
+- **Dokka:** 2.1.0 (documentation generation)
 
 ### Adding Dependencies
 Dependencies are declared in module `build.gradle.kts` files using the convention:
