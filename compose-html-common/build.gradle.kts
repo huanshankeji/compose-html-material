@@ -1,4 +1,4 @@
-import com.huanshankeji.team.`Shreck Ye`
+import com.huanshankeji.team.ShreckYe
 import com.huanshankeji.team.pomForTeamDefaultOpenSource
 
 plugins {
@@ -22,8 +22,9 @@ publishing.publications.withType<MavenPublication> {
     pomForTeamDefaultOpenSource(
         project,
         "Huanshankeji Compose HTML common",
-        "Huanshankeji's common code for Compose HTML"
+        "Huanshankeji's common code for Compose HTML",
+        "2023"
     ) {
-        `Shreck Ye`()
+        ShreckYe()
     }
 }
