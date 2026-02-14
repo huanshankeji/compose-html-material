@@ -1,7 +1,5 @@
 package com.huanshankeji.compose.html.material3
 
-import com.huanshankeji.compose.html.material3.imports.*
-
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.ext.disabled
@@ -19,6 +17,14 @@ https://github.com/material-components/material-web/blob/main/docs/components/li
 https://material-web.dev/components/list/
 https://material-web.dev/components/list/stories/
  */
+
+@JsModule("@material/web/list/list.js")
+@JsNonModule
+private external object ListImport
+
+@JsModule("@material/web/list/list-item.js")
+@JsNonModule
+private external object ListItemImport
 
 @Composable
 fun MdList(attrs: Attrs<HTMLElement>? = null, content: @Composable MdListScope.() -> Unit) {

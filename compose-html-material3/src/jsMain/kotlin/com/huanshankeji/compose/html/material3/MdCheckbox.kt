@@ -2,7 +2,6 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.html.material3.attributes.indeterminate
-import com.huanshankeji.compose.html.material3.imports.CheckboxImport
 import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attr
 import com.huanshankeji.compose.web.attributes.ext.*
@@ -14,6 +13,10 @@ https://github.com/material-components/material-web/blob/main/docs/components/ch
 https://material-web.dev/components/checkbox/
 https://material-web.dev/components/checkbox/stories/
 */
+
+@JsModule("@material/web/checkbox/checkbox.js")
+@JsNonModule
+private external object CheckboxImport
 @Composable
 fun MdCheckbox(
     checked: Boolean? = null,

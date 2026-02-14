@@ -1,7 +1,5 @@
 package com.huanshankeji.compose.html.material3
 
-import com.huanshankeji.compose.html.material3.imports.*
-
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
@@ -13,6 +11,10 @@ import org.w3c.dom.HTMLElement
 https://github.com/material-components/material-web/blob/main/labs/navigationbar/internal/navigation-bar.ts
 https://github.com/material-components/material-web/blob/main/labs/navigationbar/demo/stories.ts
  */
+
+@JsModule("@material/web/labs/navigationbar/navigation-bar.js")
+@JsNonModule
+private external object NavigationBarImport
 
 @MaterialWebLabsApi
 @Composable

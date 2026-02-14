@@ -1,7 +1,5 @@
 package com.huanshankeji.compose.html.material3
 
-import com.huanshankeji.compose.html.material3.imports.*
-
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.html.material3.attributes.indeterminate
 import com.huanshankeji.compose.web.attributes.Attrs
@@ -15,6 +13,14 @@ https://github.com/material-components/material-web/blob/main/docs/components/pr
 https://material-web.dev/components/progress/
 https://material-web.dev/components/progress/stories/
  */
+
+@JsModule("@material/web/progress/linear-progress.js")
+@JsNonModule
+private external object LinearProgressImport
+
+@JsModule("@material/web/progress/circular-progress.js")
+@JsNonModule
+private external object CircularProgressImport
 
 @Composable
 private fun CommonMdProgress(

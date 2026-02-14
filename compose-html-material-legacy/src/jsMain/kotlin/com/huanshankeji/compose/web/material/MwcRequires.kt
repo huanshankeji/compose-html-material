@@ -1,13 +1,13 @@
 package com.huanshankeji.compose.web.material
 
-import com.huanshankeji.compose.web.material.imports.*
+external fun require(module: String): dynamic
 
 fun mwcRequires() {
-    MwcButtonImport // Load the web component
-    MwcTextFieldImport // Load the web component
-    MwcSelectImport // Load the web component
-    MwcListItemImport // Load the web component
-    MwcSnackbarImport // Load the web component
-    MwcCircularProgressImport // Load the web component
-    MwcCircularProgressFourColorImport // Load the web component
+    require("@material/mwc-button")
+    require("@material/mwc-textfield")
+    require("@material/mwc-select")
+    require("@material/mwc-list/mwc-list-item")
+    require("@material/mwc-snackbar")
+    require("@material/mwc-circular-progress")
+    require("@material/mwc-circular-progress-four-color")
 }

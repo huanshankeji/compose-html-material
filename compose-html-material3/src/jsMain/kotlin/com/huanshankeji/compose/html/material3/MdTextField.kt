@@ -1,7 +1,5 @@
 package com.huanshankeji.compose.html.material3
 
-import com.huanshankeji.compose.html.material3.imports.*
-
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attr
@@ -20,6 +18,14 @@ https://github.com/material-components/material-web/blob/main/docs/components/te
 https://material-web.dev/components/text-field/
 https://material-web.dev/components/text-field/stories/
 */
+
+@JsModule("@material/web/textfield/filled-text-field.js")
+@JsNonModule
+private external object FilledTextFieldImport
+
+@JsModule("@material/web/textfield/outlined-text-field.js")
+@JsNonModule
+private external object OutlinedTextFieldImport
 
 @Composable
 private fun CommonTextField(

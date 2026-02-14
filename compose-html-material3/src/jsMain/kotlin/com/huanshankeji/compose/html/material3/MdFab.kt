@@ -1,7 +1,6 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
-import com.huanshankeji.compose.html.material3.imports.*
 import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attr
 import com.huanshankeji.compose.web.attributes.ext.label
@@ -16,6 +15,14 @@ https://github.com/material-components/material-web/blob/main/docs/components/fa
 https://material-web.dev/components/fab/
 https://material-web.dev/components/fab/stories/
  */
+
+@JsModule("@material/web/fab/fab.js")
+@JsNonModule
+private external object FabImport
+
+@JsModule("@material/web/fab/branded-fab.js")
+@JsNonModule
+private external object BrandedFabImport
 
 @Composable
 private fun CommonMdFab(

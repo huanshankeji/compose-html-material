@@ -1,7 +1,6 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
-import com.huanshankeji.compose.html.material3.imports.*
 import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attr
 import com.huanshankeji.compose.web.attributes.ext.*
@@ -17,6 +16,22 @@ https://github.com/material-components/material-web/blob/main/docs/components/ic
 https://material-web.dev/components/icon-button/
 https://material-web.dev/components/icon-button/stories/
  */
+
+@JsModule("@material/web/iconbutton/icon-button.js")
+@JsNonModule
+private external object IconButtonImport
+
+@JsModule("@material/web/iconbutton/filled-icon-button.js")
+@JsNonModule
+private external object FilledIconButtonImport
+
+@JsModule("@material/web/iconbutton/filled-tonal-icon-button.js")
+@JsNonModule
+private external object FilledTonalIconButtonImport
+
+@JsModule("@material/web/iconbutton/outlined-icon-button.js")
+@JsNonModule
+private external object OutlinedIconButtonImport
 
 
 @Composable

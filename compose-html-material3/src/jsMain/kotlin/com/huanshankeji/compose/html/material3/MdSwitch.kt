@@ -1,7 +1,5 @@
 package com.huanshankeji.compose.html.material3
 
-import com.huanshankeji.compose.html.material3.imports.*
-
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attr
@@ -16,6 +14,10 @@ https://github.com/material-components/material-web/blob/main/docs/components/sw
 https://material-web.dev/components/switch/
 https://material-web.dev/components/switch/stories/
 */
+
+@JsModule("@material/web/switch/switch.js")
+@JsNonModule
+private external object SwitchImport
 @Composable
 fun MdSwitch(
     disabled: Boolean? = null,

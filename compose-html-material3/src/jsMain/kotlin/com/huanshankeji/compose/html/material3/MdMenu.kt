@@ -1,7 +1,5 @@
 package com.huanshankeji.compose.html.material3
 
-import com.huanshankeji.compose.html.material3.imports.*
-
 import androidx.compose.runtime.Composable
 import androidx.compose.web.events.SyntheticEvent
 import com.huanshankeji.compose.web.attributes.Attrs
@@ -19,6 +17,18 @@ https://github.com/material-components/material-web/blob/main/docs/components/me
 https://material-web.dev/components/menu/
 https://material-web.dev/components/menu/stories/
  */
+
+@JsModule("@material/web/menu/menu.js")
+@JsNonModule
+private external object MenuImport
+
+@JsModule("@material/web/menu/menu-item.js")
+@JsNonModule
+private external object MenuItemImport
+
+@JsModule("@material/web/menu/sub-menu.js")
+@JsNonModule
+private external object SubMenuImport
 
 
 private fun AttrsScope<HTMLElement>.anchorCorner(anchorCorner: String?) {
