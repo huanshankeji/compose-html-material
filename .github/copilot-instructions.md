@@ -58,12 +58,7 @@ This repository provides **Material 3 wrapper components for Compose HTML** base
 ### Environment Requirements
 - **JDK 17** (Temurin distribution recommended) - CRITICAL: The CI uses JDK 17, always ensure compatibility
 - **Gradle 9.3.1** (via wrapper, automatically downloaded)
-- **Internet access** for downloading dependencies from:
-  - Maven Central (includes Kobweb dependencies as of recent versions)
-  - `https://maven.pkg.jetbrains.space/public/p/compose/dev` (Compose dependencies)
-
-### CRITICAL: Network Dependencies
-This project requires external repositories that may not be accessible in restricted environments. If you encounter DNS resolution errors (e.g., "No address associated with hostname") for `maven.pkg.jetbrains.space`, builds will fail. These are known limitations in sandboxed environments. Note: Kobweb is now published to Maven Central, so the Google Artifact Registry dependency is no longer required.
+- **Internet access** for downloading dependencies from Maven Central
 
 ### Build Commands
 
@@ -117,8 +112,6 @@ This project requires external repositories that may not be accessible in restri
 1. **Gradle Daemon startup delays**: First build in a session takes longer while Gradle daemon starts. Subsequent builds are much faster.
 
 2. **Kotlin compiler warnings about version mismatch**: You may see warnings like "WARNING: Unsupported Kotlin plugin version" in the buildSrc compilation. These are typically non-fatal and relate to the Kotlin version mismatch between buildSrc (2.3.10) and Gradle's embedded Kotlin version.
-
-3. **Network/dependency resolution failures**: Builds WILL fail in environments without access to the required Maven repositories. There is no workaround other than ensuring network access.
 
 ## CI/CD Workflows
 
@@ -215,6 +208,7 @@ fun MdComponentName(
 - One component type per file (e.g., `MdButton.kt` contains all button variants)
 - Attributes extensions in `attributes/` subdirectory
 - Common utilities in `compose-html-common` module
+- Patterns follow Compose HTML conventions - see [Compose Multiplatform README](https://github.com/JetBrains/compose-multiplatform#compose-html) and [Compose HTML directory](https://github.com/JetBrains/compose-multiplatform/tree/master/html)
 
 ## Dependencies
 
@@ -255,6 +249,13 @@ When adding components:
 - Test attribute bindings and event handlers
 - Check Material Symbols/Icons display correctly (requires separate setup)
 
+### Testing with compose-multiplatform-html-unified Demo
+You can test changes in the `demo` module of [compose-multiplatform-html-unified](https://github.com/huanshankeji/compose-multiplatform-html-unified):
+1. Clone that repository and check out the `dev` branch if available (likely has updated dependencies)
+2. Update dependencies to use the snapshot version of this project via `publishToMavenLocal`
+3. See the [hosted demo site](https://huanshankeji.github.io/compose-multiplatform-html-unified/) for visual effects of released versions
+4. Interact with the demo (click buttons, etc.) to verify component behavior
+
 ## Common Tasks Reference
 
 | Task | Command | When to Use |
@@ -264,14 +265,13 @@ When adding components:
 | Clean build | `./gradlew clean build` | Troubleshooting |
 | Update API signatures | `./gradlew apiDump` | After public API changes |
 | Test locally | `./gradlew publishToMavenLocal` | Test changes in other projects |
-| Generate docs | `./gradlew generateSite` | Update documentation site |
+| Generate docs | `./gradlew generateSite` | Build documentation (auto-deployed by GitHub Actions) |
 | List all tasks | `./gradlew tasks` | Discover available tasks |
 
 ## Troubleshooting
 
 ### Build fails with "Could not resolve dependency"
-- Ensure internet connectivity
-- Check that all required Maven repositories are accessible
+- Ensure internet connectivity to Maven Central
 - Try `./gradlew build --refresh-dependencies`
 
 ### API check fails after changes
