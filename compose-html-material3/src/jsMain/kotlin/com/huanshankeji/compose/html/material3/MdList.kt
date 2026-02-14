@@ -1,5 +1,7 @@
 package com.huanshankeji.compose.html.material3
 
+import com.huanshankeji.compose.html.material3.imports.*
+
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.ext.disabled
@@ -20,7 +22,7 @@ https://material-web.dev/components/list/stories/
 
 @Composable
 fun MdList(attrs: Attrs<HTMLElement>? = null, content: @Composable MdListScope.() -> Unit) {
-    require("@material/web/list/list.js")
+    ListImport // Load the web component
 
     TagElement("md-list", attrs) {
         MdListScope(this).content()
@@ -59,7 +61,7 @@ fun MdListItem(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable MdListItemScope.() -> Unit
 ) {
-    require("@material/web/list/list-item.js")
+    ListItemImport // Load the web component
 
     //@Suppress("RemoveExplicitTypeArguments")
     TagElement<HTMLElement>("md-list-item", {

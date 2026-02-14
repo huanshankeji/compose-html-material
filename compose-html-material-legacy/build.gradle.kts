@@ -6,6 +6,10 @@ plugins {
 }
 
 kotlin {
+    js {
+        useEsModules()
+    }
+
     sourceSets {
         jsMain {
             dependencies {

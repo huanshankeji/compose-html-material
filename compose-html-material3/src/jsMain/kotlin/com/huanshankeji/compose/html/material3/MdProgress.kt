@@ -1,5 +1,7 @@
 package com.huanshankeji.compose.html.material3
 
+import com.huanshankeji.compose.html.material3.imports.*
+
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.html.material3.attributes.indeterminate
 import com.huanshankeji.compose.web.attributes.Attrs
@@ -46,7 +48,7 @@ fun MdLinearProgress(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable (ElementScope<HTMLElement>.() -> Unit)? = null
 ) {
-    require("@material/web/progress/linear-progress.js")
+    LinearProgressImport // Load the web component
 
     CommonMdProgress(
         "md-linear-progress",
@@ -64,7 +66,7 @@ fun MdCircularProgress(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable (ElementScope<HTMLElement>.() -> Unit)? = null
 ) {
-    require("@material/web/progress/circular-progress.js")
+    CircularProgressImport // Load the web component
 
     CommonMdProgress(
         "md-circular-progress",

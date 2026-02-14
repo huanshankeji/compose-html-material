@@ -1,5 +1,7 @@
 package com.huanshankeji.compose.html.material3
 
+import com.huanshankeji.compose.html.material3.imports.*
+
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
@@ -28,7 +30,7 @@ fun MdNavigationTab(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable (MdNavigationTabScope.() -> Unit)?
 ) {
-    require("@material/web/labs/navigationtab/navigation-tab.js")
+    NavigationTabImport // Load the web component
 
     TagElement("md-navigation-tab", {
         disabled(disabled)

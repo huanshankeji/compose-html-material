@@ -1,5 +1,7 @@
 package com.huanshankeji.compose.html.material3
 
+import com.huanshankeji.compose.html.material3.imports.*
+
 import androidx.compose.runtime.Composable
 import androidx.compose.web.events.SyntheticEvent
 import com.huanshankeji.compose.web.attributes.Attrs
@@ -56,7 +58,7 @@ fun MdMenu(
     attrs: Attrs<MdMenuElement>? = null,
     content: @Composable ElementScope<MdMenuElement>.() -> Unit
 ) {
-    require("@material/web/menu/menu.js")
+    MenuImport // Load the web component
 
     TagElement<MdMenuElement>("md-menu", {
         attrIfNotNull("anchor", anchor)
@@ -125,7 +127,7 @@ fun MdMenuItem(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable MdMenuItemScope.() -> Unit
 ) {
-    require("@material/web/menu/menu-item.js")
+    MenuItemImport // Load the web component
 
     TagElement<HTMLElement>("md-menu-item", {
         disabled(disabled)
@@ -172,7 +174,7 @@ fun MdSubMenu(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable MdSubMenuScope.() -> Unit
 ) {
-    require("@material/web/menu/sub-menu.js")
+    SubMenuImport // Load the web component
 
     TagElement<HTMLElement>("md-sub-menu", {
         anchorCorner(anchorCorner)

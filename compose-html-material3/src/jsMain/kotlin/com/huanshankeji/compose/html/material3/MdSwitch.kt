@@ -1,5 +1,7 @@
 package com.huanshankeji.compose.html.material3
 
+import com.huanshankeji.compose.html.material3.imports.*
+
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attr
@@ -26,7 +28,7 @@ fun MdSwitch(
     form: String? = null,
     attrs: Attrs<HTMLElement>? = null
 ) {
-    require("@material/web/switch/switch.js")
+    SwitchImport // Load the web component
 
     TagElement("md-switch", {
         disabled(disabled)

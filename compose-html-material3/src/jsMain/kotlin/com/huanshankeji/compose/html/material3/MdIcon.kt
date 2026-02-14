@@ -2,6 +2,7 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import com.huanshankeji.compose.html.material3.imports.IconImport
 import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attr
 import org.jetbrains.compose.web.dom.TagElement
@@ -15,7 +16,7 @@ import org.w3c.dom.HTMLElement
  */
 @Composable
 fun MdIcon(filled: Boolean? = null, attrs: Attrs<HTMLElement>?, content: @Composable () -> Unit) {
-    require("@material/web/icon/icon.js")
+    IconImport // Load the web component
 
     @Suppress("RemoveExplicitTypeArguments")
     TagElement<HTMLElement>("md-icon", {

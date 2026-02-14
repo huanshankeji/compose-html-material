@@ -2,6 +2,7 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.html.material3.attributes.indeterminate
+import com.huanshankeji.compose.html.material3.imports.CheckboxImport
 import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attr
 import com.huanshankeji.compose.web.attributes.ext.*
@@ -24,7 +25,7 @@ fun MdCheckbox(
     form: String? = null,
     attrs: Attrs<HTMLElement>? = null
 ) {
-    require("@material/web/checkbox/checkbox.js")
+    CheckboxImport // Load the web component
 
     TagElement("md-checkbox", {
         attr("touch-target", "wrapper")

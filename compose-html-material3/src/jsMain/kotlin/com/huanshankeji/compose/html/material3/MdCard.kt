@@ -1,6 +1,7 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
+import com.huanshankeji.compose.html.material3.imports.*
 import com.huanshankeji.compose.web.attributes.Attrs
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
@@ -17,7 +18,7 @@ fun MdElevatedCard(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable (ElementScope<HTMLElement>.() -> Unit)?
 ) {
-    require("@material/web/labs/card/elevated-card.js")
+    ElevatedCardImport // Load the web component
 
     TagElement("md-elevated-card", attrs, content)
 }
@@ -28,7 +29,7 @@ fun MdFilledCard(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable (ElementScope<HTMLElement>.() -> Unit)?
 ) {
-    require("@material/web/labs/card/filled-card.js")
+    FilledCardImport // Load the web component
 
     TagElement("md-filled-card", attrs, content)
 }
@@ -39,7 +40,7 @@ fun MdOutlinedCard(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable (ElementScope<HTMLElement>.() -> Unit)?
 ) {
-    require("@material/web/labs/card/outlined-card.js")
+    OutlinedCardImport // Load the web component
 
     TagElement("md-outlined-card", attrs, content)
 }

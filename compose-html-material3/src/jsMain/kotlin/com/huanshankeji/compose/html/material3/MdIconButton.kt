@@ -1,6 +1,7 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
+import com.huanshankeji.compose.html.material3.imports.*
 import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attr
 import com.huanshankeji.compose.web.attributes.ext.*
@@ -68,7 +69,7 @@ fun MdIconButton(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable MdIconButtonScope.() -> Unit
 ) {
-    require("@material/web/iconbutton/icon-button.js")
+    IconButtonImport // Load the web component
 
     CommonMdIconButton(
         "md-icon-button",
@@ -100,7 +101,7 @@ fun MdFilledIconButton(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable MdIconButtonScope.() -> Unit
 ) {
-    require("@material/web/iconbutton/filled-icon-button.js")
+    FilledIconButtonImport // Load the web component
 
     CommonMdIconButton(
         "md-filled-icon-button",
@@ -132,7 +133,7 @@ fun MdFilledTonalIconButton(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable MdIconButtonScope.() -> Unit
 ) {
-    require("@material/web/iconbutton/filled-tonal-icon-button.js")
+    FilledTonalIconButtonImport // Load the web component
 
     CommonMdIconButton(
         "md-filled-tonal-icon-button",
@@ -164,7 +165,7 @@ fun MdOutlinedIconButton(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable MdIconButtonScope.() -> Unit
 ) {
-    require("@material/web/iconbutton/outlined-icon-button.js")
+    OutlinedIconButtonImport // Load the web component
 
     CommonMdIconButton(
         "md-outlined-icon-button",

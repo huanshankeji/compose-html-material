@@ -1,6 +1,7 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
+import com.huanshankeji.compose.html.material3.imports.*
 import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attr
 import com.huanshankeji.compose.web.attributes.ext.label
@@ -46,7 +47,7 @@ fun MdFab(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable (MdFabScope.() -> Unit)?
 ) {
-    require("@material/web/fab/fab.js")
+    FabImport // Load the web component
 
     CommonMdFab("md-fab", variant, size, label, lowered, attrs, content)
 }
@@ -60,7 +61,7 @@ fun MdBrandedFab(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable (MdFabScope.() -> Unit)?
 ) {
-    require("@material/web/fab/branded-fab.js")
+    BrandedFabImport // Load the web component
 
     CommonMdFab("md-branded-fab", variant, size, label, lowered, attrs, content)
 }

@@ -1,5 +1,7 @@
 package com.huanshankeji.compose.html.material3
 
+import com.huanshankeji.compose.html.material3.imports.*
+
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attr
@@ -113,7 +115,7 @@ fun MdFilledTextField(
     attrs: Attrs<HTMLElement>? = null,
     content: (@Composable MdTextFieldScope.() -> Unit)? = null
 ) {
-    require("@material/web/textfield/filled-text-field.js")
+    FilledTextFieldImport // Load the web component
 
     CommonTextField(
         "md-filled-text-field",
@@ -179,7 +181,7 @@ fun MdOutlinedTextField(
     attrs: Attrs<HTMLElement>? = null,
     content: (@Composable MdTextFieldScope.() -> Unit)? = null
 ) {
-    require("@material/web/textfield/outlined-text-field.js")
+    OutlinedTextFieldImport // Load the web component
 
     CommonTextField(
         "md-outlined-text-field",
