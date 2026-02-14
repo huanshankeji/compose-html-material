@@ -18,6 +18,6 @@ We recommend developing with IntelliJ IDEA. In IntelliJ IDEA, select the correct
 
 Run the `publishToMavenLocal` Gradle task to publish the libraries to your machine's Maven Local Repository so your projects can depend on the changes you have made, run `check` to ensure our limited number of tests pass.
 
-## Furthur notice
+## Further notice
 
 We are currently a small team with limited effort. While we may not always implement your requested features, merge your pull requests, or do such things in time, you are always welcome to create your own fork and make any changes you like.
