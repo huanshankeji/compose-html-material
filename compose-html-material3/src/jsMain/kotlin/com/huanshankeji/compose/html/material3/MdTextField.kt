@@ -19,10 +19,6 @@ https://material-web.dev/components/text-field/
 https://material-web.dev/components/text-field/stories/
 */
 
-// a workaround for probably a bug, needed since Kotlin 2.0.0 because of "Cannot infer type for this parameter. Please specify it explicitly."
-private fun (@Composable MdTextFieldScope.() -> Unit).toHTMLElementContent(): @Composable ElementScope<HTMLElement>.() -> Unit =
-    { MdTextFieldScope(this).(this@toHTMLElementContent)() }
-
 @Composable
 private fun CommonTextField(
     tagName: String,
@@ -53,7 +49,7 @@ private fun CommonTextField(
     type: InputType<*>?,
     autocomplete: AutoComplete?,
     attrs: Attrs<HTMLElement>?,
-    content: @Composable (MdTextFieldScope.() -> Unit)?
+    content: (@Composable MdTextFieldScope.() -> Unit)?
 ) =
     TagElement(tagName, {
         disabled(disabled)
@@ -84,7 +80,7 @@ private fun CommonTextField(
         autoComplete(autocomplete)
 
         attrs?.invoke(this)
-    }, content?.toHTMLElementContent())
+    }, content?.let { { MdTextFieldScope(this).it() } })
 
 @Composable
 fun MdFilledTextField(
