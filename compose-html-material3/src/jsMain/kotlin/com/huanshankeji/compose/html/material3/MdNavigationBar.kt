@@ -13,7 +13,6 @@ https://github.com/material-components/material-web/blob/main/labs/navigationbar
  */
 
 @JsModule("@material/web/labs/navigationbar/navigation-bar.js")
-@JsNonModule
 private external object NavigationBarImport
 
 @MaterialWebLabsApi

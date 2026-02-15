@@ -18,19 +18,15 @@ https://material-web.dev/components/icon-button/stories/
  */
 
 @JsModule("@material/web/iconbutton/icon-button.js")
-@JsNonModule
 private external object IconButtonImport
 
 @JsModule("@material/web/iconbutton/filled-icon-button.js")
-@JsNonModule
 private external object FilledIconButtonImport
 
 @JsModule("@material/web/iconbutton/filled-tonal-icon-button.js")
-@JsNonModule
 private external object FilledTonalIconButtonImport
 
 @JsModule("@material/web/iconbutton/outlined-icon-button.js")
-@JsNonModule
 private external object OutlinedIconButtonImport
 
 

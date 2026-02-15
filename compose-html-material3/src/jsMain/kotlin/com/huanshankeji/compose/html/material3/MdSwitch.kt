@@ -16,7 +16,6 @@ https://material-web.dev/components/switch/stories/
 */
 
 @JsModule("@material/web/switch/switch.js")
-@JsNonModule
 private external object SwitchImport
 @Composable
 fun MdSwitch(

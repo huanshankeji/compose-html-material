@@ -16,23 +16,18 @@ https://material-web.dev/components/button/stories/
 */
 
 @JsModule("@material/web/button/elevated-button.js")
-@JsNonModule
 private external object ElevatedButtonImport
 
 @JsModule("@material/web/button/filled-button.js")
-@JsNonModule
 private external object FilledButtonImport
 
 @JsModule("@material/web/button/filled-tonal-button.js")
-@JsNonModule
 private external object FilledTonalButtonImport
 
 @JsModule("@material/web/button/outlined-button.js")
-@JsNonModule
 private external object OutlinedButtonImport
 
 @JsModule("@material/web/button/text-button.js")
-@JsNonModule
 private external object TextButtonImport
 
 private fun commonButtonAttrs(

@@ -12,15 +12,12 @@ https://github.com/material-components/material-web/blob/main/labs/card/demo/sto
  */
 
 @JsModule("@material/web/labs/card/elevated-card.js")
-@JsNonModule
 private external object ElevatedCardImport
 
 @JsModule("@material/web/labs/card/filled-card.js")
-@JsNonModule
 private external object FilledCardImport
 
 @JsModule("@material/web/labs/card/outlined-card.js")
-@JsNonModule
 private external object OutlinedCardImport
 
 @MaterialWebLabsApi

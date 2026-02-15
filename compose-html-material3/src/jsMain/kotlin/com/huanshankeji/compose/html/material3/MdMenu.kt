@@ -19,15 +19,12 @@ https://material-web.dev/components/menu/stories/
  */
 
 @JsModule("@material/web/menu/menu.js")
-@JsNonModule
 private external object MenuImport
 
 @JsModule("@material/web/menu/menu-item.js")
-@JsNonModule
 private external object MenuItemImport
 
 @JsModule("@material/web/menu/sub-menu.js")
-@JsNonModule
 private external object SubMenuImport
 
 

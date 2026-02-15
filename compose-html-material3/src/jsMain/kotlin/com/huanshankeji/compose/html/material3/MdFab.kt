@@ -17,11 +17,9 @@ https://material-web.dev/components/fab/stories/
  */
 
 @JsModule("@material/web/fab/fab.js")
-@JsNonModule
 private external object FabImport
 
 @JsModule("@material/web/fab/branded-fab.js")
-@JsNonModule
 private external object BrandedFabImport
 
 @Composable

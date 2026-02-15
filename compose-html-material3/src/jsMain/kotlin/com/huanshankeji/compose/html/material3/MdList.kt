@@ -19,11 +19,9 @@ https://material-web.dev/components/list/stories/
  */
 
 @JsModule("@material/web/list/list.js")
-@JsNonModule
 private external object ListImport
 
 @JsModule("@material/web/list/list-item.js")
-@JsNonModule
 private external object ListItemImport
 
 @Composable

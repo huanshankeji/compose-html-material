@@ -15,11 +15,9 @@ https://material-web.dev/components/progress/stories/
  */
 
 @JsModule("@material/web/progress/linear-progress.js")
-@JsNonModule
 private external object LinearProgressImport
 
 @JsModule("@material/web/progress/circular-progress.js")
-@JsNonModule
 private external object CircularProgressImport
 
 @Composable
