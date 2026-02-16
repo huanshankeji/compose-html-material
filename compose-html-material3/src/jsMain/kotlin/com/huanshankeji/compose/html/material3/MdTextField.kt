@@ -19,6 +19,12 @@ https://material-web.dev/components/text-field/
 https://material-web.dev/components/text-field/stories/
 */
 
+@JsModule("@material/web/textfield/filled-text-field.js")
+private external object FilledTextFieldImport
+
+@JsModule("@material/web/textfield/outlined-text-field.js")
+private external object OutlinedTextFieldImport
+
 @Composable
 private fun CommonTextField(
     tagName: String,
@@ -113,7 +119,7 @@ fun MdFilledTextField(
     attrs: Attrs<HTMLElement>? = null,
     content: (@Composable MdTextFieldScope.() -> Unit)? = null
 ) {
-    require("@material/web/textfield/filled-text-field.js")
+    FilledTextFieldImport // Load the web component
 
     CommonTextField(
         "md-filled-text-field",
@@ -179,7 +185,7 @@ fun MdOutlinedTextField(
     attrs: Attrs<HTMLElement>? = null,
     content: (@Composable MdTextFieldScope.() -> Unit)? = null
 ) {
-    require("@material/web/textfield/outlined-text-field.js")
+    OutlinedTextFieldImport // Load the web component
 
     CommonTextField(
         "md-outlined-text-field",

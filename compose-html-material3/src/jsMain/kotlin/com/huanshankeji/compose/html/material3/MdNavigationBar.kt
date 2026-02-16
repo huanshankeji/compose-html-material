@@ -12,6 +12,9 @@ https://github.com/material-components/material-web/blob/main/labs/navigationbar
 https://github.com/material-components/material-web/blob/main/labs/navigationbar/demo/stories.ts
  */
 
+@JsModule("@material/web/labs/navigationbar/navigation-bar.js")
+private external object NavigationBarImport
+
 @MaterialWebLabsApi
 @Composable
 fun MdNavigationBar(
@@ -20,7 +23,7 @@ fun MdNavigationBar(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable (ElementScope<HTMLElement>.() -> Unit)?
 ) {
-    require("@material/web/labs/navigationbar/navigation-bar.js")
+    NavigationBarImport // Load the web component
 
     TagElement("md-navigation-bar", {
         attrIfNotNull("active-index", activeIndex)

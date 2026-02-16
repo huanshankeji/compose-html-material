@@ -11,13 +11,22 @@ https://github.com/material-components/material-web/blob/main/labs/card/internal
 https://github.com/material-components/material-web/blob/main/labs/card/demo/stories.ts
  */
 
+@JsModule("@material/web/labs/card/elevated-card.js")
+private external object ElevatedCardImport
+
+@JsModule("@material/web/labs/card/filled-card.js")
+private external object FilledCardImport
+
+@JsModule("@material/web/labs/card/outlined-card.js")
+private external object OutlinedCardImport
+
 @MaterialWebLabsApi
 @Composable
 fun MdElevatedCard(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable (ElementScope<HTMLElement>.() -> Unit)?
 ) {
-    require("@material/web/labs/card/elevated-card.js")
+    ElevatedCardImport // Load the web component
 
     TagElement("md-elevated-card", attrs, content)
 }
@@ -28,7 +37,7 @@ fun MdFilledCard(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable (ElementScope<HTMLElement>.() -> Unit)?
 ) {
-    require("@material/web/labs/card/filled-card.js")
+    FilledCardImport // Load the web component
 
     TagElement("md-filled-card", attrs, content)
 }
@@ -39,7 +48,7 @@ fun MdOutlinedCard(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable (ElementScope<HTMLElement>.() -> Unit)?
 ) {
-    require("@material/web/labs/card/outlined-card.js")
+    OutlinedCardImport // Load the web component
 
     TagElement("md-outlined-card", attrs, content)
 }

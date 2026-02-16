@@ -14,6 +14,10 @@ https://github.com/material-components/material-web/blob/main/docs/components/sw
 https://material-web.dev/components/switch/
 https://material-web.dev/components/switch/stories/
 */
+
+@JsModule("@material/web/switch/switch.js")
+private external object SwitchImport
+
 @Composable
 fun MdSwitch(
     disabled: Boolean? = null,
@@ -26,7 +30,7 @@ fun MdSwitch(
     form: String? = null,
     attrs: Attrs<HTMLElement>? = null
 ) {
-    require("@material/web/switch/switch.js")
+    SwitchImport // Load the web component
 
     TagElement("md-switch", {
         disabled(disabled)

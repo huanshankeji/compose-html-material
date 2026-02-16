@@ -17,6 +17,18 @@ https://material-web.dev/components/icon-button/
 https://material-web.dev/components/icon-button/stories/
  */
 
+@JsModule("@material/web/iconbutton/icon-button.js")
+private external object IconButtonImport
+
+@JsModule("@material/web/iconbutton/filled-icon-button.js")
+private external object FilledIconButtonImport
+
+@JsModule("@material/web/iconbutton/filled-tonal-icon-button.js")
+private external object FilledTonalIconButtonImport
+
+@JsModule("@material/web/iconbutton/outlined-icon-button.js")
+private external object OutlinedIconButtonImport
+
 
 @Composable
 private fun CommonMdIconButton(
@@ -68,7 +80,7 @@ fun MdIconButton(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable MdIconButtonScope.() -> Unit
 ) {
-    require("@material/web/iconbutton/icon-button.js")
+    IconButtonImport // Load the web component
 
     CommonMdIconButton(
         "md-icon-button",
@@ -100,7 +112,7 @@ fun MdFilledIconButton(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable MdIconButtonScope.() -> Unit
 ) {
-    require("@material/web/iconbutton/filled-icon-button.js")
+    FilledIconButtonImport // Load the web component
 
     CommonMdIconButton(
         "md-filled-icon-button",
@@ -132,7 +144,7 @@ fun MdFilledTonalIconButton(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable MdIconButtonScope.() -> Unit
 ) {
-    require("@material/web/iconbutton/filled-tonal-icon-button.js")
+    FilledTonalIconButtonImport // Load the web component
 
     CommonMdIconButton(
         "md-filled-tonal-icon-button",
@@ -164,7 +176,7 @@ fun MdOutlinedIconButton(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable MdIconButtonScope.() -> Unit
 ) {
-    require("@material/web/iconbutton/outlined-icon-button.js")
+    OutlinedIconButtonImport // Load the web component
 
     CommonMdIconButton(
         "md-outlined-icon-button",

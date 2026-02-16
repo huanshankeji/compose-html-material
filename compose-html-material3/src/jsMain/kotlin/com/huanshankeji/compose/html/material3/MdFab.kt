@@ -16,6 +16,12 @@ https://material-web.dev/components/fab/
 https://material-web.dev/components/fab/stories/
  */
 
+@JsModule("@material/web/fab/fab.js")
+private external object FabImport
+
+@JsModule("@material/web/fab/branded-fab.js")
+private external object BrandedFabImport
+
 @Composable
 private fun CommonMdFab(
     tagName: String,
@@ -46,7 +52,7 @@ fun MdFab(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable (MdFabScope.() -> Unit)?
 ) {
-    require("@material/web/fab/fab.js")
+    FabImport // Load the web component
 
     CommonMdFab("md-fab", variant, size, label, lowered, attrs, content)
 }
@@ -60,7 +66,7 @@ fun MdBrandedFab(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable (MdFabScope.() -> Unit)?
 ) {
-    require("@material/web/fab/branded-fab.js")
+    BrandedFabImport // Load the web component
 
     CommonMdFab("md-branded-fab", variant, size, label, lowered, attrs, content)
 }

@@ -16,6 +16,9 @@ https://github.com/material-components/material-web/blob/main/labs/navigationtab
 https://github.com/material-components/material-web/blob/main/labs/navigationbar/demo/stories.ts (navigation bar storybook)
  */
 
+@JsModule("@material/web/labs/navigationtab/navigation-tab.js")
+private external object NavigationTabImport
+
 @MaterialWebLabsApi
 @Composable
 fun MdNavigationTab(
@@ -28,7 +31,7 @@ fun MdNavigationTab(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable (MdNavigationTabScope.() -> Unit)?
 ) {
-    require("@material/web/labs/navigationtab/navigation-tab.js")
+    NavigationTabImport // Load the web component
 
     TagElement("md-navigation-tab", {
         disabled(disabled)

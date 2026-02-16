@@ -18,9 +18,15 @@ https://material-web.dev/components/list/
 https://material-web.dev/components/list/stories/
  */
 
+@JsModule("@material/web/list/list.js")
+private external object ListImport
+
+@JsModule("@material/web/list/list-item.js")
+private external object ListItemImport
+
 @Composable
 fun MdList(attrs: Attrs<HTMLElement>? = null, content: @Composable MdListScope.() -> Unit) {
-    require("@material/web/list/list.js")
+    ListImport // Load the web component
 
     TagElement("md-list", attrs) {
         MdListScope(this).content()
@@ -59,7 +65,7 @@ fun MdListItem(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable MdListItemScope.() -> Unit
 ) {
-    require("@material/web/list/list-item.js")
+    ListItemImport // Load the web component
 
     //@Suppress("RemoveExplicitTypeArguments")
     TagElement<HTMLElement>("md-list-item", {

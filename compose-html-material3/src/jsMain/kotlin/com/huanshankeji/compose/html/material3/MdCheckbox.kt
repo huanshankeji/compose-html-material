@@ -13,6 +13,10 @@ https://github.com/material-components/material-web/blob/main/docs/components/ch
 https://material-web.dev/components/checkbox/
 https://material-web.dev/components/checkbox/stories/
 */
+
+@JsModule("@material/web/checkbox/checkbox.js")
+private external object CheckboxImport
+
 @Composable
 fun MdCheckbox(
     checked: Boolean? = null,
@@ -24,7 +28,7 @@ fun MdCheckbox(
     form: String? = null,
     attrs: Attrs<HTMLElement>? = null
 ) {
-    require("@material/web/checkbox/checkbox.js")
+    CheckboxImport // Load the web component
 
     TagElement("md-checkbox", {
         attr("touch-target", "wrapper")

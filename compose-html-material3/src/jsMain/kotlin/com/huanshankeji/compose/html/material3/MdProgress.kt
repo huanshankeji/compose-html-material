@@ -14,6 +14,12 @@ https://material-web.dev/components/progress/
 https://material-web.dev/components/progress/stories/
  */
 
+@JsModule("@material/web/progress/linear-progress.js")
+private external object LinearProgressImport
+
+@JsModule("@material/web/progress/circular-progress.js")
+private external object CircularProgressImport
+
 @Composable
 private fun CommonMdProgress(
     tagName: String,
@@ -46,7 +52,7 @@ fun MdLinearProgress(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable (ElementScope<HTMLElement>.() -> Unit)? = null
 ) {
-    require("@material/web/progress/linear-progress.js")
+    LinearProgressImport // Load the web component
 
     CommonMdProgress(
         "md-linear-progress",
@@ -64,7 +70,7 @@ fun MdCircularProgress(
     attrs: Attrs<HTMLElement>? = null,
     content: @Composable (ElementScope<HTMLElement>.() -> Unit)? = null
 ) {
-    require("@material/web/progress/circular-progress.js")
+    CircularProgressImport // Load the web component
 
     CommonMdProgress(
         "md-circular-progress",

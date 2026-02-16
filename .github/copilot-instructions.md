@@ -36,8 +36,11 @@ This repository provides **Material 3 wrapper components for Compose HTML** base
    - Components: MdButton, MdCheckbox, MdIcon, MdTextField, MdMenu, MdProgress, etc.
    - Depends on: `compose-html-common`, npm package `@material/web`
 
-3. **`compose-html-material-legacy`** - Legacy Material 2 components (no longer actively maintained)
+3. **`compose-html-material-legacy`** - Legacy Material 2 components (**NO LONGER MAINTAINED - DO NOT MAKE CHANGES**)
    - Location: `/compose-html-material-legacy/`
+   - **This module is obsolete and not actively maintained**
+   - **Do not apply updates, bug fixes, or improvements to this module**
+   - For Material 2 components, users should use [KMDC](https://github.com/mpetuska/kmdc) instead
 
 4. **`gradle-plugins`** - Legacy gradle plugins
    - Location: `/gradle-plugins/`
@@ -289,4 +292,5 @@ You can test changes in the `demo` module of [compose-multiplatform-html-unified
 2. **Never commit changes to `.gradle/`, `build/`, `.kotlin/`, or `.idea/` directories** (already in .gitignore)
 3. **This is a library, not an application** - there's no main method or runnable app
 4. **Material 2 components are legacy** - focus work on Material 3 (`compose-html-material3`)
-5. **Trust these instructions first** - only search/explore if information here is incomplete or incorrect
+5. **DO NOT make changes to `compose-html-material-legacy`** - this module is obsolete and no longer maintained
+6. **Trust these instructions first** - only search/explore if information here is incomplete or incorrect
