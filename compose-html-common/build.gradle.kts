@@ -6,10 +6,6 @@ plugins {
 }
 
 kotlin {
-    js {
-        useEsModules()
-    }
-
     sourceSets {
         val jsMain by getting {
             dependencies {
