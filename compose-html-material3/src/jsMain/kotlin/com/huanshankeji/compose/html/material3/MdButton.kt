@@ -15,6 +15,14 @@ https://material-web.dev/components/button/
 https://material-web.dev/components/button/stories/
 */
 
+/*
+// TODO not working
+@JsModule("@material/web/button/elevated-button.js")
+external class MdElevatedButton /* : Element */ // TODO
+
+private var toImport = true
+*/
+
 @JsModule("@material/web/button/elevated-button.js")
 private external object ElevatedButtonImport
 
