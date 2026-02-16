@@ -16,6 +16,7 @@ https://material-web.dev/components/checkbox/stories/
 
 @JsModule("@material/web/checkbox/checkbox.js")
 private external object CheckboxImport
+
 @Composable
 fun MdCheckbox(
     checked: Boolean? = null,
