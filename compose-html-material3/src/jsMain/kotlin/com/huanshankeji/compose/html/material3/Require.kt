@@ -6,7 +6,6 @@ package com.huanshankeji.compose.html.material3
  */
 @Deprecated(
     message = "Use @JsModule with ES2015 modules instead. This function is only kept for backward compatibility.",
-    replaceWith = ReplaceWith(""),
     level = DeprecationLevel.WARNING
 )
 external fun require(module: String): dynamic
