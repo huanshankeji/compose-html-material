@@ -17,6 +17,7 @@ https://material-web.dev/components/switch/stories/
 
 @JsModule("@material/web/switch/switch.js")
 private external object SwitchImport
+
 @Composable
 fun MdSwitch(
     disabled: Boolean? = null,
