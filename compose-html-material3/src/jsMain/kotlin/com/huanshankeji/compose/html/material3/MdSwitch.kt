@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attr
 import com.huanshankeji.compose.web.attributes.ext.*
+import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.Label
 import org.jetbrains.compose.web.dom.TagElement
 import org.jetbrains.compose.web.dom.Text
@@ -28,7 +29,8 @@ fun MdSwitch(
     value: String? = null,
     name: String? = null,
     form: String? = null,
-    attrs: Attrs<HTMLElement>? = null
+    attrs: Attrs<HTMLElement>? = null,
+    content: (@Composable ElementScope<HTMLElement>.() -> Unit)? = null
 ) {
     SwitchImport // Load the web component
 
@@ -43,7 +45,7 @@ fun MdSwitch(
         form(form)
 
         attrs?.invoke(this)
-    }, null)
+    }, content)
 }
 
 // https://github.com/material-components/material-web/blob/main/docs/components/switch.md#label

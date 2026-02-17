@@ -5,6 +5,7 @@ import com.huanshankeji.compose.html.material3.attributes.indeterminate
 import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attr
 import com.huanshankeji.compose.web.attributes.ext.*
+import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
 
@@ -26,7 +27,8 @@ fun MdCheckbox(
     value: String? = null,
     name: String? = null,
     form: String? = null,
-    attrs: Attrs<HTMLElement>? = null
+    attrs: Attrs<HTMLElement>? = null,
+    content: (@Composable ElementScope<HTMLElement>.() -> Unit)? = null
 ) {
     CheckboxImport // Load the web component
 
@@ -41,7 +43,7 @@ fun MdCheckbox(
         form(form)
 
         attrs?.invoke(this)
-    }, null)
+    }, content)
 }
 
 
@@ -57,7 +59,8 @@ fun MdCheckbox(
     value: String? = null,
     name: String? = null,
     form: String? = null,
-    attrs: Attrs<HTMLElement>? = null
+    attrs: Attrs<HTMLElement>? = null,
+    content: (@Composable ElementScope<HTMLElement>.() -> Unit)? = null
 ) {
     val checked: Boolean?
     val indeterminate: Boolean?
@@ -78,5 +81,5 @@ fun MdCheckbox(
         }
     }
 
-    MdCheckbox(checked, disabled, indeterminate, required, value, name, form, attrs)
+    MdCheckbox(checked, disabled, indeterminate, required, value, name, form, attrs, content)
 }
