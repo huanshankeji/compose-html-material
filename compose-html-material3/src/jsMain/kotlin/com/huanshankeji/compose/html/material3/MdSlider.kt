@@ -12,6 +12,7 @@ import org.w3c.dom.HTMLElement
 https://github.com/material-components/material-web/blob/main/docs/components/slider.md
 https://material-web.dev/components/slider/
 https://material-web.dev/components/slider/stories/
+https://m3.material.io/components/sliders/overview
 */
 
 @JsModule("@material/web/slider/slider.js")

@@ -11,6 +11,7 @@ import org.w3c.dom.HTMLElement
 https://github.com/material-components/material-web/blob/main/docs/components/divider.md
 https://material-web.dev/components/divider/
 https://material-web.dev/components/divider/stories/
+https://m3.material.io/components/divider/overview
 */
 
 @JsModule("@material/web/divider/divider.js")

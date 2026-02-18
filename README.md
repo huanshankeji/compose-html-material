@@ -14,26 +14,40 @@ For Material 2, you are recommended to check out [KMDC](https://github.com/mpetu
 
 Not all components of Material Web are supported yet (see [#11](https://github.com/huanshankeji/compose-html-material/issues/11)). Also, not all Material Design components are supported by Material Web yet (see [their roadmap](https://github.com/material-components/material-web/blob/main/docs/roadmap.md)).
 
-Here is a list of supported compoent APIs:
+Here is a list of supported component APIs:
 
 - `MdElevatedButton`, `MdFilledButton`, `MdFilledTonalButton`, `MdOutlinedButton`, `MdTextButton`
 - `MdCheckbox`
+- `MdAssistChip`, `MdFilterChip`, `MdInputChip`, `MdSuggestionChip`, `MdChipSet`
+- `MdDialog`
+- `MdDivider`
 - `MdFab`, `MdBrandedFab`
 - `MdIcon`
 - `MdIconButton`, `MdFilledIconButton`, `MdFilledTonalIconButton`, `MdOutlinedIconButton`
 - `MdList`, `MdListItem`
 - `MdMenu`, `MdMenuItem`, `MdSubMenu`
 - `MdLinearProgress`, `MdCircularProgress`
+- `MdRadio`
+- `MdFilledSelect`, `MdOutlinedSelect`, `MdSelectOption`
+- `MdSlider`
 - `MdSwitch`, `LabelWithMdSwitch`
+- `MdTabs`, `MdPrimaryTab`, `MdSecondaryTab`
 - `MdFilledTextField`, `MdOutlinedTextField`
+
+**Note:** Some Material Web components like `elevation`, `focus-ring`, and `ripple` are not wrapped in this library as they are styling/utility components typically used internally by other components, not directly in application code.
 
 ### "labs" components
 
 Here is a list of supported component APIs in the [Material Web "labs" directory](https://github.com/material-components/material-web/tree/main/labs), which "contains experimental features that are not recommended for production" as they state:
 
-- `MdElevatedCard`, `MdOutlinedCard`
+- `MdBadge`
+- `MdElevatedCard`, `MdFilledCard`, `MdOutlinedCard`
+- `MdItem`
 - `MdNavigationBar`
+- `MdNavigationDrawer`, `MdNavigationDrawerModal`
 - `MdNavigationTab`
+- `MdOutlinedSegmentedButton`
+- `MdSegmentedButtonSet`
 
 You should opt-in to `@MaterialWebLabsApi` to use them.
 

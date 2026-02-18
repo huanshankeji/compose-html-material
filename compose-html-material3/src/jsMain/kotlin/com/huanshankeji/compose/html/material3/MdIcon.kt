@@ -7,7 +7,11 @@ import org.jetbrains.compose.web.dom.TagElement
 import org.jetbrains.compose.web.dom.Text
 import org.w3c.dom.HTMLElement
 
-// https://github.com/material-components/material-web/blob/main/docs/components/icon.md
+/*
+https://github.com/material-components/material-web/blob/main/docs/components/icon.md
+https://material-web.dev/components/icon/
+https://m3.material.io/styles/icons/overview
+*/
 
 @JsModule("@material/web/icon/icon.js")
 private external object IconImport

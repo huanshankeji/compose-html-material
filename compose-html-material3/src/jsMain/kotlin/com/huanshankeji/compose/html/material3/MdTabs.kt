@@ -14,6 +14,7 @@ import org.w3c.dom.HTMLElement
 https://github.com/material-components/material-web/blob/main/docs/components/tabs.md
 https://material-web.dev/components/tabs/
 https://material-web.dev/components/tabs/stories/
+https://m3.material.io/components/tabs/overview
 */
 
 @JsModule("@material/web/tabs/tabs.js")

@@ -14,6 +14,7 @@ import org.w3c.dom.HTMLElement
 https://github.com/material-components/material-web/blob/main/docs/components/select.md
 https://material-web.dev/components/select/
 https://material-web.dev/components/select/stories/
+https://m3.material.io/components/select/overview
 */
 
 @JsModule("@material/web/select/filled-select.js")

@@ -13,6 +13,7 @@ import org.w3c.dom.HTMLElement
 https://github.com/material-components/material-web/blob/main/docs/components/dialog.md
 https://material-web.dev/components/dialog/
 https://material-web.dev/components/dialog/stories/
+https://m3.material.io/components/dialogs/overview
 */
 
 @JsModule("@material/web/dialog/dialog.js")

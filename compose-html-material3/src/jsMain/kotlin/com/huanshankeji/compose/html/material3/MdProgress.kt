@@ -12,6 +12,7 @@ import org.w3c.dom.HTMLElement
 https://github.com/material-components/material-web/blob/main/docs/components/progress.md
 https://material-web.dev/components/progress/
 https://material-web.dev/components/progress/stories/
+https://m3.material.io/components/progress-indicators/overview
  */
 
 @JsModule("@material/web/progress/linear-progress.js")

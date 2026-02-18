@@ -14,6 +14,7 @@ import org.w3c.dom.HTMLElement
 https://github.com/material-components/material-web/blob/main/docs/components/chips.md
 https://material-web.dev/components/chips/
 https://material-web.dev/components/chips/stories/
+https://m3.material.io/components/chips/overview
 */
 
 @JsModule("@material/web/chips/assist-chip.js")

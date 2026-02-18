@@ -13,6 +13,7 @@ import org.w3c.dom.HTMLElement
 https://github.com/material-components/material-web/blob/main/docs/components/checkbox.md
 https://material-web.dev/components/checkbox/
 https://material-web.dev/components/checkbox/stories/
+https://m3.material.io/components/checkbox/overview
 */
 
 @JsModule("@material/web/checkbox/checkbox.js")
