@@ -3,6 +3,7 @@ package com.huanshankeji.compose.html.material3
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attr
+import com.huanshankeji.compose.web.attributes.ext.type
 import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.dom.ElementScope
