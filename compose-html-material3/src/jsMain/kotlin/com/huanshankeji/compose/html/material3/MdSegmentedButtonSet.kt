@@ -12,7 +12,7 @@ https://github.com/material-components/material-web/blob/main/labs/segmentedbutt
 https://github.com/material-components/material-web/blob/main/labs/segmentedbuttonset/demo/stories.ts
 */
 
-@JsModule("@material/web/labs/segmentedbuttonset/segmented-button-set.js")
+@JsModule("@material/web/labs/segmentedbuttonset/outlined-segmented-button-set.js")
 private external object SegmentedButtonSetImport
 
 @MaterialWebLabsApi
