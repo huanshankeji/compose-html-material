@@ -14,6 +14,7 @@ import org.w3c.dom.HTMLElement
 https://github.com/material-components/material-web/blob/main/docs/components/fab.md
 https://material-web.dev/components/fab/
 https://material-web.dev/components/fab/stories/
+https://m3.material.io/components/floating-action-button/overview
  */
 
 @JsModule("@material/web/fab/fab.js")

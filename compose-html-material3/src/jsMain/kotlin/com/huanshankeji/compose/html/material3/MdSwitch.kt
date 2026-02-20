@@ -14,6 +14,7 @@ import org.w3c.dom.HTMLElement
 https://github.com/material-components/material-web/blob/main/docs/components/switch.md
 https://material-web.dev/components/switch/
 https://material-web.dev/components/switch/stories/
+https://m3.material.io/components/switch/overview
 */
 
 @JsModule("@material/web/switch/switch.js")
