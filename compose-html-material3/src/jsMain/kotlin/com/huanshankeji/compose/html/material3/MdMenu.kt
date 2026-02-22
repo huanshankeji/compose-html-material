@@ -28,13 +28,31 @@ private external object MenuItemImport
 @JsModule("@material/web/menu/sub-menu.js")
 private external object SubMenuImport
 
-
-private fun AttrsScope<HTMLElement>.anchorCorner(anchorCorner: String?) {
-    attrIfNotNull("anchor-corner", anchorCorner)
+enum class MenuPositioning(val value: String) {
+    Absolute("absolute"), Fixed("fixed"), Popover("popover")
 }
 
-private fun AttrsScope<HTMLElement>.menuCorner(menuCorner: String?) {
-    attrIfNotNull("menu-corner", menuCorner)
+enum class MenuCorner(val value: String) {
+    StartStart("START_START"),
+    StartEnd("START_END"),
+    EndStart("END_START"),
+    EndEnd("END_END")
+}
+
+enum class MenuDefaultFocus(val value: String) {
+    None("none"), ListRoot("list-root"), FirstItem("first-item"), LastItem("last-item")
+}
+
+enum class MenuItemType(val value: String) {
+    MenuItem("menuitem"), Option("option"), Button("button"), Link("link")
+}
+
+private fun AttrsScope<HTMLElement>.anchorCorner(anchorCorner: MenuCorner?) {
+    attrIfNotNull("anchor-corner", anchorCorner?.value)
+}
+
+private fun AttrsScope<HTMLElement>.menuCorner(menuCorner: MenuCorner?) {
+    attrIfNotNull("menu-corner", menuCorner?.value)
 }
 
 
@@ -49,7 +67,7 @@ abstract external class MdMenuElement : HTMLElement {
 @Composable
 fun MdMenu(
     anchor: String? = null,
-    positioning: String? = null,
+    positioning: MenuPositioning? = null,
     quick: Boolean? = null,
     hasOverflow: Boolean? = null,
     open: Boolean? = null,
@@ -57,20 +75,20 @@ fun MdMenu(
     xOffset: Number? = null,
     yOffset: Number? = null,
     typeheadDelay: Number? = null,
-    anchorCorner: String? = null,
-    menuCorner: String? = null,
+    anchorCorner: MenuCorner? = null,
+    menuCorner: MenuCorner? = null,
     stayOpenOnOutsideClick: Boolean? = null,
     stayOpenOnFocusout: Boolean? = null,
     skipRestoreFocus: Boolean? = null,
-    defaultFocus: Boolean? = null,
+    defaultFocus: MenuDefaultFocus? = null,
     attrs: Attrs<MdMenuElement>? = null,
-    content: @Composable ElementScope<MdMenuElement>.() -> Unit
+    content: @Composable (ElementScope<MdMenuElement>.() -> Unit)? = null
 ) {
     MenuImport // Load the web component
 
     TagElement<MdMenuElement>("md-menu", {
         attrIfNotNull("anchor", anchor)
-        attrIfNotNull("positioning", positioning)
+        attrIfNotNull("positioning", positioning?.value)
         attrIfNotNull("quick", quick)
         attrIfNotNull("has-overflow", hasOverflow)
         attrIfNotNull("open", open)
@@ -82,11 +100,11 @@ fun MdMenu(
         attrIfNotNull("stay-open-on-outside-click", stayOpenOnOutsideClick)
         attrIfNotNull("stay-open-on-focusout", stayOpenOnFocusout)
         attrIfNotNull("skip-restore-focus", skipRestoreFocus)
-        attrIfNotNull("default-focus", defaultFocus)
+        attrIfNotNull("default-focus", defaultFocus?.value)
 
         attrs?.invoke(this)
     }) {
-        content()
+        content?.invoke(this)
     }
 }
 
@@ -106,19 +124,19 @@ fun <T : SyntheticEvent<out EventTarget>> AttrsScope<MdMenuElement>.onClosed(lis
 
 class MdMenuArgs(
     val anchor: String? = null,
-    val positioning: String? = null,
+    val positioning: MenuPositioning? = null,
     val quick: Boolean? = null,
     val hasOverflow: Boolean? = null,
     val open: Boolean? = null,
     val xOffset: Int? = null,
     val yOffset: Int? = null,
     val typeheadDelay: Number? = null,
-    val anchorCorner: String? = null,
-    val menuCorner: String? = null,
+    val anchorCorner: MenuCorner? = null,
+    val menuCorner: MenuCorner? = null,
     val stayOpenOnOutsideClick: Boolean? = null,
     val stayOpenOnFocusout: Boolean? = null,
     val skipRestoreFocus: Boolean? = null,
-    val defaultFocus: Boolean? = null,
+    val defaultFocus: MenuDefaultFocus? = null,
     val attrs: Attrs<HTMLElement>? = null,
     val content: @Composable ElementScope<HTMLElement>.() -> Unit
 )
@@ -127,19 +145,19 @@ class MdMenuArgs(
 @Composable
 fun MdMenuItem(
     disabled: Boolean? = null,
-    type: String? = null,
+    type: MenuItemType? = null,
     href: String? = null,
     target: String? = null,
     keepOpen: Boolean? = null,
     selected: Boolean? = null,
     attrs: Attrs<HTMLElement>? = null,
-    content: @Composable MdMenuItemScope.() -> Unit
+    content: (@Composable MdMenuItemScope.() -> Unit)? = null
 ) {
     MenuItemImport // Load the web component
 
     TagElement<HTMLElement>("md-menu-item", {
         disabled(disabled)
-        type(type)
+        attrIfNotNull("type", type?.value)
         href(href)
         target(target)
         attrIfNotNull("keep-open", keepOpen)
@@ -147,22 +165,26 @@ fun MdMenuItem(
 
         attrs?.invoke(this)
     }) {
-        MdMenuItemScope(this).content()
+        content?.let { MdMenuItemScope(this).it() }
     }
 }
 
 class MdMenuItemScope(val elementScope: ElementScope<HTMLElement>) {
-    enum class Slot(val stringValue: String) {
-        Headline("headline"), Start("start"), End("end")
+    enum class Slot(val value: String) {
+        Headline("headline"),
+        SupportingText("supporting-text"),
+        TrailingSupportingText("trailing-supporting-text"),
+        Start("start"),
+        End("end")
     }
 
-    fun AttrsScope<*>.slot(value: Slot) =
-        slot(value.stringValue)
+    fun AttrsScope<*>.slot(slot: Slot) =
+        slot(slot.value)
 }
 
 class MdMenuItemArgs(
     val disabled: Boolean? = null,
-    val type: String? = null,
+    val type: MenuItemType? = null,
     val href: String? = null,
     val target: String? = null,
     val keepOpen: Boolean? = null,
@@ -174,13 +196,13 @@ class MdMenuItemArgs(
 
 @Composable
 fun MdSubMenu(
-    anchorCorner: String? = null,
-    menuCorner: String? = null,
+    anchorCorner: MenuCorner? = null,
+    menuCorner: MenuCorner? = null,
     hoverOpenDelay: Number? = null,
     hoverCloseDelay: Number? = null,
     //isSubMenu : Boolean? = null, // `md-sub-menu`, read-only
     attrs: Attrs<HTMLElement>? = null,
-    content: @Composable MdSubMenuScope.() -> Unit
+    content: (@Composable MdSubMenuScope.() -> Unit)? = null
 ) {
     SubMenuImport // Load the web component
 
@@ -192,23 +214,23 @@ fun MdSubMenu(
 
         attrs?.invoke(this)
     }) {
-        MdSubMenuScope(this).content()
+        content?.let { MdSubMenuScope(this).it() }
     }
 }
 
 class MdSubMenuScope(val elementScope: ElementScope<HTMLElement>) {
-    enum class Slot(val stringValue: String) {
+    enum class Slot(val value: String) {
         Item("item"), Menu("menu")
     }
 
-    fun AttrsScope<*>.slot(value: Slot) =
-        slot(value.stringValue)
+    fun AttrsScope<*>.slot(slot: Slot) =
+        slot(slot.value)
 }
 
 @Composable
 fun MdSubMenu(
-    anchorCorner: String? = null,
-    menuCorner: String? = null,
+    anchorCorner: MenuCorner? = null,
+    menuCorner: MenuCorner? = null,
     hoverOpenDelay: Number? = null,
     hoverCloseDelay: Number? = null,
     //isSubMenu : Boolean? = null, // `md-sub-menu`

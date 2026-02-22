@@ -52,9 +52,11 @@ private fun commonChipAttrs(
         attrs?.invoke(this)
     }
 
-private fun (@Composable MdChipScope.() -> Unit)?.toElementScopeContent(): (@Composable ElementScope<HTMLElement>.() -> Unit)? =
+private fun <T> (@Composable T.() -> Unit)?.toElementScopeContent(
+    scopeFactory: (ElementScope<HTMLElement>) -> T
+): (@Composable ElementScope<HTMLElement>.() -> Unit)? =
     this?.let {
-        { MdChipScope(this).it() }
+        { scopeFactory(this).it() }
     }
 
 @Composable
@@ -72,7 +74,7 @@ private fun CommonChip(
     TagElement(
         tagName,
         commonChipAttrs(disabled, elevated, href, target, label, alwaysFocusable, attrs),
-        content.toElementScopeContent()
+        content.toElementScopeContent(::MdChipScope)
     )
 
 @Composable
@@ -116,7 +118,7 @@ fun MdFilterChip(
         alwaysFocusable?.let { attr("always-focusable", it) }
 
         attrs?.invoke(this)
-    }, content.toElementScopeContent())
+    }, content.toElementScopeContent(::MdChipScope))
 }
 
 @Composable
@@ -130,7 +132,7 @@ fun MdInputChip(
     label: String? = null,
     alwaysFocusable: Boolean? = null,
     attrs: Attrs<HTMLElement>? = null,
-    content: (@Composable MdChipScope.() -> Unit)? = null
+    content: (@Composable MdInputChipScope.() -> Unit)? = null
 ) {
     InputChipImport // Load the web component
 
@@ -145,7 +147,7 @@ fun MdInputChip(
         alwaysFocusable?.let { attr("always-focusable", it) }
 
         attrs?.invoke(this)
-    }, content.toElementScopeContent())
+    }, content.toElementScopeContent(::MdInputChipScope))
 }
 
 @Composable
@@ -179,7 +181,26 @@ fun MdChipSet(
     }, content)
 }
 
-class MdChipScope(val elementScope: ElementScope<HTMLElement>) {
+open class MdChipScope(val elementScope: ElementScope<HTMLElement>) {
+    enum class Slot(val value: String) {
+        Icon("icon")
+    }
+
+    fun AttrsScope<*>.slot(slot: Slot) =
+        slot(slot.value)
+
     fun AttrsScope<*>.slotEqIcon() =
-        slot("icon")
+        slot(Slot.Icon)
+}
+
+class MdInputChipScope(elementScope: ElementScope<HTMLElement>) : MdChipScope(elementScope) {
+    enum class InputChipSlot(val value: String) {
+        TrailingIcon("trailing-icon")
+    }
+
+    fun AttrsScope<*>.slot(slot: InputChipSlot) =
+        slot(slot.value)
+
+    fun AttrsScope<*>.slotEqTrailingIcon() =
+        slot(InputChipSlot.TrailingIcon)
 }

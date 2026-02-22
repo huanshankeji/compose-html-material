@@ -10,6 +10,7 @@ import org.w3c.dom.HTMLElement
 /*
 https://github.com/material-components/material-web/blob/main/labs/navigationbar/internal/navigation-bar.ts
 https://github.com/material-components/material-web/blob/main/labs/navigationbar/demo/stories.ts
+https://github.com/material-components/material-web/blob/main/labs/navigationbar/README.md
  */
 
 @JsModule("@material/web/labs/navigationbar/navigation-bar.js")

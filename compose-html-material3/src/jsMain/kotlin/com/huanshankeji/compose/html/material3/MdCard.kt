@@ -9,6 +9,7 @@ import org.w3c.dom.HTMLElement
 /*
 https://github.com/material-components/material-web/blob/main/labs/card/internal/card.ts
 https://github.com/material-components/material-web/blob/main/labs/card/demo/stories.ts
+https://github.com/material-components/material-web/blob/main/labs/card/README.md
  */
 
 @JsModule("@material/web/labs/card/elevated-card.js")

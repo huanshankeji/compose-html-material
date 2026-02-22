@@ -227,8 +227,14 @@ class MdTextFieldScope(val elementScope: ElementScope<HTMLElement>) {
         LeadingIcon("leading-icon"), TrailingIcon("trailing-icon")
     }
 
-    fun AttrsScope<*>.slot(value: Slot) =
-        slot(value.value)
+    fun AttrsScope<*>.slot(slot: Slot) =
+        slot(slot.value)
+
+    fun AttrsScope<*>.slotEqLeadingIcon() =
+        slot(Slot.LeadingIcon)
+
+    fun AttrsScope<*>.slotEqTrailingIcon() =
+        slot(Slot.TrailingIcon)
 }
 
 object TextareaInputType : InputType.InputTypeWithStringValue("textarea")

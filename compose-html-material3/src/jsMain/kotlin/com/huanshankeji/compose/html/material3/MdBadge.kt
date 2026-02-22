@@ -10,6 +10,7 @@ import org.w3c.dom.HTMLElement
 /*
 https://github.com/material-components/material-web/blob/main/labs/badge/internal/badge.ts
 https://github.com/material-components/material-web/blob/main/labs/badge/demo/stories.ts
+https://github.com/material-components/material-web/blob/main/labs/badge/README.md
 */
 
 @JsModule("@material/web/labs/badge/badge.js")
