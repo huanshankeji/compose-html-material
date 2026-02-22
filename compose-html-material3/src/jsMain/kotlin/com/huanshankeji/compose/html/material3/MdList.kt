@@ -16,6 +16,7 @@ import org.w3c.dom.HTMLElement
 https://github.com/material-components/material-web/blob/main/docs/components/list.md
 https://material-web.dev/components/list/
 https://material-web.dev/components/list/stories/
+https://m3.material.io/components/lists/overview
  */
 
 @JsModule("@material/web/list/list.js")

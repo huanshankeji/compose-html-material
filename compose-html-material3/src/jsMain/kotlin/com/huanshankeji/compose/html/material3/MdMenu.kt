@@ -16,6 +16,7 @@ import org.w3c.dom.events.EventTarget
 https://github.com/material-components/material-web/blob/main/docs/components/menu.md
 https://material-web.dev/components/menu/
 https://material-web.dev/components/menu/stories/
+https://m3.material.io/components/menus/overview
  */
 
 @JsModule("@material/web/menu/menu.js")

@@ -178,6 +178,17 @@ This project uses Kotlin's binary compatibility validator (`kotlinx.validation`)
 - Current version: `0.4.1-SNAPSHOT`
 - Release versions should not have `-SNAPSHOT` suffix
 
+## Design Guidelines and Documentation
+
+### Material Design 3 Resources
+- **Official Material Design 3 site:** https://m3.material.io/
+- **Component guidelines:** https://m3.material.io/components/ (e.g., https://m3.material.io/components/buttons/overview for buttons)
+- Use these resources to understand the visual effects, behavior, and design guidelines of each component
+- Component documentation comments should include links to:
+  1. Material Web GitHub component documentation
+  2. Material Web demo site
+  3. Material Design 3 component guidelines (https://m3.material.io/components/)
+
 ## Code Conventions & Patterns
 
 ### Component Structure
