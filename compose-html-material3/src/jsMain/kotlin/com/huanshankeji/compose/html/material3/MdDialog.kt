@@ -20,12 +20,16 @@ https://m3.material.io/components/dialogs/overview
 @JsModule("@material/web/dialog/dialog.js")
 private external object DialogImport
 
+enum class DialogType(val value: String) {
+    Alert("alert")
+}
+
 @Composable
 fun MdDialog(
     open: Boolean? = null,
     quick: Boolean? = null,
     returnValue: String? = null,
-    type: String? = null,
+    type: DialogType? = null,
     noFocusTrap: Boolean? = null,
     attrs: Attrs<HTMLElement>? = null,
     content: (@Composable MdDialogScope.() -> Unit)? = null
@@ -36,7 +40,7 @@ fun MdDialog(
         open?.let { attr("open", it) }
         quick?.let { attr("quick", it) }
         returnValue?.let { attr("return-value", it) }
-        type(type)
+        type?.let { type(it.value) }
         noFocusTrap?.let { attr("no-focus-trap", it) }
 
         attrs?.invoke(this)
@@ -46,12 +50,25 @@ fun MdDialog(
 }
 
 class MdDialogScope(val elementScope: ElementScope<HTMLElement>) {
+    enum class Slot(val value: String) {
+        Headline("headline"),
+        Content("content"),
+        Actions("actions"),
+        Icon("icon")
+    }
+
+    fun AttrsScope<*>.slot(slot: Slot) =
+        slot(slot.value)
+
     fun AttrsScope<*>.slotEqHeadline() =
-        slot("headline")
+        slot(Slot.Headline)
 
     fun AttrsScope<*>.slotEqContent() =
-        slot("content")
+        slot(Slot.Content)
 
     fun AttrsScope<*>.slotEqActions() =
-        slot("actions")
+        slot(Slot.Actions)
+
+    fun AttrsScope<*>.slotEqIcon() =
+        slot(Slot.Icon)
 }

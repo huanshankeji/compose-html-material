@@ -10,6 +10,7 @@ import org.w3c.dom.HTMLElement
 /*
 https://github.com/material-components/material-web/blob/main/labs/item/internal/item.ts
 https://github.com/material-components/material-web/blob/main/labs/item/demo/stories.ts
+https://github.com/material-components/material-web/blob/main/labs/item/README.md
 */
 
 @JsModule("@material/web/labs/item/item.js")

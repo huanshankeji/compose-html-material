@@ -57,15 +57,17 @@ private fun commonTabAttrs(
         active?.let { attr("active", it) }
         hasIcon?.let { attr("has-icon", it) }
         iconOnly?.let { attr("icon-only", it) }
-        selected?.let { attr("selected", it) }
+        selected(selected)
         inlineIcon?.let { attr("inline-icon", it) }
 
         attrs?.invoke(this)
     }
 
-private fun (@Composable MdTabScope.() -> Unit)?.toElementScopeContent(): (@Composable ElementScope<HTMLElement>.() -> Unit)? =
+private fun <T> (@Composable T.() -> Unit)?.toElementScopeContent(
+    scopeFactory: (ElementScope<HTMLElement>) -> T
+): (@Composable ElementScope<HTMLElement>.() -> Unit)? =
     this?.let {
-        { MdTabScope(this).it() }
+        { scopeFactory(this).it() }
     }
 
 @Composable
@@ -83,7 +85,7 @@ private fun CommonTab(
     TagElement(
         tagName,
         commonTabAttrs(disabled, active, hasIcon, iconOnly, selected, inlineIcon, attrs),
-        content.toElementScopeContent()
+        content.toElementScopeContent(::MdTabScope)
     )
 
 @Composable
@@ -125,6 +127,13 @@ fun MdSecondaryTab(
 }
 
 class MdTabScope(val elementScope: ElementScope<HTMLElement>) {
+    enum class Slot(val value: String) {
+        Icon("icon")
+    }
+
+    fun AttrsScope<*>.slot(slot: Slot) =
+        slot(slot.value)
+
     fun AttrsScope<*>.slotEqIcon() =
-        slot("icon")
+        slot(Slot.Icon)
 }
