@@ -26,11 +26,11 @@ private external object ListImport
 private external object ListItemImport
 
 @Composable
-fun MdList(attrs: Attrs<HTMLElement>? = null, content: @Composable MdListScope.() -> Unit) {
+fun MdList(attrs: Attrs<HTMLElement>? = null, content: (@Composable MdListScope.() -> Unit)? = null) {
     ListImport // Load the web component
 
     TagElement("md-list", attrs) {
-        MdListScope(this).content()
+        content?.let { MdListScope(this).it() }
     }
 }
 
@@ -42,7 +42,7 @@ class MdListScope(val elementScope: ElementScope<HTMLElement>) {
         href: String? = null,
         target: String? = null,
         attrs: Attrs<HTMLElement>? = null,
-        content: @Composable MdListItemScope.() -> Unit
+        content: (@Composable MdListItemScope.() -> Unit)? = null
     ) =
         @OptIn(ExposedMdListApi::class)
         com.huanshankeji.compose.html.material3.MdListItem(disabled, type, href, target, attrs, content)
@@ -64,7 +64,7 @@ fun MdListItem(
     href: String? = null,
     target: String? = null,
     attrs: Attrs<HTMLElement>? = null,
-    content: @Composable MdListItemScope.() -> Unit
+    content: (@Composable MdListItemScope.() -> Unit)? = null
 ) {
     ListItemImport // Load the web component
 
@@ -77,7 +77,7 @@ fun MdListItem(
 
         attrs?.invoke(this)
     }) {
-        MdListItemScope(this).content()
+        content?.let { MdListItemScope(this).it() }
     }
 }
 
