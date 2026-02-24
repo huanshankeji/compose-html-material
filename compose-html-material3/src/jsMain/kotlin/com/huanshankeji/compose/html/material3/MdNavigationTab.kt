@@ -48,6 +48,7 @@ fun MdNavigationTab(
 }
 
 class MdNavigationTabScope(val elementScope: ElementScope<HTMLElement>) {
+    // https://github.com/search?q=repo%3Amaterial-components%2Fmaterial-web%20path%3A%2F%5Elabs%5C%2Fnavigationtab%5C%2F%2F%20active-icon&type=code
     enum class Slot(val value: String) {
         ActiveIcon("active-icon"), InactiveIcon("inactive-icon")
     }
