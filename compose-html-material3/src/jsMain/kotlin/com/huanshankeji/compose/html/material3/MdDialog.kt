@@ -2,7 +2,6 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
-import com.huanshankeji.compose.web.attributes.ext.type
 import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.dom.AttrBuilderContext
@@ -39,7 +38,7 @@ fun MdDialog(
     TagElement("md-dialog", {
         attrIfNotNull("quick", quick)
         attrIfNotNull("return-value", returnValue)
-        type(type)
+        attrIfNotNull("type", type?.value)
         attrIfNotNull("no-focus-trap", noFocusTrap)
         attrIfNotNull("open", open)
 
