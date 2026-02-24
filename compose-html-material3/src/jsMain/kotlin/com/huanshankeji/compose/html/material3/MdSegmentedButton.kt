@@ -2,8 +2,9 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
-import com.huanshankeji.compose.web.attributes.ext.*
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
+import com.huanshankeji.compose.web.attributes.ext.disabled
+import com.huanshankeji.compose.web.attributes.ext.label
 import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.dom.ElementScope
@@ -12,7 +13,6 @@ import org.w3c.dom.HTMLElement
 
 /*
 https://github.com/material-components/material-web/blob/main/labs/segmentedbutton/internal/outlined-segmented-button.ts
-https://github.com/material-components/material-web/blob/main/labs/segmentedbutton/demo/stories.ts
 https://material-web.dev/components/segmented-button/
 https://m3.material.io/components/segmented-buttons/overview
 */
@@ -35,10 +35,10 @@ fun MdOutlinedSegmentedButton(
 
     TagElement("md-outlined-segmented-button", {
         disabled(disabled)
-        selected?.let { attr("selected", it) }
+        attrIfNotNull("selected", selected)
         label(label)
-        noCheckmark?.let { attr("no-checkmark", it) }
-        hasIcon?.let { attr("has-icon", it) }
+        attrIfNotNull("no-checkmark", noCheckmark)
+        attrIfNotNull("has-icon", hasIcon)
 
         attrs?.invoke(this)
     }, content?.let {

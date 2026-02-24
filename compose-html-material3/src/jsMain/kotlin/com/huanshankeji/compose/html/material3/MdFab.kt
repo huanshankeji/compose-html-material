@@ -2,7 +2,7 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.label
 import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
@@ -34,10 +34,10 @@ private fun CommonMdFab(
     content: @Composable (MdFabScope.() -> Unit)?
 ) =
     TagElement(tagName, {
-        variant?.let { attr("variant", it) }
-        size?.let { attr("size", it) }
+        attrIfNotNull("variant", variant)
+        attrIfNotNull("size", size)
         label?.let { label(it) }
-        lowered?.let { attr("lowered", it) }
+        attrIfNotNull("lowered", lowered)
 
         attrs?.invoke(this)
     }, content?.let {

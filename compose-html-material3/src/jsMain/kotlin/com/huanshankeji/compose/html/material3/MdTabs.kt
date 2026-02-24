@@ -2,8 +2,7 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
-import com.huanshankeji.compose.web.attributes.ext.*
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.dom.ElementScope
@@ -36,66 +35,51 @@ fun MdTabs(
     TabsImport // Load the web component
 
     TagElement("md-tabs", {
-        autoActivate?.let { attr("auto-activate", it) }
-        activeTabIndex?.let { attr("active-tab-index", it.toString()) }
+        attrIfNotNull("auto-activate", autoActivate)
+        attrIfNotNull("active-tab-index", activeTabIndex)
 
         attrs?.invoke(this)
     }, content)
 }
 
-private fun commonTabAttrs(
-    disabled: Boolean?,
-    active: Boolean?,
-    hasIcon: Boolean?,
-    iconOnly: Boolean?,
-    selected: Boolean?,
-    inlineIcon: Boolean?,
-    attrs: Attrs<HTMLElement>?
-): Attrs<HTMLElement> =
-    {
-        disabled(disabled)
-        active?.let { attr("active", it) }
-        hasIcon?.let { attr("has-icon", it) }
-        iconOnly?.let { attr("icon-only", it) }
-        selected(selected)
-        inlineIcon?.let { attr("inline-icon", it) }
-
-        attrs?.invoke(this)
-    }
-
-private fun <T> (@Composable T.() -> Unit)?.toElementScopeContent(
-    scopeFactory: (ElementScope<HTMLElement>) -> T
-): (@Composable ElementScope<HTMLElement>.() -> Unit)? =
-    this?.let {
-        { scopeFactory(this).it() }
-    }
+private fun (@Composable MdTabScope.() -> Unit)?.toElementScopeContent(): (@Composable ElementScope<HTMLElement>.() -> Unit)? =
+    this?.let { { MdTabScope(this).it() } }
 
 @Composable
 private fun CommonTab(
     tagName: String,
-    disabled: Boolean?,
+    inlineIcon: Boolean?,
+    isTab: Boolean?,
     active: Boolean?,
     hasIcon: Boolean?,
     iconOnly: Boolean?,
     selected: Boolean?,
-    inlineIcon: Boolean?,
     attrs: Attrs<HTMLElement>?,
     content: (@Composable MdTabScope.() -> Unit)?
 ) =
     TagElement(
         tagName,
-        commonTabAttrs(disabled, active, hasIcon, iconOnly, selected, inlineIcon, attrs),
-        content.toElementScopeContent(::MdTabScope)
+        {
+            attrIfNotNull("inline-icon", inlineIcon)
+            attrIfNotNull("md-tab", isTab)
+            attrIfNotNull("active", active)
+            attrIfNotNull("has-icon", hasIcon)
+            attrIfNotNull("icon-only", iconOnly)
+            attrIfNotNull("selected", selected)
+
+            attrs?.invoke(this)
+        },
+        content.toElementScopeContent()
     )
 
 @Composable
 fun MdPrimaryTab(
-    disabled: Boolean? = null,
+    inlineIcon: Boolean? = null,
+    isTab: Boolean? = null,
     active: Boolean? = null,
     hasIcon: Boolean? = null,
     iconOnly: Boolean? = null,
     selected: Boolean? = null,
-    inlineIcon: Boolean? = null,
     attrs: Attrs<HTMLElement>? = null,
     content: (@Composable MdTabScope.() -> Unit)? = null
 ) {
@@ -103,18 +87,17 @@ fun MdPrimaryTab(
 
     CommonTab(
         "md-primary-tab",
-        disabled, active, hasIcon, iconOnly, selected, inlineIcon, attrs, content
+        inlineIcon, isTab, active, hasIcon, iconOnly, selected, attrs, content
     )
 }
 
 @Composable
 fun MdSecondaryTab(
-    disabled: Boolean? = null,
+    isTab: Boolean? = null,
     active: Boolean? = null,
     hasIcon: Boolean? = null,
     iconOnly: Boolean? = null,
     selected: Boolean? = null,
-    inlineIcon: Boolean? = null,
     attrs: Attrs<HTMLElement>? = null,
     content: (@Composable MdTabScope.() -> Unit)? = null
 ) {
@@ -122,7 +105,7 @@ fun MdSecondaryTab(
 
     CommonTab(
         "md-secondary-tab",
-        disabled, active, hasIcon, iconOnly, selected, inlineIcon, attrs, content
+        null, isTab, active, hasIcon, iconOnly, selected, attrs, content
     )
 }
 

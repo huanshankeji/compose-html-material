@@ -2,7 +2,7 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.type
 import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
@@ -26,22 +26,22 @@ enum class DialogType(val value: String) {
 
 @Composable
 fun MdDialog(
-    open: Boolean? = null,
     quick: Boolean? = null,
     returnValue: String? = null,
     type: DialogType? = null,
     noFocusTrap: Boolean? = null,
+    open: Boolean? = null,
     attrs: Attrs<HTMLElement>? = null,
     content: (@Composable MdDialogScope.() -> Unit)? = null
 ) {
     DialogImport // Load the web component
 
     TagElement("md-dialog", {
-        open?.let { attr("open", it) }
-        quick?.let { attr("quick", it) }
-        returnValue?.let { attr("return-value", it) }
-        type?.let { type(it.value) }
-        noFocusTrap?.let { attr("no-focus-trap", it) }
+        attrIfNotNull("quick", quick)
+        attrIfNotNull("return-value", returnValue)
+        type(type)
+        attrIfNotNull("no-focus-trap", noFocusTrap)
+        attrIfNotNull("open", open)
 
         attrs?.invoke(this)
     }, content?.let {

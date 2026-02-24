@@ -2,9 +2,11 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
-import com.huanshankeji.compose.web.attributes.ext.*
+import com.huanshankeji.compose.web.attributes.ext.disabled
+import com.huanshankeji.compose.web.attributes.ext.label
+import com.huanshankeji.compose.web.attributes.ext.required
+import com.huanshankeji.compose.web.attributes.ext.value
 import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.dom.ElementScope
@@ -15,7 +17,7 @@ import org.w3c.dom.HTMLElement
 https://github.com/material-components/material-web/blob/main/docs/components/select.md
 https://material-web.dev/components/select/
 https://material-web.dev/components/select/stories/
-https://m3.material.io/components/select/overview
+https://m3.material.io/components/menus/overview
 */
 
 @JsModule("@material/web/select/filled-select.js")
@@ -38,99 +40,71 @@ enum class SelectMenuAlign(val value: String) {
     Start("start"), End("end")
 }
 
-private fun commonSelectAttrs(
-    disabled: Boolean?,
-    required: Boolean?,
-    errorText: String?,
-    label: String?,
-    supportingText: String?,
-    error: Boolean?,
-    menuPositioning: SelectMenuPositioning?,
-    clampMenuWidth: Boolean?,
-    quick: Boolean?,
-    displayText: String?,
-    menuAlign: SelectMenuAlign?,
-    value: String?,
-    selectedIndex: Int?,
-    name: String?,
-    form: String?,
-    attrs: Attrs<HTMLElement>?
-): Attrs<HTMLElement> =
-    {
-        disabled(disabled)
-        required(required)
-        errorText?.let { attr("error-text", it) }
-        label(label)
-        supportingText?.let { attr("supporting-text", it) }
-        error?.let { attr("error", it) }
-        menuPositioning?.let { attr("menu-positioning", it.value) }
-        clampMenuWidth?.let { attr("clamp-menu-width", it) }
-        quick?.let { attr("quick", it) }
-        displayText?.let { attr("display-text", it) }
-        menuAlign?.let { attr("menu-align", it.value) }
-        value(value)
-        selectedIndex?.let { attr("selected-index", it.toString()) }
-        name(name)
-        form(form)
-
-        attrs?.invoke(this)
-    }
-
-private fun <T> (@Composable T.() -> Unit)?.toElementScopeContent(
-    scopeFactory: (ElementScope<HTMLElement>) -> T
-): (@Composable ElementScope<HTMLElement>.() -> Unit)? =
-    this?.let {
-        { scopeFactory(this).it() }
-    }
+private fun (@Composable MdSelectScope.() -> Unit)?.toElementScopeContent(): (@Composable ElementScope<HTMLElement>.() -> Unit)? =
+    this?.let { { MdSelectScope(this).it() } }
 
 @Composable
 private fun CommonSelect(
     tagName: String,
-    disabled: Boolean?,
+    quick: Boolean?,
     required: Boolean?,
     errorText: String?,
     label: String?,
+    noAsterisk: Boolean?,
     supportingText: String?,
     error: Boolean?,
     menuPositioning: SelectMenuPositioning?,
     clampMenuWidth: Boolean?,
-    quick: Boolean?,
+    typeaheadDelay: Number?,
+    hasLeadingIcon: Boolean?,
     displayText: String?,
     menuAlign: SelectMenuAlign?,
     value: String?,
     selectedIndex: Int?,
-    name: String?,
-    form: String?,
     attrs: Attrs<HTMLElement>?,
     content: (@Composable MdSelectScope.() -> Unit)?
 ) =
     TagElement(
         tagName,
-        commonSelectAttrs(
-            disabled, required, errorText, label, supportingText, error,
-            menuPositioning, clampMenuWidth, quick, displayText, menuAlign,
-            value, selectedIndex, name, form, attrs
-        ),
-        content.toElementScopeContent(::MdSelectScope)
+        {
+            attrIfNotNull("quick", quick)
+            required(required)
+            attrIfNotNull("error-text", errorText)
+            label(label)
+            attrIfNotNull("no-asterisk", noAsterisk)
+            attrIfNotNull("supporting-text", supportingText)
+            attrIfNotNull("error", error)
+            attrIfNotNull("menu-positioning", menuPositioning?.value)
+            attrIfNotNull("clamp-menu-width", clampMenuWidth)
+            attrIfNotNull("typeahead-delay", typeaheadDelay)
+            attrIfNotNull("has-leading-icon", hasLeadingIcon)
+            attrIfNotNull("display-text", displayText)
+            attrIfNotNull("menu-align", menuAlign?.value)
+            value(value)
+            attrIfNotNull("selected-index", selectedIndex)
+
+            attrs?.invoke(this)
+        },
+        content.toElementScopeContent()
     )
 
 @Composable
 fun MdFilledSelect(
-    disabled: Boolean? = null,
+    quick: Boolean? = null,
     required: Boolean? = null,
     errorText: String? = null,
     label: String? = null,
+    noAsterisk: Boolean? = null,
     supportingText: String? = null,
     error: Boolean? = null,
     menuPositioning: SelectMenuPositioning? = null,
     clampMenuWidth: Boolean? = null,
-    quick: Boolean? = null,
+    typeaheadDelay: Number? = null,
+    hasLeadingIcon: Boolean? = null,
     displayText: String? = null,
     menuAlign: SelectMenuAlign? = null,
     value: String? = null,
     selectedIndex: Int? = null,
-    name: String? = null,
-    form: String? = null,
     attrs: Attrs<HTMLElement>? = null,
     content: (@Composable MdSelectScope.() -> Unit)? = null
 ) {
@@ -138,29 +112,43 @@ fun MdFilledSelect(
 
     CommonSelect(
         "md-filled-select",
-        disabled, required, errorText, label, supportingText, error,
-        menuPositioning, clampMenuWidth, quick, displayText, menuAlign,
-        value, selectedIndex, name, form, attrs, content
+        quick,
+        required,
+        errorText,
+        label,
+        noAsterisk,
+        supportingText,
+        error,
+        menuPositioning,
+        clampMenuWidth,
+        typeaheadDelay,
+        hasLeadingIcon,
+        displayText,
+        menuAlign,
+        value,
+        selectedIndex,
+        attrs,
+        content
     )
 }
 
 @Composable
 fun MdOutlinedSelect(
-    disabled: Boolean? = null,
+    quick: Boolean? = null,
     required: Boolean? = null,
     errorText: String? = null,
     label: String? = null,
+    noAsterisk: Boolean? = null,
     supportingText: String? = null,
     error: Boolean? = null,
     menuPositioning: SelectMenuPositioning? = null,
     clampMenuWidth: Boolean? = null,
-    quick: Boolean? = null,
+    typeaheadDelay: Number? = null,
+    hasLeadingIcon: Boolean? = null,
     displayText: String? = null,
     menuAlign: SelectMenuAlign? = null,
     value: String? = null,
     selectedIndex: Int? = null,
-    name: String? = null,
-    form: String? = null,
     attrs: Attrs<HTMLElement>? = null,
     content: (@Composable MdSelectScope.() -> Unit)? = null
 ) {
@@ -168,33 +156,24 @@ fun MdOutlinedSelect(
 
     CommonSelect(
         "md-outlined-select",
-        disabled, required, errorText, label, supportingText, error,
-        menuPositioning, clampMenuWidth, quick, displayText, menuAlign,
-        value, selectedIndex, name, form, attrs, content
+        quick,
+        required,
+        errorText,
+        label,
+        noAsterisk,
+        supportingText,
+        error,
+        menuPositioning,
+        clampMenuWidth,
+        typeaheadDelay,
+        hasLeadingIcon,
+        displayText,
+        menuAlign,
+        value,
+        selectedIndex,
+        attrs,
+        content
     )
-}
-
-@Composable
-fun MdSelectOption(
-    disabled: Boolean? = null,
-    selected: Boolean? = null,
-    value: String? = null,
-    keepOpen: Boolean? = null,
-    displayText: String? = null,
-    attrs: Attrs<HTMLElement>? = null,
-    content: (@Composable MdSelectOptionScope.() -> Unit)? = null
-) {
-    SelectOptionImport // Load the web component
-
-    TagElement("md-select-option", {
-        disabled(disabled)
-        selected(selected)
-        value(value)
-        attrIfNotNull("keep-open", keepOpen)
-        displayText?.let { attr("display-text", it) }
-
-        attrs?.invoke(this)
-    }, content.toElementScopeContent(::MdSelectOptionScope))
 }
 
 class MdSelectScope(val elementScope: ElementScope<HTMLElement>) {
@@ -205,6 +184,28 @@ class MdSelectScope(val elementScope: ElementScope<HTMLElement>) {
 
     fun AttrsScope<*>.slot(slot: Slot) =
         slot(slot.value)
+}
+
+@Composable
+fun MdSelectOption(
+    disabled: Boolean? = null,
+    selected: Boolean? = null,
+    value: String? = null,
+    attrs: Attrs<HTMLElement>? = null,
+    content: (@Composable MdSelectOptionScope.() -> Unit)? = null
+) {
+    SelectOptionImport // Load the web component
+
+    TagElement("md-select-option", {
+        disabled(disabled)
+        attrIfNotNull("selected", selected)
+        value(value)
+        // type, typeaheadText, and displayText have no corresponding HTML attribute (property only)
+
+        attrs?.invoke(this)
+    }, content?.let {
+        { MdSelectOptionScope(this).it() }
+    })
 }
 
 /*
@@ -220,6 +221,8 @@ class MdSelectOptionScope(val elementScope: ElementScope<HTMLElement>) {
         End("end")
     }
 
+    fun AttrsScope<*>.slotEqHeadline() =
+        slot("headline")
     fun AttrsScope<*>.slot(slot: Slot) =
         slot(slot.value)
 }

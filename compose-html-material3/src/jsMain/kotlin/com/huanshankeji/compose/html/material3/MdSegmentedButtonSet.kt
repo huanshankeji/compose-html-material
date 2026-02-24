@@ -2,7 +2,7 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
@@ -15,19 +15,19 @@ https://m3.material.io/components/segmented-buttons/overview
 */
 
 @JsModule("@material/web/labs/segmentedbuttonset/outlined-segmented-button-set.js")
-private external object SegmentedButtonSetImport
+private external object OutlinedSegmentedButtonSetImport
 
 @MaterialWebLabsApi
 @Composable
-fun MdSegmentedButtonSet(
+fun MdOutlinedSegmentedButtonSet(
     multiselect: Boolean? = null,
     attrs: Attrs<HTMLElement>? = null,
     content: (@Composable ElementScope<HTMLElement>.() -> Unit)? = null
 ) {
-    SegmentedButtonSetImport // Load the web component
+    OutlinedSegmentedButtonSetImport // Load the web component
 
-    TagElement("md-segmented-button-set", {
-        multiselect?.let { attr("multiselect", it) }
+    TagElement("md-outlined-segmented-button-set", {
+        attrIfNotNull("multiselect", multiselect)
 
         attrs?.invoke(this)
     }, content)

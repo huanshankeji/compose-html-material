@@ -2,7 +2,7 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.*
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.Label
@@ -37,9 +37,9 @@ fun MdSwitch(
 
     TagElement("md-switch", {
         disabled(disabled)
-        selected?.let { attr("selected", it) }
-        icons?.let { attr("icons", it) }
-        showOnlySelectedIcon?.let { attr("show-only-selected-icon", it) }
+        attrIfNotNull("selected", selected)
+        attrIfNotNull("icons", icons)
+        attrIfNotNull("show-only-selected-icon", showOnlySelectedIcon)
         required(required)
         value(value)
         name(name)

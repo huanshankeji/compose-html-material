@@ -2,6 +2,7 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.*
 import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
@@ -47,8 +48,8 @@ private fun commonButtonAttrs(
         disabled(disabled)
         href(href)
         target(target)
-        trailingIcon?.let { attr("trailing-icon", it.toString()) }
-        hasIcon?.let { attr("has-icon", it.toString()) }
+        attrIfNotNull("trailing-icon", trailingIcon)
+        attrIfNotNull("has-icon", hasIcon)
         type(type)
         value(value)
         name(name)

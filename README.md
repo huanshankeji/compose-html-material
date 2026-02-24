@@ -47,9 +47,9 @@ Here is a list of supported component APIs in the [Material Web "labs" directory
 - `MdNavigationDrawer`, `MdNavigationDrawerModal`
 - `MdNavigationTab`
 - `MdOutlinedSegmentedButton`
-- `MdSegmentedButtonSet`
+- `MdOutlinedSegmentedButtonSet`
 
-You should opt-in to `@MaterialWebLabsApi` to use them.
+You should opt in to `@MaterialWebLabsApi` to use them.
 
 ## Brief Instructions
 

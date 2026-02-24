@@ -2,16 +2,13 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
-import com.huanshankeji.compose.web.attributes.slot
-import org.jetbrains.compose.web.attributes.AttrsScope
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
 
 /*
 https://github.com/material-components/material-web/blob/main/labs/navigationdrawer/internal/navigation-drawer.ts
-https://github.com/material-components/material-web/blob/main/labs/navigationdrawer/demo/stories.ts
 https://material-web.dev/components/navigation-drawer/
 https://m3.material.io/components/navigation-drawer/overview
 */
@@ -26,47 +23,46 @@ enum class NavigationDrawerPivot(val value: String) {
     Start("start"), End("end")
 }
 
-private fun <T> (@Composable T.() -> Unit)?.toElementScopeContent(
-    scopeFactory: (ElementScope<HTMLElement>) -> T
-): (@Composable ElementScope<HTMLElement>.() -> Unit)? =
-    this?.let {
-        { scopeFactory(this).it() }
-    }
-
+/**
+ * From https://m3.material.io/components/navigation-drawer/overview:
+ * > Note: The navigation drawer is no longer recommended in the Material 3 expressive update. For those who have updated, use an expanded navigation rail, which has mostly the same functionality of the navigation drawer and adapts better across window size classes.
+ */
 @MaterialWebLabsApi
 @Composable
 fun MdNavigationDrawer(
     opened: Boolean? = null,
     pivot: NavigationDrawerPivot? = null,
     attrs: Attrs<HTMLElement>? = null,
-    content: (@Composable MdNavigationDrawerScope.() -> Unit)? = null
+    content: (@Composable ElementScope<HTMLElement>.() -> Unit)? = null
 ) {
     NavigationDrawerImport // Load the web component
 
     TagElement("md-navigation-drawer", {
-        opened?.let { attr("opened", it) }
-        pivot?.let { attr("pivot", it.value) }
+        attrIfNotNull("opened", opened)
+        attrIfNotNull("pivot", pivot?.value)
 
         attrs?.invoke(this)
-    }, content.toElementScopeContent(::MdNavigationDrawerScope))
+    }, content)
 }
 
+/**
+ * From https://m3.material.io/components/navigation-drawer/overview:
+ * > Note:The navigation drawer is no longer recommended in the Material 3 expressive update. For those who have updated, use an expanded navigation rail, which has mostly the same functionality of the navigation drawer and adapts better across window size classes.
+ */
 @MaterialWebLabsApi
 @Composable
 fun MdNavigationDrawerModal(
     opened: Boolean? = null,
     pivot: NavigationDrawerPivot? = null,
     attrs: Attrs<HTMLElement>? = null,
-    content: (@Composable MdNavigationDrawerScope.() -> Unit)? = null
+    content: (@Composable ElementScope<HTMLElement>.() -> Unit)? = null
 ) {
     NavigationDrawerModalImport // Load the web component
 
     TagElement("md-navigation-drawer-modal", {
-        opened?.let { attr("opened", it) }
-        pivot?.let { attr("pivot", it.value) }
+        attrIfNotNull("opened", opened)
+        attrIfNotNull("pivot", pivot?.value)
 
         attrs?.invoke(this)
-    }, content.toElementScopeContent(::MdNavigationDrawerScope))
+    }, content)
 }
-
-class MdNavigationDrawerScope(val elementScope: ElementScope<HTMLElement>)

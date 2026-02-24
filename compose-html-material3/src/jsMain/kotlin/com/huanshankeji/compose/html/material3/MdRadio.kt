@@ -2,8 +2,12 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
-import com.huanshankeji.compose.web.attributes.ext.*
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
+import com.huanshankeji.compose.web.attributes.ext.ariaLabel
+import com.huanshankeji.compose.web.attributes.ext.required
+import com.huanshankeji.compose.web.attributes.ext.value
+import com.varabyte.kobweb.compose.css.role
+import org.jetbrains.compose.web.dom.AttrBuilderContext
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
@@ -20,25 +24,28 @@ private external object RadioImport
 
 @Composable
 fun MdRadio(
-    checked: Boolean? = null,
-    disabled: Boolean? = null,
     required: Boolean? = null,
     value: String? = null,
-    name: String? = null,
-    form: String? = null,
+    checked: Boolean? = null,
     attrs: Attrs<HTMLElement>? = null,
     content: (@Composable ElementScope<HTMLElement>.() -> Unit)? = null
 ) {
     RadioImport // Load the web component
 
     TagElement("md-radio", {
-        checked?.let { attr("checked", it) }
-        disabled(disabled)
         required(required)
         value(value)
-        name(name)
-        form(form)
+        attrIfNotNull("checked", checked)
 
         attrs?.invoke(this)
     }, content)
+}
+
+/**
+ * This is an experimental API.
+ */
+// https://github.com/material-components/material-web/blob/main/radio/demo/stories.ts
+fun conventionalRadioGroupAttrs(ariaLabel: String): AttrBuilderContext<*> = {
+    role("radiogroup")
+    ariaLabel(ariaLabel)
 }
