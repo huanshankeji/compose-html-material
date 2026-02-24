@@ -2,7 +2,7 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.disabled
 import com.huanshankeji.compose.web.attributes.ext.label
 import com.huanshankeji.compose.web.attributes.ext.required
@@ -56,21 +56,21 @@ private fun CommonSelect(
     TagElement(
         tagName,
         {
-            quick?.let { attr("quick", it) }
+            attrIfNotNull("quick", quick)
             required(required)
-            errorText?.let { attr("error-text", it) }
+            attrIfNotNull("error-text", errorText)
             label(label)
-            noAsterisk?.let { attr("no-asterisk", it) }
-            supportingText?.let { attr("supporting-text", it) }
-            error?.let { attr("error", it) }
-            menuPositioning?.let { attr("menu-positioning", it) }
-            clampMenuWidth?.let { attr("clamp-menu-width", it) }
-            typeaheadDelay?.let { attr("typeahead-delay", it) }
-            hasLeadingIcon?.let { attr("has-leading-icon", it) }
-            displayText?.let { attr("display-text", it) }
-            menuAlign?.let { attr("menu-align", it) }
+            attrIfNotNull("no-asterisk", noAsterisk)
+            attrIfNotNull("supporting-text", supportingText)
+            attrIfNotNull("error", error)
+            attrIfNotNull("menu-positioning", menuPositioning)
+            attrIfNotNull("clamp-menu-width", clampMenuWidth)
+            attrIfNotNull("typeahead-delay", typeaheadDelay)
+            attrIfNotNull("has-leading-icon", hasLeadingIcon)
+            attrIfNotNull("display-text", displayText)
+            attrIfNotNull("menu-align", menuAlign)
             value(value)
-            selectedIndex?.let { attr("selected-index", it) }
+            attrIfNotNull("selected-index", selectedIndex)
 
             attrs?.invoke(this)
         },
@@ -183,7 +183,7 @@ fun MdSelectOption(
 
     TagElement("md-select-option", {
         disabled(disabled)
-        selected?.let { attr("selected", it) }
+        attrIfNotNull("selected", selected)
         value(value)
         // type, typeaheadText, and displayText have no corresponding HTML attribute (property only)
 

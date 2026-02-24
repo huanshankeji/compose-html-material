@@ -2,7 +2,7 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.ariaLabel
 import com.huanshankeji.compose.web.attributes.ext.required
 import com.huanshankeji.compose.web.attributes.ext.value
@@ -35,7 +35,7 @@ fun MdRadio(
     TagElement("md-radio", {
         required(required)
         value(value)
-        checked?.let { attr("checked", it) }
+        attrIfNotNull("checked", checked)
 
         attrs?.invoke(this)
     }, content)

@@ -2,7 +2,7 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.*
 import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
@@ -51,11 +51,11 @@ private fun CommonMdIconButton(
         tagName,
         {
             disabled(disabled)
-            flipIconInRtl?.let { attr("flip-icon-in-rtl", it) }
+            attrIfNotNull("flip-icon-in-rtl", flipIconInRtl)
             href(href)
             target(target)
-            ariaLabelSelected?.let { attr("aria-label-selected", it) }
-            toggle?.let { attr("toggle", it) }
+            attrIfNotNull("aria-label-selected", ariaLabelSelected)
+            attrIfNotNull("toggle", toggle)
             selected(selected)
             type(type)
             value(value)

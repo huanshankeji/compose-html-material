@@ -2,7 +2,7 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
@@ -41,22 +41,22 @@ fun MdSlider(
     SliderImport // Load the web component
 
     TagElement("md-slider", {
-        min?.let { attr("min", it) }
-        max?.let { attr("max", it) }
-        value?.let { attr("value", it) }
-        valueStart?.let { attr("value-start", it) }
-        valueEnd?.let { attr("value-end", it) }
-        valueLabel?.let { attr("value-label", it) }
-        valueLabelStart?.let { attr("value-label-start", it) }
-        valueLabelEnd?.let { attr("value-label-end", it) }
-        ariaLabelStart?.let { attr("aria-label-start", it) }
-        ariaValueTextStart?.let { attr("aria-valuetext-start", it) }
-        ariaLabelEnd?.let { attr("aria-label-end", it) }
-        ariaValueTextEnd?.let { attr("aria-valuetext-end", it) }
-        step?.let { attr("step", it) }
-        ticks?.let { attr("ticks", it) }
-        labeled?.let { attr("labeled", it) }
-        range?.let { attr("range", it) }
+        attrIfNotNull("min", min)
+        attrIfNotNull("max", max)
+        attrIfNotNull("value", value)
+        attrIfNotNull("value-start", valueStart)
+        attrIfNotNull("value-end", valueEnd)
+        attrIfNotNull("value-label", valueLabel)
+        attrIfNotNull("value-label-start", valueLabelStart)
+        attrIfNotNull("value-label-end", valueLabelEnd)
+        attrIfNotNull("aria-label-start", ariaLabelStart)
+        attrIfNotNull("aria-valuetext-start", ariaValueTextStart)
+        attrIfNotNull("aria-label-end", ariaLabelEnd)
+        attrIfNotNull("aria-valuetext-end", ariaValueTextEnd)
+        attrIfNotNull("step", step)
+        attrIfNotNull("ticks", ticks)
+        attrIfNotNull("labeled", labeled)
+        attrIfNotNull("range", range)
         // disabled, name, nameStart, nameEnd have no corresponding HTML attribute (property only)
 
         attrs?.invoke(this)

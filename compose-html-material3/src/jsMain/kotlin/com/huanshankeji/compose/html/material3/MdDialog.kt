@@ -2,7 +2,7 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.type
 import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
@@ -33,11 +33,11 @@ fun MdDialog(
     DialogImport // Load the web component
 
     TagElement("md-dialog", {
-        quick?.let { attr("quick", it) }
-        returnValue?.let { attr("return-value", it) }
+        attrIfNotNull("quick", quick)
+        attrIfNotNull("return-value", returnValue)
         type(type)
-        noFocusTrap?.let { attr("no-focus-trap", it) }
-        open?.let { attr("open", it) }
+        attrIfNotNull("no-focus-trap", noFocusTrap)
+        attrIfNotNull("open", open)
 
         attrs?.invoke(this)
     }, content?.let {

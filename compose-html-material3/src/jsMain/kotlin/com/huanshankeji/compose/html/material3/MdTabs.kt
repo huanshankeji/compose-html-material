@@ -2,7 +2,7 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.dom.ElementScope
@@ -35,8 +35,8 @@ fun MdTabs(
     TabsImport // Load the web component
 
     TagElement("md-tabs", {
-        autoActivate?.let { attr("auto-activate", it) }
-        activeTabIndex?.let { attr("active-tab-index", it) }
+        attrIfNotNull("auto-activate", autoActivate)
+        attrIfNotNull("active-tab-index", activeTabIndex)
 
         attrs?.invoke(this)
     }, content)
@@ -60,12 +60,12 @@ private fun CommonTab(
     TagElement(
         tagName,
         {
-            inlineIcon?.let { attr("inline-icon", it) }
-            isTab?.let { attr("md-tab", it) }
-            active?.let { attr("active", it) }
-            hasIcon?.let { attr("has-icon", it) }
-            iconOnly?.let { attr("icon-only", it) }
-            selected?.let { attr("selected", it) }
+            attrIfNotNull("inline-icon", inlineIcon)
+            attrIfNotNull("md-tab", isTab)
+            attrIfNotNull("active", active)
+            attrIfNotNull("has-icon", hasIcon)
+            attrIfNotNull("icon-only", iconOnly)
+            attrIfNotNull("selected", selected)
 
             attrs?.invoke(this)
         },

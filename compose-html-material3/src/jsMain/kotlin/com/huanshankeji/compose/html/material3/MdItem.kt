@@ -2,7 +2,7 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.dom.ElementScope
@@ -28,7 +28,7 @@ fun MdItem(
     ItemImport // Load the web component
 
     TagElement("md-item", {
-        multiline?.let { attr("multiline", it) }
+        attrIfNotNull("multiline", multiline)
 
         attrs?.invoke(this)
     }) {

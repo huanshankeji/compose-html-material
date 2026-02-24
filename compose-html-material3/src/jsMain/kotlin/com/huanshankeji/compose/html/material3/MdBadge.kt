@@ -2,6 +2,7 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
@@ -24,7 +25,7 @@ fun MdBadge(
     BadgeImport // Load the web component
 
     TagElement("md-badge", {
-        value?.let { attr("value", it) }
+        attrIfNotNull("value", value)
 
         attrs?.invoke(this)
     }, content)

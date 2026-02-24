@@ -2,7 +2,7 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.*
 import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
@@ -70,15 +70,15 @@ private fun CommonMdAssistAndMdSuggestionChip(
     TagElement(
         tagName,
         {
-            elevated?.let { attr("elevated", it) }
+            attrIfNotNull("elevated", elevated)
             href(href)
             download(download)
             target(target)
             disabled(disabled)
-            softDisabled?.let { attr("soft-disabled", it) }
-            alwaysFocusable?.let { attr("always-focusable", it) }
+            attrIfNotNull("soft-disabled", softDisabled)
+            attrIfNotNull("always-focusable", alwaysFocusable)
             label(label)
-            hasIcon?.let { attr("has-icon", it) }
+            attrIfNotNull("has-icon", hasIcon)
 
             attrs?.invoke(this)
         },
@@ -124,15 +124,15 @@ fun MdFilterChip(
     FilterChipImport // Load the web component
 
     TagElement("md-filter-chip", {
-        elevated?.let { attr("elevated", it) }
-        removable?.let { attr("removable", it) }
-        selected?.let { attr("selected", it) }
-        hasSelectedIcon?.let { attr("has-selected-icon", it) }
+        attrIfNotNull("elevated", elevated)
+        attrIfNotNull("removable", removable)
+        attrIfNotNull("selected", selected)
+        attrIfNotNull("has-selected-icon", hasSelectedIcon)
         disabled(disabled)
-        softDisabled?.let { attr("soft-disabled", it) }
-        alwaysFocusable?.let { attr("always-focusable", it) }
+        attrIfNotNull("soft-disabled", softDisabled)
+        attrIfNotNull("always-focusable", alwaysFocusable)
         label(label)
-        hasIcon?.let { attr("has-icon", it) }
+        attrIfNotNull("has-icon", hasIcon)
 
         attrs?.invoke(this)
     }, content.toElementScopeContent())
@@ -156,16 +156,16 @@ fun MdInputChip(
     InputChipImport // Load the web component
 
     TagElement("md-input-chip", {
-        avatar?.let { attr("avatar", it) }
+        attrIfNotNull("avatar", avatar)
         href(href)
         target(target)
-        removeOnly?.let { attr("remove-only", it) }
-        selected?.let { attr("selected", it) }
+        attrIfNotNull("remove-only", removeOnly)
+        attrIfNotNull("selected", selected)
         disabled(disabled)
-        softDisabled?.let { attr("soft-disabled", it) }
-        alwaysFocusable?.let { attr("always-focusable", it) }
+        attrIfNotNull("soft-disabled", softDisabled)
+        attrIfNotNull("always-focusable", alwaysFocusable)
         label(label)
-        hasIcon?.let { attr("has-icon", it) }
+        attrIfNotNull("has-icon", hasIcon)
 
         attrs?.invoke(this)
     }, content.toElementScopeContent())

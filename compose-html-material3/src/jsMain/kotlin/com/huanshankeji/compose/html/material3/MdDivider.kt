@@ -2,7 +2,7 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
@@ -27,9 +27,9 @@ fun MdDivider(
     DividerImport // Load the web component
 
     TagElement("md-divider", {
-        inset?.let { attr("inset", it) }
-        insetStart?.let { attr("inset-start", it) }
-        insetEnd?.let { attr("inset-end", it) }
+        attrIfNotNull("inset", inset)
+        attrIfNotNull("inset-start", insetStart)
+        attrIfNotNull("inset-end", insetEnd)
 
         attrs?.invoke(this)
     }, content)

@@ -2,7 +2,7 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import org.jetbrains.compose.web.dom.TagElement
 import org.jetbrains.compose.web.dom.Text
 import org.w3c.dom.HTMLElement
@@ -26,7 +26,7 @@ fun MdIcon(filled: Boolean? = null, attrs: Attrs<HTMLElement>?, content: @Compos
 
     @Suppress("RemoveExplicitTypeArguments")
     TagElement<HTMLElement>("md-icon", {
-        filled?.let { attr("filled", it) }
+        attrIfNotNull("filled", filled)
 
         attrs?.invoke(this)
     }) {
