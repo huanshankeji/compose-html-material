@@ -10,6 +10,8 @@ import org.w3c.dom.HTMLElement
 /*
 https://github.com/material-components/material-web/blob/main/labs/segmentedbuttonset/internal/segmented-button-set.ts
 https://github.com/material-components/material-web/blob/main/labs/segmentedbuttonset/demo/stories.ts
+https://material-web.dev/components/segmented-button/
+https://m3.material.io/components/segmented-buttons/overview
 */
 
 @JsModule("@material/web/labs/segmentedbuttonset/outlined-segmented-button-set.js")

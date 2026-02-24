@@ -9,6 +9,8 @@ import org.w3c.dom.HTMLElement
 
 /*
 https://github.com/material-components/material-web/blob/main/labs/navigationdrawer/internal/navigation-drawer.ts
+https://material-web.dev/components/navigation-drawer/
+https://m3.material.io/components/navigation-drawer/overview
 */
 
 @JsModule("@material/web/labs/navigationdrawer/navigation-drawer.js")
@@ -16,6 +18,10 @@ private external object NavigationDrawerImport
 
 @JsModule("@material/web/labs/navigationdrawer/navigation-drawer-modal.js")
 private external object NavigationDrawerModalImport
+
+enum class NavigationDrawerPivot(val value: String) {
+    Start("start"), End("end")
+}
 
 /**
  * From https://m3.material.io/components/navigation-drawer/overview:
@@ -25,7 +31,7 @@ private external object NavigationDrawerModalImport
 @Composable
 fun MdNavigationDrawer(
     opened: Boolean? = null,
-    pivot: String? = null, // "start" or "end"
+    pivot: NavigationDrawerPivot? = null,
     attrs: Attrs<HTMLElement>? = null,
     content: (@Composable ElementScope<HTMLElement>.() -> Unit)? = null
 ) {
@@ -33,7 +39,7 @@ fun MdNavigationDrawer(
 
     TagElement("md-navigation-drawer", {
         attrIfNotNull("opened", opened)
-        attrIfNotNull("pivot", pivot)
+        attrIfNotNull("pivot", pivot?.value)
 
         attrs?.invoke(this)
     }, content)
@@ -47,7 +53,7 @@ fun MdNavigationDrawer(
 @Composable
 fun MdNavigationDrawerModal(
     opened: Boolean? = null,
-    pivot: String? = null, // "start" or "end"
+    pivot: NavigationDrawerPivot? = null,
     attrs: Attrs<HTMLElement>? = null,
     content: (@Composable ElementScope<HTMLElement>.() -> Unit)? = null
 ) {
@@ -55,7 +61,7 @@ fun MdNavigationDrawerModal(
 
     TagElement("md-navigation-drawer-modal", {
         attrIfNotNull("opened", opened)
-        attrIfNotNull("pivot", pivot)
+        attrIfNotNull("pivot", pivot?.value)
 
         attrs?.invoke(this)
     }, content)

@@ -202,6 +202,10 @@ fun MdTextButton(
 
 
 class MdButtonScope(val elementScope: ElementScope<HTMLElement>) {
-    fun AttrsScope<*>.slotEqIcon() =
-        slot("icon")
+    enum class Slot(val value: String) {
+        Icon("icon")
+    }
+
+    fun AttrsScope<*>.slot(slot: Slot) =
+        slot(slot.value)
 }

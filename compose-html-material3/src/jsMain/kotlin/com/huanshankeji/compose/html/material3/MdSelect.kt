@@ -29,6 +29,15 @@ private external object OutlinedSelectImport
 @JsModule("@material/web/select/select-option.js")
 private external object SelectOptionImport
 
+// https://github.com/material-components/material-web/blob/516cbc02bf770b7c3c5c6b546f1e5d81939b9f23/select/internal/select.ts#L134-L135
+enum class SelectMenuPositioning(val value: String) {
+    Absolute("absolute"), Fixed("fixed"), Popover("popover")
+}
+
+enum class SelectMenuAlign(val value: String) {
+    Start("start"), End("end")
+}
+
 private fun (@Composable MdSelectScope.() -> Unit)?.toElementScopeContent(): (@Composable ElementScope<HTMLElement>.() -> Unit)? =
     this?.let { { MdSelectScope(this).it() } }
 
@@ -42,12 +51,12 @@ private fun CommonSelect(
     noAsterisk: Boolean?,
     supportingText: String?,
     error: Boolean?,
-    menuPositioning: String?,
+    menuPositioning: SelectMenuPositioning?,
     clampMenuWidth: Boolean?,
     typeaheadDelay: Number?,
     hasLeadingIcon: Boolean?,
     displayText: String?,
-    menuAlign: String?,
+    menuAlign: SelectMenuAlign?,
     value: String?,
     selectedIndex: Int?,
     attrs: Attrs<HTMLElement>?,
@@ -63,12 +72,12 @@ private fun CommonSelect(
             attrIfNotNull("no-asterisk", noAsterisk)
             attrIfNotNull("supporting-text", supportingText)
             attrIfNotNull("error", error)
-            attrIfNotNull("menu-positioning", menuPositioning)
+            attrIfNotNull("menu-positioning", menuPositioning?.value)
             attrIfNotNull("clamp-menu-width", clampMenuWidth)
             attrIfNotNull("typeahead-delay", typeaheadDelay)
             attrIfNotNull("has-leading-icon", hasLeadingIcon)
             attrIfNotNull("display-text", displayText)
-            attrIfNotNull("menu-align", menuAlign)
+            attrIfNotNull("menu-align", menuAlign?.value)
             value(value)
             attrIfNotNull("selected-index", selectedIndex)
 
@@ -86,12 +95,12 @@ fun MdFilledSelect(
     noAsterisk: Boolean? = null,
     supportingText: String? = null,
     error: Boolean? = null,
-    menuPositioning: String? = null,
+    menuPositioning: SelectMenuPositioning? = null,
     clampMenuWidth: Boolean? = null,
     typeaheadDelay: Number? = null,
     hasLeadingIcon: Boolean? = null,
     displayText: String? = null,
-    menuAlign: String? = null,
+    menuAlign: SelectMenuAlign? = null,
     value: String? = null,
     selectedIndex: Int? = null,
     attrs: Attrs<HTMLElement>? = null,
@@ -130,12 +139,12 @@ fun MdOutlinedSelect(
     noAsterisk: Boolean? = null,
     supportingText: String? = null,
     error: Boolean? = null,
-    menuPositioning: String? = null,
+    menuPositioning: SelectMenuPositioning? = null,
     clampMenuWidth: Boolean? = null,
     typeaheadDelay: Number? = null,
     hasLeadingIcon: Boolean? = null,
     displayText: String? = null,
-    menuAlign: String? = null,
+    menuAlign: SelectMenuAlign? = null,
     value: String? = null,
     selectedIndex: Int? = null,
     attrs: Attrs<HTMLElement>? = null,
@@ -166,9 +175,14 @@ fun MdOutlinedSelect(
 }
 
 class MdSelectScope(val elementScope: ElementScope<HTMLElement>) {
-    // TODO `leading-icon` and `trailing-icon`. Use enums.
-    fun AttrsScope<*>.slotEqLeadingIcon() =
-        slot("leading-icon")
+    // https://github.com/search?q=repo%3Amaterial-components%2Fmaterial-web%20path%3A%2F%5Eselect%5C%2F%2F%20trailing-icon&type=code
+    enum class Slot(val value: String) {
+        LeadingIcon("leading-icon"),
+        TrailingIcon("trailing-icon")
+    }
+
+    fun AttrsScope<*>.slot(slot: Slot) =
+        slot(slot.value)
 }
 
 @Composable
@@ -194,8 +208,18 @@ fun MdSelectOption(
 }
 
 class MdSelectOptionScope(val elementScope: ElementScope<HTMLElement>) {
-    // TODO There may be other slot values.
+    /*
+    https://github.com/material-components/material-web/blob/516cbc02bf770b7c3c5c6b546f1e5d81939b9f23/select/internal/selectoption/select-option.ts#L144-L155
+    https://github.com/material-components/material-web/blob/516cbc02bf770b7c3c5c6b546f1e5d81939b9f23/select/internal/selectoption/select-option.ts#L214-L224
+    */
+    enum class Slot(val value: String) {
+        Headline("headline"),
+        SupportingText("supporting-text"),
+        TrailingSupportingText("trailing-supporting-text"),
+        Start("start"),
+        End("end")
+    }
 
-    fun AttrsScope<*>.slotEqHeadline() =
-        slot("headline")
+    fun AttrsScope<*>.slot(slot: Slot) =
+        slot(slot.value)
 }

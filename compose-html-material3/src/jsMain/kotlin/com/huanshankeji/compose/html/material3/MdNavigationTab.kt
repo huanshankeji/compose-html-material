@@ -14,6 +14,8 @@ import org.w3c.dom.HTMLElement
 /*
 https://github.com/material-components/material-web/blob/main/labs/navigationtab/internal/navigation-tab.ts
 https://github.com/material-components/material-web/blob/main/labs/navigationbar/demo/stories.ts (navigation bar storybook)
+https://material-web.dev/components/navigation-bar/
+https://m3.material.io/components/navigation-bar/overview
  */
 
 @JsModule("@material/web/labs/navigationtab/navigation-tab.js")
@@ -46,10 +48,11 @@ fun MdNavigationTab(
 }
 
 class MdNavigationTabScope(val elementScope: ElementScope<HTMLElement>) {
-    enum class Slot(val stringValue: String) {
+    // https://github.com/search?q=repo%3Amaterial-components%2Fmaterial-web%20path%3A%2F%5Elabs%5C%2Fnavigationtab%5C%2F%2F%20active-icon&type=code
+    enum class Slot(val value: String) {
         ActiveIcon("active-icon"), InactiveIcon("inactive-icon")
     }
 
-    fun AttrsScope<*>.slot(value: Slot) =
-        slot(value.stringValue)
+    fun AttrsScope<*>.slot(slot: Slot) =
+        slot(slot.value)
 }
