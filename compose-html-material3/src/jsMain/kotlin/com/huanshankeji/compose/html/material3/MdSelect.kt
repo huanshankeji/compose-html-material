@@ -221,8 +221,6 @@ class MdSelectOptionScope(val elementScope: ElementScope<HTMLElement>) {
         End("end")
     }
 
-    fun AttrsScope<*>.slotEqHeadline() =
-        slot("headline")
     fun AttrsScope<*>.slot(slot: Slot) =
         slot(slot.value)
 }
