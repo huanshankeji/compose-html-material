@@ -175,6 +175,7 @@ fun MdOutlinedSelect(
 }
 
 class MdSelectScope(val elementScope: ElementScope<HTMLElement>) {
+    // https://github.com/search?q=repo%3Amaterial-components%2Fmaterial-web%20path%3A%2F%5Eselect%5C%2F%2F%20trailing-icon&type=code
     enum class Slot(val value: String) {
         LeadingIcon("leading-icon"),
         TrailingIcon("trailing-icon")
