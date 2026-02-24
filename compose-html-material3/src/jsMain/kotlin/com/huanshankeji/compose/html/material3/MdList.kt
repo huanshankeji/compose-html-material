@@ -1,13 +1,13 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
-import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.ext.disabled
 import com.huanshankeji.compose.web.attributes.ext.href
 import com.huanshankeji.compose.web.attributes.ext.target
 import com.huanshankeji.compose.web.attributes.ext.type
 import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
+import org.jetbrains.compose.web.dom.AttrBuilderContext
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
@@ -26,7 +26,7 @@ private external object ListImport
 private external object ListItemImport
 
 @Composable
-fun MdList(attrs: Attrs<HTMLElement>? = null, content: @Composable MdListScope.() -> Unit) {
+fun MdList(attrs: AttrBuilderContext<HTMLElement>? = null, content: @Composable MdListScope.() -> Unit) {
     ListImport // Load the web component
 
     TagElement("md-list", attrs) {
@@ -41,7 +41,7 @@ class MdListScope(val elementScope: ElementScope<HTMLElement>) {
         type: MdListItemType? = null,
         href: String? = null,
         target: String? = null,
-        attrs: Attrs<HTMLElement>? = null,
+        attrs: AttrBuilderContext<HTMLElement>? = null,
         content: @Composable MdListItemScope.() -> Unit
     ) =
         @OptIn(ExposedMdListApi::class)
@@ -63,7 +63,7 @@ fun MdListItem(
     type: MdListItemType? = null,
     href: String? = null,
     target: String? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: @Composable MdListItemScope.() -> Unit
 ) {
     ListItemImport // Load the web component

@@ -2,11 +2,15 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import androidx.compose.web.events.SyntheticEvent
-import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
-import com.huanshankeji.compose.web.attributes.ext.*
+import com.huanshankeji.compose.web.attributes.ext.disabled
+import com.huanshankeji.compose.web.attributes.ext.href
+import com.huanshankeji.compose.web.attributes.ext.selected
+import com.huanshankeji.compose.web.attributes.ext.target
 import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
+import org.jetbrains.compose.web.dom.AttrBuilderContext
+import org.jetbrains.compose.web.dom.ContentBuilder
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
@@ -81,7 +85,7 @@ fun MdMenu(
     stayOpenOnFocusout: Boolean? = null,
     skipRestoreFocus: Boolean? = null,
     defaultFocus: MenuDefaultFocus? = null,
-    attrs: Attrs<MdMenuElement>? = null,
+    attrs: AttrBuilderContext<MdMenuElement>? = null,
     content: @Composable (ElementScope<MdMenuElement>.() -> Unit)? = null
 ) {
     MenuImport // Load the web component
@@ -137,8 +141,8 @@ class MdMenuArgs(
     val stayOpenOnFocusout: Boolean? = null,
     val skipRestoreFocus: Boolean? = null,
     val defaultFocus: MenuDefaultFocus? = null,
-    val attrs: Attrs<HTMLElement>? = null,
-    val content: @Composable ElementScope<HTMLElement>.() -> Unit
+    val attrs: AttrBuilderContext<HTMLElement>? = null,
+    val content: ContentBuilder<HTMLElement>
 )
 
 
@@ -150,7 +154,7 @@ fun MdMenuItem(
     target: String? = null,
     keepOpen: Boolean? = null,
     selected: Boolean? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdMenuItemScope.() -> Unit)? = null
 ) {
     MenuItemImport // Load the web component
@@ -189,7 +193,7 @@ class MdMenuItemArgs(
     val target: String? = null,
     val keepOpen: Boolean? = null,
     val selected: Boolean? = null,
-    val attrs: Attrs<HTMLElement>? = null,
+    val attrs: AttrBuilderContext<HTMLElement>? = null,
     val content: @Composable MdMenuItemScope.() -> Unit
 )
 
@@ -201,7 +205,7 @@ fun MdSubMenu(
     hoverOpenDelay: Number? = null,
     hoverCloseDelay: Number? = null,
     //isSubMenu : Boolean? = null, // `md-sub-menu`, read-only
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdSubMenuScope.() -> Unit)? = null
 ) {
     SubMenuImport // Load the web component
@@ -234,7 +238,7 @@ fun MdSubMenu(
     hoverOpenDelay: Number? = null,
     hoverCloseDelay: Number? = null,
     //isSubMenu : Boolean? = null, // `md-sub-menu`
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     mdMenuItemArgs: MdMenuItemArgs,
     mdMenuArgs: MdMenuArgs
 ) =

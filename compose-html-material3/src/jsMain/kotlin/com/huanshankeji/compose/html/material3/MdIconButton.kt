@@ -1,11 +1,11 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
-import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.*
 import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
+import org.jetbrains.compose.web.dom.AttrBuilderContext
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
@@ -43,7 +43,7 @@ private fun CommonMdIconButton(
     selected: Boolean?,
     type: String?,
     value: String?,
-    attrs: Attrs<HTMLElement>?,
+    attrs: AttrBuilderContext<HTMLElement>?,
     content: @Composable MdIconButtonScope.() -> Unit
 ) =
     @Suppress("RemoveExplicitTypeArguments")
@@ -78,7 +78,7 @@ fun MdIconButton(
     selected: Boolean? = null,
     type: String? = null,
     value: String? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: @Composable MdIconButtonScope.() -> Unit
 ) {
     IconButtonImport // Load the web component
@@ -110,7 +110,7 @@ fun MdFilledIconButton(
     selected: Boolean? = null,
     type: String? = null,
     value: String? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: @Composable MdIconButtonScope.() -> Unit
 ) {
     FilledIconButtonImport // Load the web component
@@ -142,7 +142,7 @@ fun MdFilledTonalIconButton(
     selected: Boolean? = null,
     type: String? = null,
     value: String? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: @Composable MdIconButtonScope.() -> Unit
 ) {
     FilledTonalIconButtonImport // Load the web component
@@ -174,7 +174,7 @@ fun MdOutlinedIconButton(
     selected: Boolean? = null,
     type: String? = null,
     value: String? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: @Composable MdIconButtonScope.() -> Unit
 ) {
     OutlinedIconButtonImport // Load the web component

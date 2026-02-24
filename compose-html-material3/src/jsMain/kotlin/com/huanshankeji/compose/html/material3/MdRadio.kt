@@ -1,14 +1,13 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
-import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.ariaLabel
 import com.huanshankeji.compose.web.attributes.ext.required
 import com.huanshankeji.compose.web.attributes.ext.value
 import com.varabyte.kobweb.compose.css.role
 import org.jetbrains.compose.web.dom.AttrBuilderContext
-import org.jetbrains.compose.web.dom.ElementScope
+import org.jetbrains.compose.web.dom.ContentBuilder
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
 
@@ -27,8 +26,8 @@ fun MdRadio(
     required: Boolean? = null,
     value: String? = null,
     checked: Boolean? = null,
-    attrs: Attrs<HTMLElement>? = null,
-    content: (@Composable ElementScope<HTMLElement>.() -> Unit)? = null
+    attrs: AttrBuilderContext<HTMLElement>? = null,
+    content: ContentBuilder<HTMLElement>? = null
 ) {
     RadioImport // Load the web component
 

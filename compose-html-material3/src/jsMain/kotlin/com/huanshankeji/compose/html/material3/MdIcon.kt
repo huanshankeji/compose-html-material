@@ -1,8 +1,8 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
-import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
+import org.jetbrains.compose.web.dom.AttrBuilderContext
 import org.jetbrains.compose.web.dom.TagElement
 import org.jetbrains.compose.web.dom.Text
 import org.w3c.dom.HTMLElement
@@ -21,7 +21,7 @@ private external object IconImport
  * @param content see https://github.com/material-components/material-web/blob/main/docs/components/icon.md#usage
  */
 @Composable
-fun MdIcon(filled: Boolean? = null, attrs: Attrs<HTMLElement>?, content: @Composable () -> Unit) {
+fun MdIcon(filled: Boolean? = null, attrs: AttrBuilderContext<HTMLElement>?, content: @Composable () -> Unit) {
     IconImport // Load the web component
 
     @Suppress("RemoveExplicitTypeArguments")
@@ -35,5 +35,5 @@ fun MdIcon(filled: Boolean? = null, attrs: Attrs<HTMLElement>?, content: @Compos
 }
 
 @Composable
-fun MdIcon(filled: Boolean? = null, attrs: Attrs<HTMLElement>?, materialIconName: String) =
+fun MdIcon(filled: Boolean? = null, attrs: AttrBuilderContext<HTMLElement>?, materialIconName: String) =
     MdIcon(filled, attrs) { Text(materialIconName) }

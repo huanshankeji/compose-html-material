@@ -1,7 +1,6 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
-import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.disabled
 import com.huanshankeji.compose.web.attributes.ext.label
@@ -9,6 +8,8 @@ import com.huanshankeji.compose.web.attributes.ext.required
 import com.huanshankeji.compose.web.attributes.ext.value
 import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
+import org.jetbrains.compose.web.dom.AttrBuilderContext
+import org.jetbrains.compose.web.dom.ContentBuilder
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
@@ -38,8 +39,8 @@ enum class SelectMenuAlign(val value: String) {
     Start("start"), End("end")
 }
 
-private fun (@Composable MdSelectScope.() -> Unit)?.toElementScopeContent(): (@Composable ElementScope<HTMLElement>.() -> Unit)? =
-    this?.let { { MdSelectScope(this).it() } }
+private fun (@Composable MdSelectScope.() -> Unit)?.toElementScopeContentBuilder(): ContentBuilder<HTMLElement>? =
+    toElementScopeContentBuilder(::MdSelectScope)
 
 @Composable
 private fun CommonSelect(
@@ -59,7 +60,7 @@ private fun CommonSelect(
     menuAlign: SelectMenuAlign?,
     value: String?,
     selectedIndex: Int?,
-    attrs: Attrs<HTMLElement>?,
+    attrs: AttrBuilderContext<HTMLElement>?,
     content: (@Composable MdSelectScope.() -> Unit)?
 ) =
     TagElement(
@@ -83,7 +84,7 @@ private fun CommonSelect(
 
             attrs?.invoke(this)
         },
-        content.toElementScopeContent()
+        content.toElementScopeContentBuilder()
     )
 
 @Composable
@@ -103,7 +104,7 @@ fun MdFilledSelect(
     menuAlign: SelectMenuAlign? = null,
     value: String? = null,
     selectedIndex: Int? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdSelectScope.() -> Unit)? = null
 ) {
     FilledSelectImport // Load the web component
@@ -147,7 +148,7 @@ fun MdOutlinedSelect(
     menuAlign: SelectMenuAlign? = null,
     value: String? = null,
     selectedIndex: Int? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdSelectScope.() -> Unit)? = null
 ) {
     OutlinedSelectImport // Load the web component
@@ -190,7 +191,7 @@ fun MdSelectOption(
     disabled: Boolean? = null,
     selected: Boolean? = null,
     value: String? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdSelectOptionScope.() -> Unit)? = null
 ) {
     SelectOptionImport // Load the web component

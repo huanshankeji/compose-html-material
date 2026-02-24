@@ -1,10 +1,11 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
-import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
+import org.jetbrains.compose.web.dom.AttrBuilderContext
+import org.jetbrains.compose.web.dom.ContentBuilder
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
@@ -29,8 +30,8 @@ private external object SecondaryTabImport
 fun MdTabs(
     autoActivate: Boolean? = null,
     activeTabIndex: Int? = null,
-    attrs: Attrs<HTMLElement>? = null,
-    content: (@Composable ElementScope<HTMLElement>.() -> Unit)? = null
+    attrs: AttrBuilderContext<HTMLElement>? = null,
+    content: ContentBuilder<HTMLElement>? = null
 ) {
     TabsImport // Load the web component
 
@@ -42,8 +43,8 @@ fun MdTabs(
     }, content)
 }
 
-private fun (@Composable MdTabScope.() -> Unit)?.toElementScopeContent(): (@Composable ElementScope<HTMLElement>.() -> Unit)? =
-    this?.let { { MdTabScope(this).it() } }
+private fun (@Composable MdTabScope.() -> Unit)?.toElementScopeContentBuilder(): ContentBuilder<HTMLElement>? =
+    toElementScopeContentBuilder(::MdTabScope)
 
 @Composable
 private fun CommonTab(
@@ -54,7 +55,7 @@ private fun CommonTab(
     hasIcon: Boolean?,
     iconOnly: Boolean?,
     selected: Boolean?,
-    attrs: Attrs<HTMLElement>?,
+    attrs: AttrBuilderContext<HTMLElement>?,
     content: (@Composable MdTabScope.() -> Unit)?
 ) =
     TagElement(
@@ -69,7 +70,7 @@ private fun CommonTab(
 
             attrs?.invoke(this)
         },
-        content.toElementScopeContent()
+        content.toElementScopeContentBuilder()
     )
 
 @Composable
@@ -80,7 +81,7 @@ fun MdPrimaryTab(
     hasIcon: Boolean? = null,
     iconOnly: Boolean? = null,
     selected: Boolean? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdTabScope.() -> Unit)? = null
 ) {
     PrimaryTabImport // Load the web component
@@ -98,7 +99,7 @@ fun MdSecondaryTab(
     hasIcon: Boolean? = null,
     iconOnly: Boolean? = null,
     selected: Boolean? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdTabScope.() -> Unit)? = null
 ) {
     SecondaryTabImport // Load the web component

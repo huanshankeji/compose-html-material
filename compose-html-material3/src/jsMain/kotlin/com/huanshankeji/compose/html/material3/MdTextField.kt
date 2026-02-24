@@ -1,7 +1,6 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
-import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.*
 import com.huanshankeji.compose.web.attributes.slot
@@ -9,6 +8,7 @@ import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.attributes.AutoComplete
 import org.jetbrains.compose.web.attributes.InputMode
 import org.jetbrains.compose.web.attributes.InputType
+import org.jetbrains.compose.web.dom.AttrBuilderContext
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
@@ -55,7 +55,7 @@ private fun CommonTextField(
     step: String?,
     type: InputType<*>?,
     autocomplete: AutoComplete?,
-    attrs: Attrs<HTMLElement>?,
+    attrs: AttrBuilderContext<HTMLElement>?,
     content: (@Composable MdTextFieldScope.() -> Unit)?
 ) =
     TagElement(tagName, {
@@ -117,7 +117,7 @@ fun MdFilledTextField(
     step: String? = null,
     type: InputType<*>? = null,
     autocomplete: AutoComplete? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdTextFieldScope.() -> Unit)? = null
 ) {
     FilledTextFieldImport // Load the web component
@@ -183,7 +183,7 @@ fun MdOutlinedTextField(
     step: String? = null,
     type: InputType<*>? = null,
     autocomplete: AutoComplete? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdTextFieldScope.() -> Unit)? = null
 ) {
     OutlinedTextFieldImport // Load the web component

@@ -2,8 +2,8 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.html.material3.attributes.indeterminate
-import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
+import org.jetbrains.compose.web.dom.AttrBuilderContext
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
@@ -24,12 +24,12 @@ private external object CircularProgressImport
 @Composable
 private fun CommonMdProgress(
     tagName: String,
-    attrsBefore: Attrs<HTMLElement>?,
+    attrsBefore: AttrBuilderContext<HTMLElement>?,
     value: Number?,
     max: Number?,
     indeterminate: Boolean?,
     fourColor: Boolean?,
-    attrs: Attrs<HTMLElement>?,
+    attrs: AttrBuilderContext<HTMLElement>?,
     content: @Composable (ElementScope<HTMLElement>.() -> Unit)?
 ) =
     TagElement(tagName, {
@@ -50,7 +50,7 @@ fun MdLinearProgress(
     max: Number? = null,
     indeterminate: Boolean? = null,
     fourColor: Boolean? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: @Composable (ElementScope<HTMLElement>.() -> Unit)? = null
 ) {
     LinearProgressImport // Load the web component
@@ -68,7 +68,7 @@ fun MdCircularProgress(
     max: Number? = null,
     indeterminate: Boolean? = null,
     fourColor: Boolean? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: @Composable (ElementScope<HTMLElement>.() -> Unit)? = null
 ) {
     CircularProgressImport // Load the web component

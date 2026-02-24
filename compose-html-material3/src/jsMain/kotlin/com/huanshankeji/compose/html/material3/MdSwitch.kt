@@ -1,13 +1,9 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
-import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.*
-import org.jetbrains.compose.web.dom.ElementScope
-import org.jetbrains.compose.web.dom.Label
-import org.jetbrains.compose.web.dom.TagElement
-import org.jetbrains.compose.web.dom.Text
+import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.HTMLElement
 
 /*
@@ -30,8 +26,8 @@ fun MdSwitch(
     value: String? = null,
     name: String? = null,
     form: String? = null,
-    attrs: Attrs<HTMLElement>? = null,
-    content: (@Composable ElementScope<HTMLElement>.() -> Unit)? = null
+    attrs: AttrBuilderContext<HTMLElement>? = null,
+    content: ContentBuilder<HTMLElement>? = null
 ) {
     SwitchImport // Load the web component
 
@@ -61,7 +57,7 @@ fun LabelWithMdSwitch(
     value: String? = null,
     name: String? = null,
     form: String? = null,
-    attrs: Attrs<HTMLElement>? = null
+    attrs: AttrBuilderContext<HTMLElement>? = null
 ) =
     Label {
         Text(label)

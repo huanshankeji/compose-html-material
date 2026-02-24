@@ -1,11 +1,12 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
-import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.*
 import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
+import org.jetbrains.compose.web.dom.AttrBuilderContext
+import org.jetbrains.compose.web.dom.ContentBuilder
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
@@ -34,10 +35,10 @@ private external object SuggestionChipImport
 
 @Composable
 fun MdChipSet(
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     ariaLabel: String? = null,
     ariaLabelledBy: String? = null,
-    content: (@Composable ElementScope<HTMLElement>.() -> Unit)? = null
+    content: ContentBuilder<HTMLElement>? = null
 ) {
     ChipSetImport // Load the web component
 
@@ -49,8 +50,8 @@ fun MdChipSet(
     }, content)
 }
 
-private fun (@Composable MdChipScope.() -> Unit)?.toElementScopeContent(): (@Composable ElementScope<HTMLElement>.() -> Unit)? =
-    this?.let { { MdChipScope(this).it() } }
+private fun (@Composable MdChipScope.() -> Unit)?.toElementScopeContentBuilder(): ContentBuilder<HTMLElement>? =
+    toElementScopeContentBuilder(::MdChipScope)
 
 @Composable
 private fun CommonMdAssistAndMdSuggestionChip(
@@ -64,7 +65,7 @@ private fun CommonMdAssistAndMdSuggestionChip(
     alwaysFocusable: Boolean?,
     label: String?,
     hasIcon: Boolean?,
-    attrs: Attrs<HTMLElement>?,
+    attrs: AttrBuilderContext<HTMLElement>?,
     content: (@Composable MdChipScope.() -> Unit)?
 ) =
     TagElement(
@@ -82,7 +83,7 @@ private fun CommonMdAssistAndMdSuggestionChip(
 
             attrs?.invoke(this)
         },
-        content.toElementScopeContent()
+        content.toElementScopeContentBuilder()
     )
 
 @Composable
@@ -96,7 +97,7 @@ fun MdAssistChip(
     alwaysFocusable: Boolean? = null,
     label: String? = null,
     hasIcon: Boolean? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdChipScope.() -> Unit)? = null
 ) {
     AssistChipImport // Load the web component
@@ -118,7 +119,7 @@ fun MdFilterChip(
     alwaysFocusable: Boolean? = null,
     label: String? = null,
     hasIcon: Boolean? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdChipScope.() -> Unit)? = null
 ) {
     FilterChipImport // Load the web component
@@ -135,7 +136,7 @@ fun MdFilterChip(
         attrIfNotNull("has-icon", hasIcon)
 
         attrs?.invoke(this)
-    }, content.toElementScopeContent())
+    }, content.toElementScopeContentBuilder())
 }
 
 @Composable
@@ -150,7 +151,7 @@ fun MdInputChip(
     alwaysFocusable: Boolean? = null,
     label: String? = null,
     hasIcon: Boolean? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdChipScope.() -> Unit)? = null
 ) {
     InputChipImport // Load the web component
@@ -168,7 +169,7 @@ fun MdInputChip(
         attrIfNotNull("has-icon", hasIcon)
 
         attrs?.invoke(this)
-    }, content.toElementScopeContent())
+    }, content.toElementScopeContentBuilder())
 }
 
 @Composable
@@ -182,7 +183,7 @@ fun MdSuggestionChip(
     alwaysFocusable: Boolean? = null,
     label: String? = null,
     hasIcon: Boolean? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdChipScope.() -> Unit)? = null
 ) {
     SuggestionChipImport // Load the web component

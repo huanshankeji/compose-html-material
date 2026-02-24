@@ -200,8 +200,8 @@ Material 3 components follow a consistent pattern (see `compose-html-material3/s
 fun MdComponentName(
     disabled: Boolean? = null,
     // ... component-specific parameters
-    attrs: Attrs<HTMLElement>? = null,
-    content: (@Composable ElementScope<HTMLElement>.() -> Unit)? = null
+    attrs: AttrBuilderContext<HTMLElement>? = null,
+    content: ContentBuilder<HTMLElement>? = null
 ) {
     TagElement("md-component-name", {
         disabled(disabled)
