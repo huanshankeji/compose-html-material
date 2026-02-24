@@ -13,18 +13,18 @@ https://github.com/material-components/material-web/blob/main/labs/segmentedbutt
 */
 
 @JsModule("@material/web/labs/segmentedbuttonset/outlined-segmented-button-set.js")
-private external object SegmentedButtonSetImport
+private external object OutlinedSegmentedButtonSetImport
 
 @MaterialWebLabsApi
 @Composable
-fun MdSegmentedButtonSet(
+fun MdOutlinedSegmentedButtonSet(
     multiselect: Boolean? = null,
     attrs: Attrs<HTMLElement>? = null,
     content: (@Composable ElementScope<HTMLElement>.() -> Unit)? = null
 ) {
-    SegmentedButtonSetImport // Load the web component
+    OutlinedSegmentedButtonSetImport // Load the web component
 
-    TagElement("md-segmented-button-set", {
+    TagElement("md-outlined-segmented-button-set", {
         multiselect?.let { attr("multiselect", it) }
 
         attrs?.invoke(this)

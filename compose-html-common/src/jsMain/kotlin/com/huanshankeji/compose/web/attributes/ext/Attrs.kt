@@ -26,6 +26,16 @@ Consider reordering them.
 fun AttrsScope<*>.ariaLabel(value: String) =
     attr("aria-label", value)
 
+fun AttrsScope<*>.ariaLabel(value: String?) =
+    value?.let { ariaLabel(it) }
+
+// https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby
+fun AttrsScope<*>.ariaLabelledBy(value: String) =
+    attr("aria-labelledby", value)
+
+fun AttrsScope<*>.ariaLabelledBy(value: String?) =
+    value?.let { ariaLabelledBy(it) }
+
 
 // https://www.w3schools.com/tags/att_disabled.asp
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled
@@ -42,6 +52,9 @@ fun AttrsScope<*>.href(value: String?) =
 fun AttrsScope<*>.target(value: String?) =
     attrIfNotNull("target", value)
 
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#download
+fun AttrsScope<*>.download(value: String?) =
+    attrIfNotNull("download", value)
 
 // https://www.w3schools.com/tags/att_input_type.asp
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#type

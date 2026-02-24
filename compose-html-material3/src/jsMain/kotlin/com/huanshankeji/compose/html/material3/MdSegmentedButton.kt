@@ -11,8 +11,7 @@ import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
 
 /*
-https://github.com/material-components/material-web/blob/main/labs/segmentedbutton/internal/outlined-segmented-button.ts
-https://github.com/material-components/material-web/blob/main/labs/segmentedbutton/demo/stories.ts
+https://github.com/material-components/material-web/blob/main/labs/segmentedbutton/internal/segmented-button.ts
 */
 
 @JsModule("@material/web/labs/segmentedbutton/outlined-segmented-button.js")

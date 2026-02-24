@@ -22,22 +22,22 @@ private external object DialogImport
 
 @Composable
 fun MdDialog(
-    open: Boolean? = null,
     quick: Boolean? = null,
     returnValue: String? = null,
     type: String? = null,
     noFocusTrap: Boolean? = null,
+    open: Boolean? = null,
     attrs: Attrs<HTMLElement>? = null,
     content: (@Composable MdDialogScope.() -> Unit)? = null
 ) {
     DialogImport // Load the web component
 
     TagElement("md-dialog", {
-        open?.let { attr("open", it) }
         quick?.let { attr("quick", it) }
         returnValue?.let { attr("return-value", it) }
         type(type)
         noFocusTrap?.let { attr("no-focus-trap", it) }
+        open?.let { attr("open", it) }
 
         attrs?.invoke(this)
     }, content?.let {
@@ -46,6 +46,8 @@ fun MdDialog(
 }
 
 class MdDialogScope(val elementScope: ElementScope<HTMLElement>) {
+    // TODO use an enum like in #22
+
     fun AttrsScope<*>.slotEqHeadline() =
         slot("headline")
 

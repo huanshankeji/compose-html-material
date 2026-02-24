@@ -9,7 +9,6 @@ import org.w3c.dom.HTMLElement
 
 /*
 https://github.com/material-components/material-web/blob/main/labs/navigationdrawer/internal/navigation-drawer.ts
-https://github.com/material-components/material-web/blob/main/labs/navigationdrawer/demo/stories.ts
 */
 
 @JsModule("@material/web/labs/navigationdrawer/navigation-drawer.js")
@@ -18,6 +17,10 @@ private external object NavigationDrawerImport
 @JsModule("@material/web/labs/navigationdrawer/navigation-drawer-modal.js")
 private external object NavigationDrawerModalImport
 
+/**
+ * From https://m3.material.io/components/navigation-drawer/overview:
+ * > Note: The navigation drawer is no longer recommended in the Material 3 expressive update. For those who have updated, use an expanded navigation rail, which has mostly the same functionality of the navigation drawer and adapts better across window size classes.
+ */
 @MaterialWebLabsApi
 @Composable
 fun MdNavigationDrawer(
@@ -36,6 +39,10 @@ fun MdNavigationDrawer(
     }, content)
 }
 
+/**
+ * From https://m3.material.io/components/navigation-drawer/overview:
+ * > Note:The navigation drawer is no longer recommended in the Material 3 expressive update. For those who have updated, use an expanded navigation rail, which has mostly the same functionality of the navigation drawer and adapts better across window size classes.
+ */
 @MaterialWebLabsApi
 @Composable
 fun MdNavigationDrawerModal(

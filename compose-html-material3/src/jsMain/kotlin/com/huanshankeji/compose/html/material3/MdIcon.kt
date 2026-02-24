@@ -11,6 +11,7 @@ import org.w3c.dom.HTMLElement
 https://github.com/material-components/material-web/blob/main/docs/components/icon.md
 https://material-web.dev/components/icon/
 https://m3.material.io/styles/icons/overview
+https://fonts.google.com/icons
 */
 
 @JsModule("@material/web/icon/icon.js")
