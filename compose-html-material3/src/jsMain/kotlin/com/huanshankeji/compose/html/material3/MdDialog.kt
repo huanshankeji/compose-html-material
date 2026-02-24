@@ -53,22 +53,9 @@ class MdDialogScope(val elementScope: ElementScope<HTMLElement>) {
     enum class Slot(val value: String) {
         Headline("headline"),
         Content("content"),
-        Actions("actions"),
-        Icon("icon")
+        Actions("actions")
     }
 
     fun AttrsScope<*>.slot(slot: Slot) =
         slot(slot.value)
-
-    fun AttrsScope<*>.slotEqHeadline() =
-        slot(Slot.Headline)
-
-    fun AttrsScope<*>.slotEqContent() =
-        slot(Slot.Content)
-
-    fun AttrsScope<*>.slotEqActions() =
-        slot(Slot.Actions)
-
-    fun AttrsScope<*>.slotEqIcon() =
-        slot(Slot.Icon)
 }

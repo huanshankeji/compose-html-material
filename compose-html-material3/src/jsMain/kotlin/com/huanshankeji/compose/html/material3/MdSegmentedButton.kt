@@ -13,7 +13,6 @@ import org.w3c.dom.HTMLElement
 /*
 https://github.com/material-components/material-web/blob/main/labs/segmentedbutton/internal/outlined-segmented-button.ts
 https://github.com/material-components/material-web/blob/main/labs/segmentedbutton/demo/stories.ts
-https://github.com/material-components/material-web/blob/main/labs/segmentedbutton/README.md
 https://material-web.dev/components/segmented-button/
 https://m3.material.io/components/segmented-buttons/overview
 */
@@ -54,7 +53,4 @@ class MdSegmentedButtonScope(val elementScope: ElementScope<HTMLElement>) {
 
     fun AttrsScope<*>.slot(slot: Slot) =
         slot(slot.value)
-
-    fun AttrsScope<*>.slotEqIcon() =
-        slot(Slot.Icon)
 }

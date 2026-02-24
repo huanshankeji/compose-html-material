@@ -188,19 +188,6 @@ open class MdChipScope(val elementScope: ElementScope<HTMLElement>) {
 
     fun AttrsScope<*>.slot(slot: Slot) =
         slot(slot.value)
-
-    fun AttrsScope<*>.slotEqIcon() =
-        slot(Slot.Icon)
 }
 
-class MdInputChipScope(elementScope: ElementScope<HTMLElement>) : MdChipScope(elementScope) {
-    enum class InputChipSlot(val value: String) {
-        TrailingIcon("trailing-icon")
-    }
-
-    fun AttrsScope<*>.slot(slot: InputChipSlot) =
-        slot(slot.value)
-
-    fun AttrsScope<*>.slotEqTrailingIcon() =
-        slot(InputChipSlot.TrailingIcon)
-}
+class MdInputChipScope(elementScope: ElementScope<HTMLElement>) : MdChipScope(elementScope)

@@ -12,7 +12,6 @@ import org.w3c.dom.HTMLElement
 /*
 https://github.com/material-components/material-web/blob/main/labs/navigationdrawer/internal/navigation-drawer.ts
 https://github.com/material-components/material-web/blob/main/labs/navigationdrawer/demo/stories.ts
-https://github.com/material-components/material-web/blob/main/labs/navigationdrawer/README.md
 https://material-web.dev/components/navigation-drawer/
 https://m3.material.io/components/navigation-drawer/overview
 */
@@ -70,17 +69,4 @@ fun MdNavigationDrawerModal(
     }, content.toElementScopeContent(::MdNavigationDrawerScope))
 }
 
-class MdNavigationDrawerScope(val elementScope: ElementScope<HTMLElement>) {
-    enum class Slot(val value: String) {
-        Header("header"), Footer("footer")
-    }
-
-    fun AttrsScope<*>.slot(slot: Slot) =
-        slot(slot.value)
-
-    fun AttrsScope<*>.slotEqHeader() =
-        slot(Slot.Header)
-
-    fun AttrsScope<*>.slotEqFooter() =
-        slot(Slot.Footer)
-}
+class MdNavigationDrawerScope(val elementScope: ElementScope<HTMLElement>)

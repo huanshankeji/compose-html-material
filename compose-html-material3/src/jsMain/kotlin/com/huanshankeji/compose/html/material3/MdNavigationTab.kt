@@ -14,7 +14,6 @@ import org.w3c.dom.HTMLElement
 /*
 https://github.com/material-components/material-web/blob/main/labs/navigationtab/internal/navigation-tab.ts
 https://github.com/material-components/material-web/blob/main/labs/navigationbar/demo/stories.ts (navigation bar storybook)
-https://github.com/material-components/material-web/blob/main/labs/navigationtab/README.md
 https://material-web.dev/components/navigation-bar/
 https://m3.material.io/components/navigation-bar/overview
  */
@@ -55,10 +54,4 @@ class MdNavigationTabScope(val elementScope: ElementScope<HTMLElement>) {
 
     fun AttrsScope<*>.slot(slot: Slot) =
         slot(slot.value)
-
-    fun AttrsScope<*>.slotEqActiveIcon() =
-        slot(Slot.ActiveIcon)
-
-    fun AttrsScope<*>.slotEqInactiveIcon() =
-        slot(Slot.InactiveIcon)
 }

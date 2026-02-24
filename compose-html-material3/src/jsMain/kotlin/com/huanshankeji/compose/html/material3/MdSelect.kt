@@ -27,6 +27,9 @@ private external object OutlinedSelectImport
 @JsModule("@material/web/select/select-option.js")
 private external object SelectOptionImport
 
+/*
+https://github.com/material-components/material-web/blob/516cbc02bf770b7c3c5c6b546f1e5d81939b9f23/select/internal/select.ts#L134-L135
+*/
 enum class SelectMenuPositioning(val value: String) {
     Absolute("absolute"), Fixed("fixed"), Popover("popover")
 }
@@ -176,7 +179,6 @@ fun MdSelectOption(
     disabled: Boolean? = null,
     selected: Boolean? = null,
     value: String? = null,
-    type: String? = null,
     keepOpen: Boolean? = null,
     displayText: String? = null,
     attrs: Attrs<HTMLElement>? = null,
@@ -188,7 +190,6 @@ fun MdSelectOption(
         disabled(disabled)
         selected(selected)
         value(value)
-        type(type)
         attrIfNotNull("keep-open", keepOpen)
         displayText?.let { attr("display-text", it) }
 
@@ -198,16 +199,18 @@ fun MdSelectOption(
 
 class MdSelectScope(val elementScope: ElementScope<HTMLElement>) {
     enum class Slot(val value: String) {
-        LeadingIcon("leading-icon")
+        LeadingIcon("leading-icon"),
+        TrailingIcon("trailing-icon")
     }
 
     fun AttrsScope<*>.slot(slot: Slot) =
         slot(slot.value)
-
-    fun AttrsScope<*>.slotEqLeadingIcon() =
-        slot(Slot.LeadingIcon)
 }
 
+/*
+https://github.com/material-components/material-web/blob/516cbc02bf770b7c3c5c6b546f1e5d81939b9f23/select/internal/selectoption/select-option.ts#L144-L155
+https://github.com/material-components/material-web/blob/516cbc02bf770b7c3c5c6b546f1e5d81939b9f23/select/internal/selectoption/select-option.ts#L214-L224
+*/
 class MdSelectOptionScope(val elementScope: ElementScope<HTMLElement>) {
     enum class Slot(val value: String) {
         Headline("headline"),
@@ -219,10 +222,4 @@ class MdSelectOptionScope(val elementScope: ElementScope<HTMLElement>) {
 
     fun AttrsScope<*>.slot(slot: Slot) =
         slot(slot.value)
-
-    fun AttrsScope<*>.slotEqStart() =
-        slot(Slot.Start)
-
-    fun AttrsScope<*>.slotEqEnd() =
-        slot(Slot.End)
 }
