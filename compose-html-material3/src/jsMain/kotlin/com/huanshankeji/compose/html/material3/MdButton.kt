@@ -207,4 +207,8 @@ class MdButtonScope(val elementScope: ElementScope<HTMLElement>) {
 
     fun AttrsScope<*>.slot(slot: Slot) =
         slot(slot.value)
+
+    @Deprecated("Use slot(Slot.Icon) instead.", ReplaceWith("this.slot(MdButtonScope.Slot.Icon)"))
+    fun AttrsScope<*>.slotEqIcon() =
+        slot(Slot.Icon)
 }

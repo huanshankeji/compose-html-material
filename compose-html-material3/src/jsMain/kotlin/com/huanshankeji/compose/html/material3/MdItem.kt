@@ -37,8 +37,12 @@ fun MdItem(
 }
 
 class MdItemScope(val elementScope: ElementScope<HTMLElement>) {
-    fun AttrsScope<*>.slotEqSupportingText() =
-        slot("supporting-text")
+    enum class Slot(val value: String) {
+        SupportingText("supporting-text")
+    }
+
+    fun AttrsScope<*>.slot(slot: Slot) =
+        slot(slot.value)
 
     /*
     @Composable
@@ -47,7 +51,7 @@ class MdItemScope(val elementScope: ElementScope<HTMLElement>) {
         content: ContentBuilder<HTMLDivElement>
     ) =
         Div({
-            slotEqTupportingText()
+            slot(Slot.SupportingText)
             attrs?.invoke(this)
         }, content)
     */

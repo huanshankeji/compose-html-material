@@ -197,6 +197,14 @@ fun MdOutlinedIconButton(
 
 
 class MdIconButtonScope(val elementScope: ElementScope<HTMLElement>) {
+    enum class Slot(val value: String) {
+        Selected("selected")
+    }
+
+    fun AttrsScope<*>.slot(slot: Slot) =
+        slot(slot.value)
+
+    @Deprecated("Use slot(Slot.Selected) instead.", ReplaceWith("this.slot(MdIconButtonScope.Slot.Selected)"))
     fun AttrsScope<*>.slotEqSelected() =
-        slot("selected")
+        slot(Slot.Selected)
 }

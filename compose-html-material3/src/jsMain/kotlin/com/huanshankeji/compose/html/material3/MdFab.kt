@@ -74,6 +74,14 @@ fun MdBrandedFab(
 
 
 class MdFabScope(val elementScope: ElementScope<HTMLElement>) {
+    enum class Slot(val value: String) {
+        Icon("icon")
+    }
+
+    fun AttrsScope<*>.slot(slot: Slot) =
+        slot(slot.value)
+
+    @Deprecated("Use slot(Slot.Icon) instead.", ReplaceWith("this.slot(MdFabScope.Slot.Icon)"))
     fun AttrsScope<*>.slotEqIcon() =
-        slot("icon")
+        slot(Slot.Icon)
 }
