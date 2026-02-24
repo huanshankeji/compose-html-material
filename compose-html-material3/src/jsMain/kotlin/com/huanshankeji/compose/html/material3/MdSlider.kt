@@ -41,11 +41,11 @@ fun MdSlider(
     SliderImport // Load the web component
 
     TagElement("md-slider", {
-        min?.let { attr("min", it.toString()) }
-        max?.let { attr("max", it.toString()) }
-        value?.let { attr("value", it.toString()) }
-        valueStart?.let { attr("value-start", it.toString()) }
-        valueEnd?.let { attr("value-end", it.toString()) }
+        min?.let { attr("min", it) }
+        max?.let { attr("max", it) }
+        value?.let { attr("value", it) }
+        valueStart?.let { attr("value-start", it) }
+        valueEnd?.let { attr("value-end", it) }
         valueLabel?.let { attr("value-label", it) }
         valueLabelStart?.let { attr("value-label-start", it) }
         valueLabelEnd?.let { attr("value-label-end", it) }
@@ -53,7 +53,7 @@ fun MdSlider(
         ariaValueTextStart?.let { attr("aria-valuetext-start", it) }
         ariaLabelEnd?.let { attr("aria-label-end", it) }
         ariaValueTextEnd?.let { attr("aria-valuetext-end", it) }
-        step?.let { attr("step", it.toString()) }
+        step?.let { attr("step", it) }
         ticks?.let { attr("ticks", it) }
         labeled?.let { attr("labeled", it) }
         range?.let { attr("range", it) }

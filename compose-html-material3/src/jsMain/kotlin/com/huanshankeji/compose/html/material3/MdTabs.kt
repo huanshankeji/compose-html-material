@@ -36,7 +36,7 @@ fun MdTabs(
 
     TagElement("md-tabs", {
         autoActivate?.let { attr("auto-activate", it) }
-        activeTabIndex?.let { attr("active-tab-index", it.toString()) }
+        activeTabIndex?.let { attr("active-tab-index", it) }
 
         attrs?.invoke(this)
     }, content)

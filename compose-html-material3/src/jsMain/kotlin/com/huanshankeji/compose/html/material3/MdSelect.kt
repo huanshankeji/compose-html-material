@@ -65,12 +65,12 @@ private fun CommonSelect(
             error?.let { attr("error", it) }
             menuPositioning?.let { attr("menu-positioning", it) }
             clampMenuWidth?.let { attr("clamp-menu-width", it) }
-            typeaheadDelay?.let { attr("typeahead-delay", it.toString()) }
+            typeaheadDelay?.let { attr("typeahead-delay", it) }
             hasLeadingIcon?.let { attr("has-leading-icon", it) }
             displayText?.let { attr("display-text", it) }
             menuAlign?.let { attr("menu-align", it) }
             value(value)
-            selectedIndex?.let { attr("selected-index", it.toString()) }
+            selectedIndex?.let { attr("selected-index", it) }
 
             attrs?.invoke(this)
         },
