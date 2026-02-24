@@ -2,6 +2,7 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
+import com.huanshankeji.compose.web.attributes.attr
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.*
 import com.huanshankeji.compose.web.attributes.slot
@@ -30,6 +31,9 @@ private external object FilledTonalIconButtonImport
 @JsModule("@material/web/iconbutton/outlined-icon-button.js")
 private external object OutlinedIconButtonImport
 
+enum class IconButtonType(val value: String) {
+    Button("button"), Submit("submit"), Reset("reset")
+}
 
 @Composable
 private fun CommonMdIconButton(
@@ -41,29 +45,29 @@ private fun CommonMdIconButton(
     ariaLabelSelected: String?,
     toggle: Boolean?,
     selected: Boolean?,
-    type: String?,
+    type: IconButtonType?,
     value: String?,
     attrs: Attrs<HTMLElement>?,
-    content: @Composable MdIconButtonScope.() -> Unit
+    content: (@Composable MdIconButtonScope.() -> Unit)?
 ) =
     @Suppress("RemoveExplicitTypeArguments")
     TagElement<HTMLElement>(
         tagName,
         {
             disabled(disabled)
-            attrIfNotNull("flip-icon-in-rtl", flipIconInRtl)
+            flipIconInRtl?.let { attr("flip-icon-in-rtl", it) }
             href(href)
             target(target)
-            attrIfNotNull("aria-label-selected", ariaLabelSelected)
-            attrIfNotNull("toggle", toggle)
+            ariaLabelSelected?.let { attr("aria-label-selected", it) }
+            toggle?.let { attr("toggle", it) }
             selected(selected)
-            type(type)
+            attrIfNotNull("type", type?.value)
             value(value)
 
             attrs?.invoke(this)
         }
     ) {
-        MdIconButtonScope(this).content()
+        content?.let { MdIconButtonScope(this).it() }
     }
 
 
@@ -76,10 +80,10 @@ fun MdIconButton(
     ariaLabelSelected: String? = null,
     toggle: Boolean? = null,
     selected: Boolean? = null,
-    type: String? = null,
+    type: IconButtonType? = null,
     value: String? = null,
     attrs: Attrs<HTMLElement>? = null,
-    content: @Composable MdIconButtonScope.() -> Unit
+    content: (@Composable MdIconButtonScope.() -> Unit)? = null
 ) {
     IconButtonImport // Load the web component
 
@@ -108,10 +112,10 @@ fun MdFilledIconButton(
     ariaLabelSelected: String? = null,
     toggle: Boolean? = null,
     selected: Boolean? = null,
-    type: String? = null,
+    type: IconButtonType? = null,
     value: String? = null,
     attrs: Attrs<HTMLElement>? = null,
-    content: @Composable MdIconButtonScope.() -> Unit
+    content: (@Composable MdIconButtonScope.() -> Unit)? = null
 ) {
     FilledIconButtonImport // Load the web component
 
@@ -140,10 +144,10 @@ fun MdFilledTonalIconButton(
     ariaLabelSelected: String? = null,
     toggle: Boolean? = null,
     selected: Boolean? = null,
-    type: String? = null,
+    type: IconButtonType? = null,
     value: String? = null,
     attrs: Attrs<HTMLElement>? = null,
-    content: @Composable MdIconButtonScope.() -> Unit
+    content: (@Composable MdIconButtonScope.() -> Unit)? = null
 ) {
     FilledTonalIconButtonImport // Load the web component
 
@@ -172,10 +176,10 @@ fun MdOutlinedIconButton(
     ariaLabelSelected: String? = null,
     toggle: Boolean? = null,
     selected: Boolean? = null,
-    type: String? = null,
+    type: IconButtonType? = null,
     value: String? = null,
     attrs: Attrs<HTMLElement>? = null,
-    content: @Composable MdIconButtonScope.() -> Unit
+    content: (@Composable MdIconButtonScope.() -> Unit)? = null
 ) {
     OutlinedIconButtonImport // Load the web component
 
@@ -197,6 +201,10 @@ fun MdOutlinedIconButton(
 
 
 class MdIconButtonScope(val elementScope: ElementScope<HTMLElement>) {
-    fun AttrsScope<*>.slotEqSelected() =
-        slot("selected")
+    enum class Slot(val value: String) {
+        Selected("selected")
+    }
+
+    fun AttrsScope<*>.slot(slot: Slot) =
+        slot(slot.value)
 }

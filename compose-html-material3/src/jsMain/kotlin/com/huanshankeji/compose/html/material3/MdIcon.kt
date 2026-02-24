@@ -2,7 +2,7 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attrIfNotNull
+import com.huanshankeji.compose.web.attributes.attr
 import org.jetbrains.compose.web.dom.TagElement
 import org.jetbrains.compose.web.dom.Text
 import org.w3c.dom.HTMLElement
@@ -11,7 +11,6 @@ import org.w3c.dom.HTMLElement
 https://github.com/material-components/material-web/blob/main/docs/components/icon.md
 https://material-web.dev/components/icon/
 https://m3.material.io/styles/icons/overview
-https://fonts.google.com/icons
 */
 
 @JsModule("@material/web/icon/icon.js")
@@ -26,7 +25,7 @@ fun MdIcon(filled: Boolean? = null, attrs: Attrs<HTMLElement>?, content: @Compos
 
     @Suppress("RemoveExplicitTypeArguments")
     TagElement<HTMLElement>("md-icon", {
-        attrIfNotNull("filled", filled)
+        filled?.let { attr("filled", it) }
 
         attrs?.invoke(this)
     }) {

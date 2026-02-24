@@ -2,14 +2,14 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attrIfNotNull
+import com.huanshankeji.compose.web.attributes.attr
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
 
 /*
 https://github.com/material-components/material-web/blob/main/labs/badge/internal/badge.ts
-https://m3.material.io/components/badges/overview
+https://github.com/material-components/material-web/blob/main/labs/badge/demo/stories.ts
 */
 
 @JsModule("@material/web/labs/badge/badge.js")
@@ -25,7 +25,7 @@ fun MdBadge(
     BadgeImport // Load the web component
 
     TagElement("md-badge", {
-        attrIfNotNull("value", value)
+        value?.let { attr("value", it) }
 
         attrs?.invoke(this)
     }, content)

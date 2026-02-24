@@ -217,7 +217,6 @@ fun MdComponentName(
 3. **Content lambda** for component children (nullable, last parameter)
 4. **kebab-case** for HTML element names (e.g., `md-elevated-button`)
 5. **Extension functions** in `compose-html-common` for common attribute patterns
-6. **Attribute order** should follow the original component documentation (https://github.com/material-components/material-web/blob/main/docs/components/*, or https://github.com/material-components/material-web/blob/main/labs/*/internal/*.ts for a labs components) order exactly
 
 ### File Organization
 - One component type per file (e.g., `MdButton.kt` contains all button variants)

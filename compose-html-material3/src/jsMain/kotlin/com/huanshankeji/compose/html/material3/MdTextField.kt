@@ -2,7 +2,7 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attrIfNotNull
+import com.huanshankeji.compose.web.attributes.attr
 import com.huanshankeji.compose.web.attributes.ext.*
 import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
@@ -60,19 +60,19 @@ private fun CommonTextField(
 ) =
     TagElement(tagName, {
         disabled(disabled)
-        attrIfNotNull("error", error)
-        attrIfNotNull("error-text", errorText)
+        error?.let { attr("error", it) }
+        errorText?.let { attr("error-text", it) }
         label(label)
         required(required)
         value(value)
-        attrIfNotNull("prefix-text", prefixText)
-        attrIfNotNull("suffix-text", suffixText)
-        attrIfNotNull("has-leading-icon", hasLeadingIcon)
-        attrIfNotNull("has-trailing-icon", hasTrailingIcon)
-        attrIfNotNull("supporting-text", supportingText)
-        attrIfNotNull("text-direction", textDirection)
-        attrIfNotNull("rows", rows)
-        attrIfNotNull("cols", cols)
+        prefixText?.let { attr("prefix-text", it) }
+        suffixText?.let { attr("suffix-text", it) }
+        hasLeadingIcon?.let { attr("has-leading-icon", it) }
+        hasTrailingIcon?.let { attr("has-trailing-icon", it) }
+        supportingText?.let { attr("supporting-text", it) }
+        textDirection?.let { attr("text-direction", it) }
+        rows?.let { attr("rows", it) }
+        cols?.let { attr("cols", it) }
         inputMode?.let { inputMode(it) }
         max(max)
         maxLength(maxLength)
