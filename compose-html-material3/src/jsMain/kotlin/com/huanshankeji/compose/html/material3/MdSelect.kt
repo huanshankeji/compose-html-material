@@ -29,9 +29,7 @@ private external object OutlinedSelectImport
 @JsModule("@material/web/select/select-option.js")
 private external object SelectOptionImport
 
-/*
-https://github.com/material-components/material-web/blob/516cbc02bf770b7c3c5c6b546f1e5d81939b9f23/select/internal/select.ts#L134-L135
-*/
+// https://github.com/material-components/material-web/blob/516cbc02bf770b7c3c5c6b546f1e5d81939b9f23/select/internal/select.ts#L134-L135
 enum class SelectMenuPositioning(val value: String) {
     Absolute("absolute"), Fixed("fixed"), Popover("popover")
 }
