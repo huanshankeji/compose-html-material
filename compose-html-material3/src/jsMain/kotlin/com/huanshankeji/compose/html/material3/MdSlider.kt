@@ -2,6 +2,7 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
+import com.huanshankeji.compose.web.attributes.ext.disabled
 import org.jetbrains.compose.web.dom.AttrBuilderContext
 import org.jetbrains.compose.web.dom.ContentBuilder
 import org.jetbrains.compose.web.dom.TagElement
@@ -35,6 +36,7 @@ fun MdSlider(
     ticks: Boolean? = null,
     labeled: Boolean? = null,
     range: Boolean? = null,
+    disabled: Boolean? = null,
     attrs: AttrBuilderContext<HTMLElement>? = null,
     content: ContentBuilder<HTMLElement>? = null
 ) {
@@ -57,7 +59,8 @@ fun MdSlider(
         attrIfNotNull("ticks", ticks)
         attrIfNotNull("labeled", labeled)
         attrIfNotNull("range", range)
-        // disabled, name, nameStart, nameEnd have no corresponding HTML attribute (property only)
+        disabled(disabled)
+        // name, nameStart, nameEnd have no corresponding HTML attribute (property only)
 
         attrs?.invoke(this)
     }, content)
