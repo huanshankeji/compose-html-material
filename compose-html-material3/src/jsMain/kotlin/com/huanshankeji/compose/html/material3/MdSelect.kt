@@ -106,7 +106,7 @@ fun MdFilledSelect(
     menuAlign: SelectMenuAlign? = null,
     value: String? = null,
     selectedIndex: Int? = null,
-    disabled: Boolean?,
+    disabled: Boolean? = null,
     attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdSelectScope.() -> Unit)? = null
 ) {
@@ -152,7 +152,7 @@ fun MdOutlinedSelect(
     menuAlign: SelectMenuAlign? = null,
     value: String? = null,
     selectedIndex: Int? = null,
-    disabled: Boolean?,
+    disabled: Boolean? = null,
     attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdSelectScope.() -> Unit)? = null
 ) {
