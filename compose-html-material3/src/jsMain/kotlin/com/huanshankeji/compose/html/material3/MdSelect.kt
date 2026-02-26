@@ -60,6 +60,7 @@ private fun CommonSelect(
     menuAlign: SelectMenuAlign?,
     value: String?,
     selectedIndex: Int?,
+    disabled: Boolean?,
     attrs: AttrBuilderContext<HTMLElement>?,
     content: (@Composable MdSelectScope.() -> Unit)?
 ) =
@@ -81,6 +82,7 @@ private fun CommonSelect(
             attrIfNotNull("menu-align", menuAlign?.value)
             value(value)
             attrIfNotNull("selected-index", selectedIndex)
+            disabled(disabled)
 
             attrs?.invoke(this)
         },
@@ -104,6 +106,7 @@ fun MdFilledSelect(
     menuAlign: SelectMenuAlign? = null,
     value: String? = null,
     selectedIndex: Int? = null,
+    disabled: Boolean?,
     attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdSelectScope.() -> Unit)? = null
 ) {
@@ -126,6 +129,7 @@ fun MdFilledSelect(
         menuAlign,
         value,
         selectedIndex,
+        disabled,
         attrs,
         content
     )
@@ -148,6 +152,7 @@ fun MdOutlinedSelect(
     menuAlign: SelectMenuAlign? = null,
     value: String? = null,
     selectedIndex: Int? = null,
+    disabled: Boolean?,
     attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdSelectScope.() -> Unit)? = null
 ) {
@@ -170,6 +175,7 @@ fun MdOutlinedSelect(
         menuAlign,
         value,
         selectedIndex,
+        disabled,
         attrs,
         content
     )
