@@ -12,7 +12,7 @@ For Material 2, you are recommended to check out [KMDC](https://github.com/mpetu
 
 ## Supported components
 
-Not all components of Material Web are supported yet (see [#11](https://github.com/huanshankeji/compose-html-material/issues/11)). Also, not all Material Design components are supported by Material Web yet (see [their roadmap](https://github.com/material-components/material-web/blob/main/docs/roadmap.md)).
+Not all components of Material Web are supported yet (see [#11](https://github.com/huanshankeji/compose-html-material/issues/11)). Also, not all Material Design components are supported by Material Web yet (see [their roadmap](https://github.com/material-components/material-web/blob/main/docs/roadmap.md) and [Material Web being in maintaince mode](https://github.com/material-components/material-web/discussions/5642)).
 
 Here is a list of supported compoent APIs:
 
