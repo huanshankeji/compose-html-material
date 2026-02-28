@@ -2,11 +2,12 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import androidx.compose.web.events.SyntheticEvent
+import com.huanshankeji.compose.html.material3.attributes.commonOnClosed
+import com.huanshankeji.compose.html.material3.attributes.commonOnClosing
+import com.huanshankeji.compose.html.material3.attributes.commonOnOpened
+import com.huanshankeji.compose.html.material3.attributes.commonOnOpening
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
-import com.huanshankeji.compose.web.attributes.ext.disabled
-import com.huanshankeji.compose.web.attributes.ext.href
-import com.huanshankeji.compose.web.attributes.ext.selected
-import com.huanshankeji.compose.web.attributes.ext.target
+import com.huanshankeji.compose.web.attributes.ext.*
 import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.dom.AttrBuilderContext
@@ -115,16 +116,16 @@ fun MdMenu(
 // events
 
 fun <T : SyntheticEvent<out EventTarget>> AttrsScope<MdMenuElement>.onOpening(listener: (T) -> Unit) =
-    addEventListener("opening", listener)
+    commonOnOpening(listener)
 
 fun <T : SyntheticEvent<out EventTarget>> AttrsScope<MdMenuElement>.onOpened(listener: (T) -> Unit) =
-    addEventListener("opened", listener)
+    commonOnOpened(listener)
 
 fun <T : SyntheticEvent<out EventTarget>> AttrsScope<MdMenuElement>.onClosing(listener: (T) -> Unit) =
-    addEventListener("closing", listener)
+    commonOnClosing(listener)
 
-fun <T : SyntheticEvent<out EventTarget>> AttrsScope<MdMenuElement>.onClosed(listener: (SyntheticEvent<EventTarget>) -> Unit) =
-    addEventListener("closed", listener)
+fun <T : SyntheticEvent<out EventTarget>> AttrsScope<MdMenuElement>.onClosed(listener: (T) -> Unit) =
+    commonOnClosed(listener)
 
 class MdMenuArgs(
     val anchor: String? = null,
@@ -146,6 +147,11 @@ class MdMenuArgs(
 )
 
 
+/*
+https://github.com/material-components/material-web/blob/main/docs/components/menu.md#mdmenuitem-md-menu-item
+https://github.com/material-components/material-web/blob/516cbc02bf770b7c3c5c6b546f1e5d81939b9f23/menu/internal/menuitem/menu-item.ts#L43-L72
+https://github.com/material-components/material-web/blob/516cbc02bf770b7c3c5c6b546f1e5d81939b9f23/menu/internal/menuitem/menu-item.ts#L83-L94
+ */
 @Composable
 fun MdMenuItem(
     disabled: Boolean? = null,
@@ -154,18 +160,20 @@ fun MdMenuItem(
     target: String? = null,
     keepOpen: Boolean? = null,
     selected: Boolean? = null,
+    typeaheadText: String? = null,
     attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdMenuItemScope.() -> Unit)? = null
 ) {
     MenuItemImport // Load the web component
 
-    TagElement<HTMLElement>("md-menu-item", {
+    TagElement("md-menu-item", {
         disabled(disabled)
-        attrIfNotNull("type", type?.value)
+        type(type?.value)
         href(href)
         target(target)
         attrIfNotNull("keep-open", keepOpen)
         selected(selected)
+        attrIfNotNull("typeahead-text", typeaheadText)
 
         attrs?.invoke(this)
     }) {
@@ -173,18 +181,7 @@ fun MdMenuItem(
     }
 }
 
-class MdMenuItemScope(val elementScope: ElementScope<HTMLElement>) {
-    enum class Slot(val value: String) {
-        Headline("headline"),
-        SupportingText("supporting-text"),
-        TrailingSupportingText("trailing-supporting-text"),
-        Start("start"),
-        End("end")
-    }
-
-    fun AttrsScope<*>.slot(slot: Slot) =
-        slot(slot.value)
-}
+class MdMenuItemScope(override val elementScope: ElementScope<HTMLElement>) : IMdItemScope
 
 class MdMenuItemArgs(
     val disabled: Boolean? = null,
@@ -193,6 +190,7 @@ class MdMenuItemArgs(
     val target: String? = null,
     val keepOpen: Boolean? = null,
     val selected: Boolean? = null,
+    val typeaheadText: String? = null,
     val attrs: AttrBuilderContext<HTMLElement>? = null,
     val content: @Composable MdMenuItemScope.() -> Unit
 )
@@ -244,7 +242,7 @@ fun MdSubMenu(
 ) =
     MdSubMenu(anchorCorner, menuCorner, hoverOpenDelay, hoverCloseDelay, attrs) {
         with(mdMenuItemArgs) {
-            MdMenuItem(disabled, type, href, target, keepOpen, selected, {
+            MdMenuItem(disabled, type, href, target, keepOpen, selected, typeaheadText, {
                 slot(MdSubMenuScope.Slot.Item)
 
                 attrs?.invoke(this)

@@ -1,11 +1,13 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
+import androidx.compose.web.events.SyntheticEvent
+import com.huanshankeji.compose.html.material3.attributes.commonOnClosed
+import com.huanshankeji.compose.html.material3.attributes.commonOnClosing
+import com.huanshankeji.compose.html.material3.attributes.commonOnOpened
+import com.huanshankeji.compose.html.material3.attributes.commonOnOpening
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
-import com.huanshankeji.compose.web.attributes.ext.disabled
-import com.huanshankeji.compose.web.attributes.ext.label
-import com.huanshankeji.compose.web.attributes.ext.required
-import com.huanshankeji.compose.web.attributes.ext.value
+import com.huanshankeji.compose.web.attributes.ext.*
 import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.dom.AttrBuilderContext
@@ -13,6 +15,7 @@ import org.jetbrains.compose.web.dom.ContentBuilder
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
+import org.w3c.dom.events.EventTarget
 
 /*
 https://github.com/material-components/material-web/blob/main/docs/components/select.md
@@ -30,6 +33,26 @@ private external object OutlinedSelectImport
 @JsModule("@material/web/select/select-option.js")
 private external object SelectOptionImport
 
+
+// made abstract so there is no need to add the implemented methods
+@JsModule("@material/web/select/internal/select.js")
+@JsNonModule
+@JsName("Select")
+abstract external class InternalSelectElement : HTMLElement {
+    var value: String?
+    var selectedIndex: Int
+    // ...
+}
+
+@JsModule("@material/web/select/filled-select.js")
+@JsName("MdFilledSelect")
+abstract external class MdFilledSelectElement : InternalSelectElement
+
+@JsModule("@material/web/select/outlined-select.js")
+@JsName("MdOutlinedSelect")
+abstract external class MdOutlinedSelectElement : InternalSelectElement
+
+
 // https://github.com/material-components/material-web/blob/516cbc02bf770b7c3c5c6b546f1e5d81939b9f23/select/internal/select.ts#L134-L135
 enum class SelectMenuPositioning(val value: String) {
     Absolute("absolute"), Fixed("fixed"), Popover("popover")
@@ -43,7 +66,7 @@ private fun (@Composable MdSelectScope.() -> Unit)?.toElementScopeContentBuilder
     toElementScopeContentBuilder(::MdSelectScope)
 
 @Composable
-private fun CommonSelect(
+private fun <SelectElement : InternalSelectElement> CommonSelect(
     tagName: String,
     quick: Boolean?,
     required: Boolean?,
@@ -61,10 +84,10 @@ private fun CommonSelect(
     value: String?,
     selectedIndex: Int?,
     disabled: Boolean?,
-    attrs: AttrBuilderContext<HTMLElement>?,
+    attrs: AttrBuilderContext<SelectElement>?,
     content: (@Composable MdSelectScope.() -> Unit)?
 ) =
-    TagElement(
+    TagElement<SelectElement>(
         tagName,
         {
             attrIfNotNull("quick", quick)
@@ -107,7 +130,7 @@ fun MdFilledSelect(
     value: String? = null,
     selectedIndex: Int? = null,
     disabled: Boolean? = null,
-    attrs: AttrBuilderContext<HTMLElement>? = null,
+    attrs: AttrBuilderContext<MdFilledSelectElement>? = null,
     content: (@Composable MdSelectScope.() -> Unit)? = null
 ) {
     FilledSelectImport // Load the web component
@@ -153,7 +176,7 @@ fun MdOutlinedSelect(
     value: String? = null,
     selectedIndex: Int? = null,
     disabled: Boolean? = null,
-    attrs: AttrBuilderContext<HTMLElement>? = null,
+    attrs: AttrBuilderContext<MdOutlinedSelectElement>? = null,
     content: (@Composable MdSelectScope.() -> Unit)? = null
 ) {
     OutlinedSelectImport // Load the web component
@@ -181,6 +204,20 @@ fun MdOutlinedSelect(
     )
 }
 
+// Menu events for Select component
+
+fun <T : SyntheticEvent<out EventTarget>> AttrsScope<InternalSelectElement>.onOpening(listener: (T) -> Unit) =
+    commonOnOpening(listener)
+
+fun <T : SyntheticEvent<out EventTarget>> AttrsScope<InternalSelectElement>.onOpened(listener: (T) -> Unit) =
+    commonOnOpened(listener)
+
+fun <T : SyntheticEvent<out EventTarget>> AttrsScope<InternalSelectElement>.onClosing(listener: (T) -> Unit) =
+    commonOnClosing(listener)
+
+fun <T : SyntheticEvent<out EventTarget>> AttrsScope<InternalSelectElement>.onClosed(listener: (T) -> Unit) =
+    commonOnClosed(listener)
+
 class MdSelectScope(val elementScope: ElementScope<HTMLElement>) {
     // https://github.com/search?q=repo%3Amaterial-components%2Fmaterial-web%20path%3A%2F%5Eselect%5C%2F%2F%20trailing-icon&type=code
     enum class Slot(val value: String) {
@@ -192,11 +229,23 @@ class MdSelectScope(val elementScope: ElementScope<HTMLElement>) {
         slot(slot.value)
 }
 
+/**
+ * This component actually extends [MdMenuItem], but not all its attributes are added here as parameters because they are not conventional in this context.
+ * See https://github.com/material-components/material-web/blob/516cbc02bf770b7c3c5c6b546f1e5d81939b9f23/select/select-option.ts#L33-L34 for more details.
+ */
+/*
+https://github.com/material-components/material-web/blob/516cbc02bf770b7c3c5c6b546f1e5d81939b9f23/select/internal/selectoption/select-option.ts#L26-L92
+https://github.com/material-components/material-web/blob/516cbc02bf770b7c3c5c6b546f1e5d81939b9f23/select/internal/selectoption/select-option.ts#L105-L117
+https://github.com/material-components/material-web/blob/516cbc02bf770b7c3c5c6b546f1e5d81939b9f23/select/internal/selectoption/select-option.ts#L126-L129
+ */
 @Composable
 fun MdSelectOption(
     disabled: Boolean? = null,
     selected: Boolean? = null,
     value: String? = null,
+    type: MenuItemType? = null,
+    typeaheadText: String? = null,
+    displayText: String? = null,
     attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdSelectOptionScope.() -> Unit)? = null
 ) {
@@ -206,7 +255,9 @@ fun MdSelectOption(
         disabled(disabled)
         attrIfNotNull("selected", selected)
         value(value)
-        // type, typeaheadText, and displayText have no corresponding HTML attribute (property only)
+        type(type?.value)
+        attrIfNotNull("typeahead-text", typeaheadText)
+        attrIfNotNull("display-text", displayText)
 
         attrs?.invoke(this)
     }, content?.let {
@@ -214,19 +265,9 @@ fun MdSelectOption(
     })
 }
 
-class MdSelectOptionScope(val elementScope: ElementScope<HTMLElement>) {
+class MdSelectOptionScope(override val elementScope: ElementScope<HTMLElement>) : IMdItemScope {
     /*
     https://github.com/material-components/material-web/blob/516cbc02bf770b7c3c5c6b546f1e5d81939b9f23/select/internal/selectoption/select-option.ts#L144-L155
     https://github.com/material-components/material-web/blob/516cbc02bf770b7c3c5c6b546f1e5d81939b9f23/select/internal/selectoption/select-option.ts#L214-L224
     */
-    enum class Slot(val value: String) {
-        Headline("headline"),
-        SupportingText("supporting-text"),
-        TrailingSupportingText("trailing-supporting-text"),
-        Start("start"),
-        End("end")
-    }
-
-    fun AttrsScope<*>.slot(slot: Slot) =
-        slot(slot.value)
 }

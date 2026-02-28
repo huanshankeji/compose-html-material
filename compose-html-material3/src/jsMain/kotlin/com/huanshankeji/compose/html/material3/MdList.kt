@@ -5,8 +5,6 @@ import com.huanshankeji.compose.web.attributes.ext.disabled
 import com.huanshankeji.compose.web.attributes.ext.href
 import com.huanshankeji.compose.web.attributes.ext.target
 import com.huanshankeji.compose.web.attributes.ext.type
-import com.huanshankeji.compose.web.attributes.slot
-import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.dom.AttrBuilderContext
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
@@ -85,14 +83,8 @@ enum class MdListItemType(val stringValue: String) {
     Text("text"), Link("link"), Button("button")
 }
 
-class MdListItemScope(val elementScope: ElementScope<HTMLElement>) {
-    enum class Slot(val stringValue: String) {
-        Headline("headline"),
-        Start("start"), End("end"),
-        SupportingText("supporting-text"), TrailingSupportingText("trailing-supporting-text"),
-        Overline("overline")
-    }
+class MdListItemScope(override val elementScope: ElementScope<HTMLElement>) : IMdItemScope {
+    // https://github.com/material-components/material-web/blob/516cbc02bf770b7c3c5c6b546f1e5d81939b9f23/list/internal/listitem/list-item.ts#L84-L95
 
-    fun AttrsScope<*>.slot(value: Slot) =
-        slot(value.stringValue)
+    // Old custom implementations removed since this class implements `IMdItemScope`.
 }

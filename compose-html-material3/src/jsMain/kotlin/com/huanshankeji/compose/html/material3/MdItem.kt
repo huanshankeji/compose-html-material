@@ -2,8 +2,6 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
-import com.huanshankeji.compose.web.attributes.slot
-import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.dom.AttrBuilderContext
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
@@ -36,23 +34,4 @@ fun MdItem(
     }
 }
 
-class MdItemScope(val elementScope: ElementScope<HTMLElement>) {
-    enum class Slot(val value: String) {
-        SupportingText("supporting-text")
-    }
-
-    fun AttrsScope<*>.slot(slot: Slot) =
-        slot(slot.value)
-
-    /*
-    @Composable
-    fun SupportingText(
-        attrs: Attrs<HTMLElement>? = null,
-        content: ContentBuilder<HTMLDivElement>
-    ) =
-        Div({
-            slot(Slot.SupportingText)
-            attrs?.invoke(this)
-        }, content)
-    */
-}
+class MdItemScope(override val elementScope: ElementScope<HTMLElement>) : IMdItemScope
