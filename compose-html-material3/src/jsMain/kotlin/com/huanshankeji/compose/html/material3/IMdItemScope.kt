@@ -1,7 +1,5 @@
 package com.huanshankeji.compose.html.material3
 
-import com.huanshankeji.compose.web.attributes.slot
-import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.dom.ElementScope
 import org.w3c.dom.HTMLElement
 
@@ -13,11 +11,10 @@ import org.w3c.dom.HTMLElement
  * https://github.com/material-components/material-web/blob/2f150d28414c7b2757bcce54cb102c792d468f96/labs/item/item.ts#L58-L59.
  */
 @ExperimentalComposeHtmlMaterialApi
-interface IMdItemScope {
+interface IMdItemScope : SlotScope<IMdItemScope.Slot> {
     val elementScope: ElementScope<HTMLElement>
 
-    @ExperimentalComposeHtmlMaterialApi
-    enum class Slot(val value: String) {
+    enum class Slot(override val value: String) : ISlot {
         Headline("headline"),
         SupportingText("supporting-text"),
         TrailingSupportingText("trailing-supporting-text"),
@@ -26,8 +23,4 @@ interface IMdItemScope {
         Container("container"),
         Overline("overline")
     }
-
-    @ExperimentalComposeHtmlMaterialApi
-    fun AttrsScope<*>.slot(slot: Slot) =
-        slot(slot.value)
 }

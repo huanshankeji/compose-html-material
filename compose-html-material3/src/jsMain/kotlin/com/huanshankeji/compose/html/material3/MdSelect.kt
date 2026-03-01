@@ -8,7 +8,6 @@ import com.huanshankeji.compose.html.material3.attributes.commonOnOpened
 import com.huanshankeji.compose.html.material3.attributes.commonOnOpening
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.*
-import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.dom.AttrBuilderContext
 import org.jetbrains.compose.web.dom.ContentBuilder
@@ -218,15 +217,12 @@ fun <T : SyntheticEvent<out EventTarget>> AttrsScope<InternalSelectElement>.onCl
 fun <T : SyntheticEvent<out EventTarget>> AttrsScope<InternalSelectElement>.onClosed(listener: (T) -> Unit) =
     commonOnClosed(listener)
 
-class MdSelectScope(val elementScope: ElementScope<HTMLElement>) {
+class MdSelectScope(val elementScope: ElementScope<HTMLElement>) : SlotScope<MdSelectScope.Slot> {
     // https://github.com/search?q=repo%3Amaterial-components%2Fmaterial-web%20path%3A%2F%5Eselect%5C%2F%2F%20trailing-icon&type=code
-    enum class Slot(val value: String) {
+    enum class Slot(override val value: String) : ISlot {
         LeadingIcon("leading-icon"),
         TrailingIcon("trailing-icon")
     }
-
-    fun AttrsScope<*>.slot(slot: Slot) =
-        slot(slot.value)
 }
 
 /**

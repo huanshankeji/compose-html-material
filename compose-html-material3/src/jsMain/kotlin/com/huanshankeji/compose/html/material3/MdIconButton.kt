@@ -3,7 +3,6 @@ package com.huanshankeji.compose.html.material3
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.*
-import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.dom.AttrBuilderContext
 import org.jetbrains.compose.web.dom.ElementScope
@@ -196,13 +195,10 @@ fun MdOutlinedIconButton(
 }
 
 
-class MdIconButtonScope(val elementScope: ElementScope<HTMLElement>) {
-    enum class Slot(val value: String) {
+class MdIconButtonScope(val elementScope: ElementScope<HTMLElement>) : SlotScope<MdIconButtonScope.Slot> {
+    enum class Slot(override val value: String) : ISlot {
         Selected("selected")
     }
-
-    fun AttrsScope<*>.slot(slot: Slot) =
-        slot(slot.value)
 
     @Deprecated("Use slot(Slot.Selected) instead.", ReplaceWith("this.slot(MdIconButtonScope.Slot.Selected)"))
     fun AttrsScope<*>.slotEqSelected() =

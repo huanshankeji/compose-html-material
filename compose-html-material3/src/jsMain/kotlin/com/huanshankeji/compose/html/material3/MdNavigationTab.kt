@@ -4,8 +4,6 @@ import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.disabled
 import com.huanshankeji.compose.web.attributes.ext.label
-import com.huanshankeji.compose.web.attributes.slot
-import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.dom.AttrBuilderContext
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
@@ -47,12 +45,9 @@ fun MdNavigationTab(
     }, content?.let { { MdNavigationTabScope(this).it() } })
 }
 
-class MdNavigationTabScope(val elementScope: ElementScope<HTMLElement>) {
+class MdNavigationTabScope(val elementScope: ElementScope<HTMLElement>) : SlotScope<MdNavigationTabScope.Slot> {
     // https://github.com/search?q=repo%3Amaterial-components%2Fmaterial-web%20path%3A%2F%5Elabs%5C%2Fnavigationtab%5C%2F%2F%20active-icon&type=code
-    enum class Slot(val value: String) {
+    enum class Slot(override val value: String) : ISlot {
         ActiveIcon("active-icon"), InactiveIcon("inactive-icon")
     }
-
-    fun AttrsScope<*>.slot(slot: Slot) =
-        slot(slot.value)
 }

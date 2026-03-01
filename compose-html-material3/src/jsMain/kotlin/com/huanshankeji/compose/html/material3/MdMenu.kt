@@ -8,7 +8,6 @@ import com.huanshankeji.compose.html.material3.attributes.commonOnOpened
 import com.huanshankeji.compose.html.material3.attributes.commonOnOpening
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.*
-import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.dom.AttrBuilderContext
 import org.jetbrains.compose.web.dom.ContentBuilder
@@ -220,13 +219,10 @@ fun MdSubMenu(
     }
 }
 
-class MdSubMenuScope(val elementScope: ElementScope<HTMLElement>) {
-    enum class Slot(val value: String) {
+class MdSubMenuScope(val elementScope: ElementScope<HTMLElement>) : SlotScope<MdSubMenuScope.Slot> {
+    enum class Slot(override val value: String) : ISlot {
         Item("item"), Menu("menu")
     }
-
-    fun AttrsScope<*>.slot(slot: Slot) =
-        slot(slot.value)
 }
 
 @Composable

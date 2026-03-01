@@ -3,8 +3,6 @@ package com.huanshankeji.compose.html.material3
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.*
-import com.huanshankeji.compose.web.attributes.slot
-import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.attributes.AutoComplete
 import org.jetbrains.compose.web.attributes.InputMode
 import org.jetbrains.compose.web.attributes.InputType
@@ -222,13 +220,10 @@ fun MdOutlinedTextField(
 }
 
 
-class MdTextFieldScope(val elementScope: ElementScope<HTMLElement>) {
-    enum class Slot(val value: String) {
+class MdTextFieldScope(val elementScope: ElementScope<HTMLElement>) : SlotScope<MdTextFieldScope.Slot> {
+    enum class Slot(override val value: String) : ISlot {
         LeadingIcon("leading-icon"), TrailingIcon("trailing-icon")
     }
-
-    fun AttrsScope<*>.slot(slot: Slot) =
-        slot(slot.value)
 }
 
 object TextareaInputType : InputType.InputTypeWithStringValue("textarea")
