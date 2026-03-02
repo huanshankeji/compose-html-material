@@ -166,6 +166,7 @@ fun MdInputChip(
         attrIfNotNull("always-focusable", alwaysFocusable)
         label(label)
         attrIfNotNull("has-icon", hasIcon)
+
         onRemove?.let { addEventListener("remove") { it() } }
 
         attrs?.invoke(this)
