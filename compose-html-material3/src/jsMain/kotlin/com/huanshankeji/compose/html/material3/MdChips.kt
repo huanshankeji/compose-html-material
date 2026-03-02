@@ -149,6 +149,7 @@ fun MdInputChip(
     alwaysFocusable: Boolean? = null,
     label: String? = null,
     hasIcon: Boolean? = null,
+    onRemove: (() -> Unit)? = null,
     attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdChipScope.() -> Unit)? = null
 ) {
@@ -165,6 +166,7 @@ fun MdInputChip(
         attrIfNotNull("always-focusable", alwaysFocusable)
         label(label)
         attrIfNotNull("has-icon", hasIcon)
+        onRemove?.let { addEventListener("remove") { it() } }
 
         attrs?.invoke(this)
     }, content.toElementScopeContentBuilder())
