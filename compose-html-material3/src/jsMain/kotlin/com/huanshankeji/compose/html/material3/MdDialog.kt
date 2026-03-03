@@ -28,6 +28,7 @@ fun MdDialog(
     type: DialogType? = null,
     noFocusTrap: Boolean? = null,
     open: Boolean? = null,
+    onCancel: (() -> Unit)? = null,
     attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdDialogScope.() -> Unit)? = null
 ) {
@@ -40,6 +41,8 @@ fun MdDialog(
         attrIfNotNull("no-focus-trap", noFocusTrap)
         attrIfNotNull("open", open)
 
+        onCancel?.let { addEventListener("cancel") { it() } }
+
         attrs?.invoke(this)
     }, content?.let {
         { MdDialogScope(this).it() }
@@ -49,6 +52,7 @@ fun MdDialog(
 class MdDialogScope(val elementScope: ElementScope<HTMLElement>) : SlotScope<MdDialogScope.Slot> {
     enum class Slot(override val value: String) : ISlot {
         Headline("headline"),
+        Icon("icon"), // https://github.com/material-components/material-web/blob/605055229cd07ee0ca660bbc0e3255fb5f5e5914/dialog/internal/dialog.ts#L306-L308
         Content("content"),
         Actions("actions")
     }
