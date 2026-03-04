@@ -9,7 +9,7 @@ import org.w3c.dom.HTMLElement
 
 /*
 https://github.com/material-components/material-web/blob/main/labs/navigationdrawer/internal/navigation-drawer.ts
-https://material-web.dev/components/navigation-drawer/
+https://github.com/material-components/material-web/blob/main/labs/navigationdrawer/internal/navigation-drawer-modal.ts
 https://m3.material.io/components/navigation-drawer/overview
 */
 
