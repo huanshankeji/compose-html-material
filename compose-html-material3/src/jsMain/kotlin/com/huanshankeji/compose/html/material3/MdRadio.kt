@@ -3,6 +3,7 @@ package com.huanshankeji.compose.html.material3
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.ariaLabel
+import com.huanshankeji.compose.web.attributes.ext.disabled
 import com.huanshankeji.compose.web.attributes.ext.required
 import com.huanshankeji.compose.web.attributes.ext.value
 import com.varabyte.kobweb.compose.css.role
@@ -23,18 +24,23 @@ private external object RadioImport
 
 @Composable
 fun MdRadio(
+    // `id` is additionally added for conventional use with `label`.
+    id: String? = null,
     required: Boolean? = null,
     value: String? = null,
     checked: Boolean? = null,
+    disabled: Boolean? = null,
     attrs: AttrBuilderContext<HTMLElement>? = null,
     content: ContentBuilder<HTMLElement>? = null
 ) {
     RadioImport // Load the web component
 
     TagElement("md-radio", {
+        id?.let { id(it) }
         required(required)
         value(value)
         attrIfNotNull("checked", checked)
+        disabled(disabled)
 
         attrs?.invoke(this)
     }, content)
