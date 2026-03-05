@@ -24,23 +24,26 @@ private external object RadioImport
 
 @Composable
 fun MdRadio(
-    // `id` is additionally added for conventional use with `label`.
-    id: String? = null,
     required: Boolean? = null,
     value: String? = null,
     checked: Boolean? = null,
     disabled: Boolean? = null,
+
+    // `id` is additionally added for conventional use with `label`.
+    id: String? = null,
+
     attrs: AttrBuilderContext<HTMLElement>? = null,
     content: ContentBuilder<HTMLElement>? = null
 ) {
     RadioImport // Load the web component
 
     TagElement("md-radio", {
-        id?.let { id(it) }
         required(required)
         value(value)
         attrIfNotNull("checked", checked)
         disabled(disabled)
+
+        id?.let { id(it) }
 
         attrs?.invoke(this)
     }, content)

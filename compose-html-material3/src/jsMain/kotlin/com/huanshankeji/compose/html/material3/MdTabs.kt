@@ -53,6 +53,11 @@ private fun CommonTab(
     hasIcon: Boolean?,
     iconOnly: Boolean?,
     selected: Boolean?,
+
+    // https://github.com/material-components/material-web/blob/main/docs/components/tabs.md#tab-panels
+    id: String?,
+    ariaControls: String?,
+
     attrs: AttrBuilderContext<HTMLElement>?,
     content: (@Composable MdTabScope.() -> Unit)?
 ) =
@@ -65,6 +70,9 @@ private fun CommonTab(
             attrIfNotNull("has-icon", hasIcon)
             attrIfNotNull("icon-only", iconOnly)
             attrIfNotNull("selected", selected)
+
+            id?.let { id(it) }
+            attrIfNotNull("aria-controls", ariaControls)
 
             attrs?.invoke(this)
         },
@@ -79,6 +87,10 @@ fun MdPrimaryTab(
     hasIcon: Boolean? = null,
     iconOnly: Boolean? = null,
     selected: Boolean? = null,
+
+    id: String? = null,
+    ariaControls: String? = null,
+
     attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdTabScope.() -> Unit)? = null
 ) {
@@ -86,7 +98,7 @@ fun MdPrimaryTab(
 
     CommonTab(
         "md-primary-tab",
-        inlineIcon, isTab, active, hasIcon, iconOnly, selected, attrs, content
+        inlineIcon, isTab, active, hasIcon, iconOnly, selected, id, ariaControls, attrs, content
     )
 }
 
@@ -97,6 +109,10 @@ fun MdSecondaryTab(
     hasIcon: Boolean? = null,
     iconOnly: Boolean? = null,
     selected: Boolean? = null,
+
+    id: String? = null,
+    ariaControls: String? = null,
+
     attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdTabScope.() -> Unit)? = null
 ) {
@@ -104,7 +120,7 @@ fun MdSecondaryTab(
 
     CommonTab(
         "md-secondary-tab",
-        null, isTab, active, hasIcon, iconOnly, selected, attrs, content
+        null, isTab, active, hasIcon, iconOnly, selected, id, ariaControls, attrs, content
     )
 }
 
