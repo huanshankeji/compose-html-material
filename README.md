@@ -70,6 +70,32 @@ kotlin {
 }
 ```
 
+### `compose-html-material3-maicol07-material-web-additions`
+
+There is an additional module `compose-html-material3-maicol07-material-web-additions` that adds more Material 3 components from the [maicol07 Material Web Additions](https://github.com/maicol07/material-web-additions) library. This library was chosen because its style closely follows the original Material Web library's API patterns. It adds components missing in the original Material Web, such as Snackbar and Top App Bar.
+
+**Supported component APIs:**
+
+- `MdSnackbar`
+- `MdSmallTopAppBar`, `MdCenterAlignedTopAppBar`, `MdMediumTopAppBar`, `MdLargeTopAppBar`
+
+You should opt in to `@MaterialWebAdditionsApi` to use them.
+
+To add this module as a dependency:
+
+```kotlin
+kotlin {
+    sourceSets {
+        jsMain {
+            dependencies {
+                // ...
+                implementation("com.huanshankeji:compose-html-material3-maicol07-material-web-additions:$version")
+            }
+        }
+    }
+}
+```
+
 ### Material Symbols & Icons
 
 The Material 3 module uses [Material Symbols & Icons](https://fonts.google.com/icons), but doesn't depend on the stylesheet directly. For Material Icons to work properly, you may need to configure your project following the quick instructions below or [the developer guide](https://developers.google.com/fonts/docs/material_symbols).

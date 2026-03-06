@@ -7,6 +7,8 @@ object DependencyVersions {
     val kobweb = "0.23.3"
     // https://github.com/material-components/material-web/releases
     val materialWeb = "2.4.1"
+    // https://github.com/maicol07/material-web-additions/releases
+    val materialWebAdditions = "1.8.0"
 
 
     // legacy versions that don't need to be updated
