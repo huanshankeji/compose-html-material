@@ -53,6 +53,7 @@ fun MdRadio(
  * This is an experimental API.
  */
 // https://github.com/material-components/material-web/blob/main/radio/demo/stories.ts
+@ExperimentalComposeHtmlMaterialApi
 fun conventionalRadioGroupAttrs(ariaLabel: String): AttrBuilderContext<*> = {
     role("radiogroup")
     ariaLabel(ariaLabel)
