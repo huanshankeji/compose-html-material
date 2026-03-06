@@ -47,7 +47,7 @@ fun MdNavigationDrawer(
 
 /**
  * From https://m3.material.io/components/navigation-drawer/overview:
- * > Note:The navigation drawer is no longer recommended in the Material 3 expressive update. For those who have updated, use an expanded navigation rail, which has mostly the same functionality of the navigation drawer and adapts better across window size classes.
+ * > Note: The navigation drawer is no longer recommended in the Material 3 expressive update. For those who have updated, use an expanded navigation rail, which has mostly the same functionality of the navigation drawer and adapts better across window size classes.
  */
 @MaterialWebLabsApi
 @Composable
