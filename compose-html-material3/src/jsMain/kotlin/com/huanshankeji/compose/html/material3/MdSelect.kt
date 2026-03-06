@@ -53,9 +53,7 @@ abstract external class MdOutlinedSelectElement : InternalSelectElement
 
 
 // https://github.com/material-components/material-web/blob/516cbc02bf770b7c3c5c6b546f1e5d81939b9f23/select/internal/select.ts#L134-L135
-enum class SelectMenuPositioning(val value: String) {
-    Absolute("absolute"), Fixed("fixed"), Popover("popover")
-}
+typealias SelectMenuPositioning = MenuPositioning
 
 enum class SelectMenuAlign(val value: String) {
     Start("start"), End("end")
