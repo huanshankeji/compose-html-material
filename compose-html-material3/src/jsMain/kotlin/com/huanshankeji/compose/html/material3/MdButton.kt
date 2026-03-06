@@ -95,7 +95,7 @@ fun MdElevatedButton(
     name: String? = null,
     form: String? = null,
     attrs: AttrBuilderContext<HTMLElement>? = null,
-    content: (@Composable MdButtonScope.() -> Unit)? = null
+    content: (@Composable MdButtonScope.() -> Unit)?
 ) {
     ElevatedButtonImport // Load the web component
 
@@ -118,7 +118,7 @@ fun MdFilledButton(
     name: String? = null,
     form: String? = null, // The form ID
     attrs: AttrBuilderContext<HTMLElement>? = null,
-    content: (@Composable MdButtonScope.() -> Unit)? = null
+    content: (@Composable MdButtonScope.() -> Unit)?
 ) {
     FilledButtonImport // Load the web component
 
@@ -141,7 +141,7 @@ fun MdFilledTonalButton(
     name: String? = null,
     form: String? = null, // The form ID
     attrs: AttrBuilderContext<HTMLElement>? = null,
-    content: (@Composable MdButtonScope.() -> Unit)? = null
+    content: (@Composable MdButtonScope.() -> Unit)?
 ) {
     FilledTonalButtonImport // Load the web component
 
@@ -164,7 +164,7 @@ fun MdOutlinedButton(
     name: String? = null,
     form: String? = null, // The form ID
     attrs: AttrBuilderContext<HTMLElement>? = null,
-    content: (@Composable MdButtonScope.() -> Unit)? = null
+    content: (@Composable MdButtonScope.() -> Unit)?
 ) {
     OutlinedButtonImport // Load the web component
 
@@ -187,7 +187,7 @@ fun MdTextButton(
     name: String? = null,
     form: String? = null, // The form ID
     attrs: AttrBuilderContext<HTMLElement>? = null,
-    content: (@Composable MdButtonScope.() -> Unit)? = null
+    content: (@Composable MdButtonScope.() -> Unit)?
 ) {
     TextButtonImport // Load the web component
 

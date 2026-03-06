@@ -187,7 +187,9 @@ This project uses Kotlin's binary compatibility validator (`kotlinx.validation`)
 - Component documentation comments should include links to:
   1. Material Web GitHub component documentation
   2. Material Web demo site
-  3. Material Design 3 component guidelines (https://m3.material.io/components/)
+  3. Material Web stories
+  4. Material Design 3 component guidelines (https://m3.material.io/components/)
+- **Always verify that all links are accessible (not 404) before adding them to documentation comments**
 
 ## Code Conventions & Patterns
 
@@ -215,6 +217,8 @@ fun MdComponentName(
 1. **Nullable parameters** for optional attributes (not defaulting to false/empty)
 2. **Attrs parameter** for custom attributes (always nullable, applied last)
 3. **Content lambda** for component children (nullable, last parameter)
+   - Components that conventionally always have content (e.g., buttons, FABs, cards, icon buttons, navigation bars) should have a **non-null, required** `content` parameter (no `= null` default) — an empty button or card makes no sense
+   - Components that do not inherently require content (e.g., checkbox, switch, divider, progress, radio) should have a **nullable** content parameter with `= null` default, used for optional effects
 4. **kebab-case** for HTML element names (e.g., `md-elevated-button`)
 5. **Extension functions** in `compose-html-common` for common attribute patterns
 6. **Attribute order** should follow the original component documentation (https://github.com/material-components/material-web/blob/main/docs/components/*, or https://github.com/material-components/material-web/blob/main/labs/*/internal/*.ts for a labs components) order exactly

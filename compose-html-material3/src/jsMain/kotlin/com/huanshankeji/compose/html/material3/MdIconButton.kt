@@ -5,7 +5,6 @@ import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.*
 import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.dom.AttrBuilderContext
-import org.jetbrains.compose.web.dom.ContentBuilder
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
@@ -30,8 +29,6 @@ private external object FilledTonalIconButtonImport
 @JsModule("@material/web/iconbutton/outlined-icon-button.js")
 private external object OutlinedIconButtonImport
 
-private fun (@Composable MdIconButtonScope.() -> Unit)?.toElementScopeContentBuilder(): ContentBuilder<HTMLElement>? =
-    toElementScopeContentBuilder(::MdIconButtonScope)
 
 @Composable
 private fun CommonMdIconButton(
@@ -46,8 +43,9 @@ private fun CommonMdIconButton(
     type: String?,
     value: String?,
     attrs: AttrBuilderContext<HTMLElement>?,
-    content: (@Composable MdIconButtonScope.() -> Unit)?
+    content: @Composable MdIconButtonScope.() -> Unit
 ) =
+    @Suppress("RemoveExplicitTypeArguments")
     TagElement<HTMLElement>(
         tagName,
         {
@@ -62,9 +60,10 @@ private fun CommonMdIconButton(
             value(value)
 
             attrs?.invoke(this)
-        },
-        content.toElementScopeContentBuilder()
-    )
+        }
+    ) {
+        MdIconButtonScope(this).content()
+    }
 
 
 @Composable
@@ -79,7 +78,7 @@ fun MdIconButton(
     type: String? = null,
     value: String? = null,
     attrs: AttrBuilderContext<HTMLElement>? = null,
-    content: (@Composable MdIconButtonScope.() -> Unit)? = null
+    content: @Composable MdIconButtonScope.() -> Unit
 ) {
     IconButtonImport // Load the web component
 
@@ -111,7 +110,7 @@ fun MdFilledIconButton(
     type: String? = null,
     value: String? = null,
     attrs: AttrBuilderContext<HTMLElement>? = null,
-    content: (@Composable MdIconButtonScope.() -> Unit)? = null
+    content: @Composable MdIconButtonScope.() -> Unit
 ) {
     FilledIconButtonImport // Load the web component
 
@@ -143,7 +142,7 @@ fun MdFilledTonalIconButton(
     type: String? = null,
     value: String? = null,
     attrs: AttrBuilderContext<HTMLElement>? = null,
-    content: (@Composable MdIconButtonScope.() -> Unit)? = null
+    content: @Composable MdIconButtonScope.() -> Unit
 ) {
     FilledTonalIconButtonImport // Load the web component
 
@@ -175,7 +174,7 @@ fun MdOutlinedIconButton(
     type: String? = null,
     value: String? = null,
     attrs: AttrBuilderContext<HTMLElement>? = null,
-    content: (@Composable MdIconButtonScope.() -> Unit)? = null
+    content: @Composable MdIconButtonScope.() -> Unit
 ) {
     OutlinedIconButtonImport // Load the web component
 

@@ -22,7 +22,7 @@ fun MdNavigationBar(
     activeIndex: Int? = null,
     hideInactiveLabels: Boolean? = null,
     attrs: AttrBuilderContext<HTMLElement>? = null,
-    content: @Composable (ElementScope<HTMLElement>.() -> Unit)? = null
+    content: @Composable (ElementScope<HTMLElement>.() -> Unit)?
 ) {
     NavigationBarImport // Load the web component
 

@@ -24,7 +24,7 @@ private external object OutlinedCardImport
 @Composable
 fun MdElevatedCard(
     attrs: AttrBuilderContext<HTMLElement>? = null,
-    content: @Composable (ElementScope<HTMLElement>.() -> Unit)? = null
+    content: @Composable (ElementScope<HTMLElement>.() -> Unit)?
 ) {
     ElevatedCardImport // Load the web component
 
@@ -35,7 +35,7 @@ fun MdElevatedCard(
 @Composable
 fun MdFilledCard(
     attrs: AttrBuilderContext<HTMLElement>? = null,
-    content: @Composable (ElementScope<HTMLElement>.() -> Unit)? = null
+    content: @Composable (ElementScope<HTMLElement>.() -> Unit)?
 ) {
     FilledCardImport // Load the web component
 
@@ -46,7 +46,7 @@ fun MdFilledCard(
 @Composable
 fun MdOutlinedCard(
     attrs: AttrBuilderContext<HTMLElement>? = null,
-    content: @Composable (ElementScope<HTMLElement>.() -> Unit)? = null
+    content: @Composable (ElementScope<HTMLElement>.() -> Unit)?
 ) {
     OutlinedCardImport // Load the web component
 
