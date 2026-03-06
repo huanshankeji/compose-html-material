@@ -6,7 +6,7 @@ This repository provides **Material 3 wrapper components for Compose HTML** base
 
 **Key Points:**
 - **Type:** Kotlin/JS library (not an application)
-- **Size:** Small to medium (~3 main modules)
+- **Size:** Small to medium (~4 main modules)
 - **Language:** Kotlin 2.3.10
 - **Frameworks:** Compose HTML 1.10.2, Kobweb 0.24.0
 - **Build System:** Gradle 9.3.1 with Kotlin DSL
@@ -42,11 +42,19 @@ This repository provides **Material 3 wrapper components for Compose HTML** base
    - **Do not apply updates, bug fixes, or improvements to this module**
    - For Material 2 components, users should use [KMDC](https://github.com/mpetuska/kmdc) instead
 
-4. **`gradle-plugins`** - Legacy gradle plugins
+4. **`compose-html-material3-maicol07-material-web-additions`** - Additional Material 3 components from [maicol07's Material Web Additions](https://github.com/maicol07/material-web-additions)
+   - Location: `/compose-html-material3-maicol07-material-web-additions/`
+   - Source: `src/jsMain/kotlin/com/huanshankeji/compose/html/material3/maicol07/materialwebadditions/`
+   - Components: MdSnackbar, MdSmallTopAppBar, MdCenterAlignedTopAppBar, MdMediumTopAppBar, MdLargeTopAppBar
+   - Depends on: `compose-html-common`, `compose-html-material3`, npm package `@maicol07/material-web-additions`
+   - Uses `@MaterialWebAdditionsApi` opt-in annotation for all components
+   - This library was chosen because its style closely follows the original Material Web library's API patterns
+
+5. **`gradle-plugins`** - Legacy gradle plugins
    - Location: `/gradle-plugins/`
    - Published as: `compose-html-material-gradle-plugins-legacy`
 
-5. **`buildSrc`** - Build logic and convention plugins
+6. **`buildSrc`** - Build logic and convention plugins
    - Location: `/buildSrc/`
    - Key file: `src/main/kotlin/VersionsAndDependencies.kt` - contains version constants
    - Convention plugins: `lib-conventions.gradle.kts`, `lib-conventions-without-publishing.gradle.kts`
@@ -190,6 +198,7 @@ This project uses Kotlin's binary compatibility validator (`kotlinx.validation`)
   3. Material Web stories
   4. Material Design 3 component guidelines (https://m3.material.io/components/)
 - **Always verify that all links are accessible (not 404) before adding them to documentation comments**
+- **For parameters or slots that cannot be found in the official component documentation, always add a reference link (e.g., to the component source code, demo code, or stories/Storyboard source code) in an inline comment immediately before those parameters. Use GitHub permalinks with precisely selected lines.**
 
 ## Code Conventions & Patterns
 
@@ -236,6 +245,7 @@ fun MdComponentName(
 - **Compose Multiplatform:** 1.10.2
 - **Kobweb:** 0.24.0 (provides Compose HTML extensions, now published to Maven Central)
 - **Material Web:** 2.4.1 (NPM dependency)
+- **Material Web Additions:** 1.8.0 (NPM dependency for `compose-html-material3-maicol07-material-web-additions` module)
 - **Dokka:** 2.1.0 (documentation generation)
 
 ### Adding Dependencies

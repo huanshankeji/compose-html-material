@@ -2,7 +2,7 @@
 
 [![Maven Central](https://img.shields.io/maven-central/v/com.huanshankeji/compose-html-material3)](https://search.maven.org/artifact/com.huanshankeji/compose-html-material3)
 
-Material 3 wrapper components for Compose HTML based on [Material Web](https://github.com/material-components/material-web)
+Material 3 wrapper components for Compose HTML based on [Material Web](https://github.com/material-components/material-web) and [maicol07's Material Web Additions](https://github.com/maicol07/material-web-additions)
 
 For unified multiplatform APIs which are more akin to those in `androidx.compose`, check out [Compose Multiplatform HTML Unified](https://github.com/huanshankeji/compose-multiplatform-html-unified) which also depends on this library. Also see its [side-by-side demo site](https://huanshankeji.github.io/compose-multiplatform-html-unified/) for the visual effects of the components.
 
@@ -64,6 +64,32 @@ kotlin {
             dependencies {
                 // ...
                 implementation("com.huanshankeji:compose-html-material3:$version")
+            }
+        }
+    }
+}
+```
+
+### `compose-html-material3-maicol07-material-web-additions`
+
+There is an additional module `compose-html-material3-maicol07-material-web-additions` that adds more Material 3 components from the [maicol07 Material Web Additions](https://github.com/maicol07/material-web-additions) library. This library was chosen because its style closely follows the original Material Web library's API patterns. It adds components missing in the original Material Web, such as Snackbar and Top App Bar.
+
+**Supported component APIs:**
+
+- `MdSnackbar`
+- `MdSmallTopAppBar`, `MdCenterAlignedTopAppBar`, `MdMediumTopAppBar`, `MdLargeTopAppBar`
+
+You should opt in to `@MaterialWebAdditionsApi` to use them.
+
+To add this module as a dependency:
+
+```kotlin
+kotlin {
+    sourceSets {
+        jsMain {
+            dependencies {
+                // ...
+                implementation("com.huanshankeji:compose-html-material3-maicol07-material-web-additions:$version")
             }
         }
     }
