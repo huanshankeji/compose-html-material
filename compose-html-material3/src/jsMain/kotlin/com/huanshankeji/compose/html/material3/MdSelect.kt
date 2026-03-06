@@ -35,7 +35,6 @@ private external object SelectOptionImport
 
 // made abstract so there is no need to add the implemented methods
 @JsModule("@material/web/select/internal/select.js")
-@JsNonModule
 @JsName("Select")
 abstract external class InternalSelectElement : HTMLElement {
     var value: String?
