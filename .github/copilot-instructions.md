@@ -8,7 +8,7 @@ This repository provides **Material 3 wrapper components for Compose HTML** base
 - **Type:** Kotlin/JS library (not an application)
 - **Size:** Small to medium (~3 main modules)
 - **Language:** Kotlin 2.3.10
-- **Frameworks:** Compose HTML 1.10.1, Kobweb 0.23.3
+- **Frameworks:** Compose HTML 1.10.2, Kobweb 0.24.0
 - **Build System:** Gradle 9.3.1 with Kotlin DSL
 - **Target Runtime:** JavaScript/Browser (Kotlin/JS)
 - **Published to:** Maven Central
@@ -234,7 +234,7 @@ fun MdComponentName(
 ### Key Dependencies
 - **Kotlin:** 2.3.10
 - **Compose Multiplatform:** 1.10.2
-- **Kobweb:** 0.23.3 (provides Compose HTML extensions, now published to Maven Central)
+- **Kobweb:** 0.24.0 (provides Compose HTML extensions, now published to Maven Central)
 - **Material Web:** 2.4.1 (NPM dependency)
 - **Dokka:** 2.1.0 (documentation generation)
 
