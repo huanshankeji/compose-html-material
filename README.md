@@ -2,7 +2,7 @@
 
 [![Maven Central](https://img.shields.io/maven-central/v/com.huanshankeji/compose-html-material3)](https://search.maven.org/artifact/com.huanshankeji/compose-html-material3)
 
-Material 3 wrapper components for Compose HTML based on [Material Web](https://github.com/material-components/material-web)
+Material 3 wrapper components for Compose HTML based on [Material Web](https://github.com/material-components/material-web) and [maicol07's Material Web Additions](https://github.com/maicol07/material-web-additions)
 
 For unified multiplatform APIs which are more akin to those in `androidx.compose`, check out [Compose Multiplatform HTML Unified](https://github.com/huanshankeji/compose-multiplatform-html-unified) which also depends on this library. Also see its [side-by-side demo site](https://huanshankeji.github.io/compose-multiplatform-html-unified/) for the visual effects of the components.
 

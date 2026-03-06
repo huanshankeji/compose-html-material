@@ -1,4 +1,4 @@
-package com.huanshankeji.compose.html.material3.maicol07
+package com.huanshankeji.compose.html.material3.maicol07.materialwebadditions
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.html.material3.ExperimentalComposeHtmlMaterialApi
@@ -27,6 +27,7 @@ fun MdSnackbar(
     actionText: String? = null,
     fixed: Boolean? = null,
     timeout: Number? = null,
+    // https://github.com/maicol07/material-web-additions/blob/main/snackbar/internal/snackbar.ts
     onAction: (() -> Unit)? = null,
     onOpen: (() -> Unit)? = null,
     onOpened: (() -> Unit)? = null,
@@ -56,6 +57,7 @@ fun MdSnackbar(
     }
 }
 
+// https://github.com/maicol07/material-web-additions/blob/main/snackbar/internal/snackbar.ts
 @ExperimentalComposeHtmlMaterialApi
 class MdSnackbarScope(val elementScope: ElementScope<HTMLElement>) : SlotScope<MdSnackbarScope.Slot> {
     enum class Slot(override val value: String) : ISlot {

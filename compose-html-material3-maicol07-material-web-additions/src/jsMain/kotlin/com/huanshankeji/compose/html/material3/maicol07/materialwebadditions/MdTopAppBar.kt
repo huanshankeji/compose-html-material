@@ -1,4 +1,4 @@
-package com.huanshankeji.compose.html.material3.maicol07
+package com.huanshankeji.compose.html.material3.maicol07.materialwebadditions
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.html.material3.ExperimentalComposeHtmlMaterialApi
@@ -88,6 +88,7 @@ fun MdLargeTopAppBar(
     CommonMdTopAppBar("md-large-top-app-bar", sticky, attrs, content)
 }
 
+// https://github.com/maicol07/material-web-additions/blob/main/top-app-bar/internal/top-app-bar.ts
 @ExperimentalComposeHtmlMaterialApi
 class MdTopAppBarScope(val elementScope: ElementScope<HTMLElement>) : SlotScope<MdTopAppBarScope.Slot> {
     enum class Slot(override val value: String) : ISlot {
