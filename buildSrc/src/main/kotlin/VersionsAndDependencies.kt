@@ -4,7 +4,7 @@ const val projectVersion = "0.5.0-SNAPSHOT"
 
 object DependencyVersions {
     // https://github.com/varabyte/kobweb/releases
-    val kobweb = "0.23.3"
+    val kobweb = "0.24.0"
     // https://github.com/material-components/material-web/releases
     val materialWeb = "2.4.1"
 
