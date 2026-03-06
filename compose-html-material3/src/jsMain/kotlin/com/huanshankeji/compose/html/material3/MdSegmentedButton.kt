@@ -12,7 +12,6 @@ import org.w3c.dom.HTMLElement
 /*
 https://github.com/material-components/material-web/blob/main/labs/segmentedbutton/internal/outlined-segmented-button.ts
 https://github.com/material-components/material-web/blob/main/labs/segmentedbutton/internal/segmented-button.ts
-https://material-web.dev/components/segmented-button/
 https://m3.material.io/components/segmented-buttons/overview
 */
 
