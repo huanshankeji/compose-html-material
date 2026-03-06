@@ -33,9 +33,9 @@ private external object SuggestionChipImport
 
 @Composable
 fun MdChipSet(
-    attrs: AttrBuilderContext<HTMLElement>? = null,
     ariaLabel: String? = null,
     ariaLabelledBy: String? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: ContentBuilder<HTMLElement>? = null
 ) {
     ChipSetImport // Load the web component
