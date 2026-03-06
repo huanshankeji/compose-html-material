@@ -78,7 +78,7 @@ fun MdMenu(
     // see https://stackoverflow.com/questions/4308989/are-the-decimal-places-in-a-css-width-respected
     xOffset: Number? = null,
     yOffset: Number? = null,
-    typeheadDelay: Number? = null,
+    typeaheadDelay: Number? = null,
     anchorCorner: MenuCorner? = null,
     menuCorner: MenuCorner? = null,
     stayOpenOnOutsideClick: Boolean? = null,
@@ -98,7 +98,7 @@ fun MdMenu(
         attrIfNotNull("open", open)
         attrIfNotNull("x-offset", xOffset)
         attrIfNotNull("y-offset", yOffset)
-        attrIfNotNull("typehead-delay", typeheadDelay)
+        attrIfNotNull("typeahead-delay", typeaheadDelay)
         anchorCorner(anchorCorner)
         menuCorner(menuCorner)
         attrIfNotNull("stay-open-on-outside-click", stayOpenOnOutsideClick)
