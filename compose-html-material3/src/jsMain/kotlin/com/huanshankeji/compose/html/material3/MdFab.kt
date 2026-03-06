@@ -50,7 +50,7 @@ fun MdFab(
     label: String? = null,
     lowered: Boolean? = null,
     attrs: AttrBuilderContext<HTMLElement>? = null,
-    content: @Composable (MdFabScope.() -> Unit)?
+    content: @Composable (MdFabScope.() -> Unit)? = null
 ) {
     FabImport // Load the web component
 
@@ -64,7 +64,7 @@ fun MdBrandedFab(
     label: String? = null,
     lowered: Boolean? = null,
     attrs: AttrBuilderContext<HTMLElement>? = null,
-    content: @Composable (MdFabScope.() -> Unit)?
+    content: @Composable (MdFabScope.() -> Unit)? = null
 ) {
     BrandedFabImport // Load the web component
 

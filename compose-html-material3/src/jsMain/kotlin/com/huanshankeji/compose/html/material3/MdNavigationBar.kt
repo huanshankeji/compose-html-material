@@ -10,6 +10,7 @@ import org.w3c.dom.HTMLElement
 /*
 https://github.com/material-components/material-web/blob/main/labs/navigationbar/internal/navigation-bar.ts
 https://github.com/material-components/material-web/blob/main/labs/navigationbar/demo/stories.ts
+https://m3.material.io/components/navigation-bar/overview
  */
 
 @JsModule("@material/web/labs/navigationbar/navigation-bar.js")
@@ -21,7 +22,7 @@ fun MdNavigationBar(
     activeIndex: Int? = null,
     hideInactiveLabels: Boolean? = null,
     attrs: AttrBuilderContext<HTMLElement>? = null,
-    content: @Composable (ElementScope<HTMLElement>.() -> Unit)?
+    content: @Composable (ElementScope<HTMLElement>.() -> Unit)? = null
 ) {
     NavigationBarImport // Load the web component
 

@@ -9,6 +9,7 @@ import org.w3c.dom.HTMLElement
 
 /*
 https://github.com/material-components/material-web/blob/main/labs/badge/internal/badge.ts
+https://github.com/material-components/material-web/blob/main/labs/badge/demo/stories.ts
 https://m3.material.io/components/badges/overview
 */
 
