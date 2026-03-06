@@ -178,6 +178,17 @@ This project uses Kotlin's binary compatibility validator (`kotlinx.validation`)
 - Current version: `0.4.1-SNAPSHOT`
 - Release versions should not have `-SNAPSHOT` suffix
 
+## Design Guidelines and Documentation
+
+### Material Design 3 Resources
+- **Official Material Design 3 site:** https://m3.material.io/
+- **Component guidelines:** https://m3.material.io/components/ (e.g., https://m3.material.io/components/buttons/overview for buttons)
+- Use these resources to understand the visual effects, behavior, and design guidelines of each component
+- Component documentation comments should include links to:
+  1. Material Web GitHub component documentation
+  2. Material Web demo site
+  3. Material Design 3 component guidelines (https://m3.material.io/components/)
+
 ## Code Conventions & Patterns
 
 ### Component Structure
@@ -189,8 +200,8 @@ Material 3 components follow a consistent pattern (see `compose-html-material3/s
 fun MdComponentName(
     disabled: Boolean? = null,
     // ... component-specific parameters
-    attrs: Attrs<HTMLElement>? = null,
-    content: (@Composable ElementScope<HTMLElement>.() -> Unit)? = null
+    attrs: AttrBuilderContext<HTMLElement>? = null,
+    content: ContentBuilder<HTMLElement>? = null
 ) {
     TagElement("md-component-name", {
         disabled(disabled)
@@ -206,6 +217,7 @@ fun MdComponentName(
 3. **Content lambda** for component children (nullable, last parameter)
 4. **kebab-case** for HTML element names (e.g., `md-elevated-button`)
 5. **Extension functions** in `compose-html-common` for common attribute patterns
+6. **Attribute order** should follow the original component documentation (https://github.com/material-components/material-web/blob/main/docs/components/*, or https://github.com/material-components/material-web/blob/main/labs/*/internal/*.ts for a labs components) order exactly
 
 ### File Organization
 - One component type per file (e.g., `MdButton.kt` contains all button variants)

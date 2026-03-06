@@ -1,7 +1,7 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
-import com.huanshankeji.compose.web.attributes.Attrs
+import org.jetbrains.compose.web.dom.AttrBuilderContext
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
@@ -23,7 +23,7 @@ private external object OutlinedCardImport
 @MaterialWebLabsApi
 @Composable
 fun MdElevatedCard(
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: @Composable (ElementScope<HTMLElement>.() -> Unit)?
 ) {
     ElevatedCardImport // Load the web component
@@ -34,7 +34,7 @@ fun MdElevatedCard(
 @MaterialWebLabsApi
 @Composable
 fun MdFilledCard(
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: @Composable (ElementScope<HTMLElement>.() -> Unit)?
 ) {
     FilledCardImport // Load the web component
@@ -45,7 +45,7 @@ fun MdFilledCard(
 @MaterialWebLabsApi
 @Composable
 fun MdOutlinedCard(
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: @Composable (ElementScope<HTMLElement>.() -> Unit)?
 ) {
     OutlinedCardImport // Load the web component

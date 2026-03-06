@@ -1,19 +1,16 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
-import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.*
-import org.jetbrains.compose.web.dom.ElementScope
-import org.jetbrains.compose.web.dom.Label
-import org.jetbrains.compose.web.dom.TagElement
-import org.jetbrains.compose.web.dom.Text
+import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.HTMLElement
 
 /*
 https://github.com/material-components/material-web/blob/main/docs/components/switch.md
 https://material-web.dev/components/switch/
 https://material-web.dev/components/switch/stories/
+https://m3.material.io/components/switch/overview
 */
 
 @JsModule("@material/web/switch/switch.js")
@@ -29,16 +26,16 @@ fun MdSwitch(
     value: String? = null,
     name: String? = null,
     form: String? = null,
-    attrs: Attrs<HTMLElement>? = null,
-    content: (@Composable ElementScope<HTMLElement>.() -> Unit)? = null
+    attrs: AttrBuilderContext<HTMLElement>? = null,
+    content: ContentBuilder<HTMLElement>? = null
 ) {
     SwitchImport // Load the web component
 
     TagElement("md-switch", {
         disabled(disabled)
-        selected?.let { attr("selected", it) }
-        icons?.let { attr("icons", it) }
-        showOnlySelectedIcon?.let { attr("show-only-selected-icon", it) }
+        attrIfNotNull("selected", selected)
+        attrIfNotNull("icons", icons)
+        attrIfNotNull("show-only-selected-icon", showOnlySelectedIcon)
         required(required)
         value(value)
         name(name)
@@ -60,7 +57,7 @@ fun LabelWithMdSwitch(
     value: String? = null,
     name: String? = null,
     form: String? = null,
-    attrs: Attrs<HTMLElement>? = null
+    attrs: AttrBuilderContext<HTMLElement>? = null
 ) =
     Label {
         Text(label)

@@ -1,14 +1,12 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
-import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.*
-import com.huanshankeji.compose.web.attributes.slot
-import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.attributes.AutoComplete
 import org.jetbrains.compose.web.attributes.InputMode
 import org.jetbrains.compose.web.attributes.InputType
+import org.jetbrains.compose.web.dom.AttrBuilderContext
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
@@ -17,6 +15,7 @@ import org.w3c.dom.HTMLElement
 https://github.com/material-components/material-web/blob/main/docs/components/text-field.md
 https://material-web.dev/components/text-field/
 https://material-web.dev/components/text-field/stories/
+https://m3.material.io/components/text-fields/overview
 */
 
 @JsModule("@material/web/textfield/filled-text-field.js")
@@ -54,24 +53,24 @@ private fun CommonTextField(
     step: String?,
     type: InputType<*>?,
     autocomplete: AutoComplete?,
-    attrs: Attrs<HTMLElement>?,
+    attrs: AttrBuilderContext<HTMLElement>?,
     content: (@Composable MdTextFieldScope.() -> Unit)?
 ) =
     TagElement(tagName, {
         disabled(disabled)
-        error?.let { attr("error", it) }
-        errorText?.let { attr("error-text", it) }
+        attrIfNotNull("error", error)
+        attrIfNotNull("error-text", errorText)
         label(label)
         required(required)
         value(value)
-        prefixText?.let { attr("prefix-text", it) }
-        suffixText?.let { attr("suffix-text", it) }
-        hasLeadingIcon?.let { attr("has-leading-icon", it) }
-        hasTrailingIcon?.let { attr("has-trailing-icon", it) }
-        supportingText?.let { attr("supporting-text", it) }
-        textDirection?.let { attr("text-direction", it) }
-        rows?.let { attr("rows", it) }
-        cols?.let { attr("cols", it) }
+        attrIfNotNull("prefix-text", prefixText)
+        attrIfNotNull("suffix-text", suffixText)
+        attrIfNotNull("has-leading-icon", hasLeadingIcon)
+        attrIfNotNull("has-trailing-icon", hasTrailingIcon)
+        attrIfNotNull("supporting-text", supportingText)
+        attrIfNotNull("text-direction", textDirection)
+        attrIfNotNull("rows", rows)
+        attrIfNotNull("cols", cols)
         inputMode?.let { inputMode(it) }
         max(max)
         maxLength(maxLength)
@@ -116,7 +115,7 @@ fun MdFilledTextField(
     step: String? = null,
     type: InputType<*>? = null,
     autocomplete: AutoComplete? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdTextFieldScope.() -> Unit)? = null
 ) {
     FilledTextFieldImport // Load the web component
@@ -182,7 +181,7 @@ fun MdOutlinedTextField(
     step: String? = null,
     type: InputType<*>? = null,
     autocomplete: AutoComplete? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdTextFieldScope.() -> Unit)? = null
 ) {
     OutlinedTextFieldImport // Load the web component
@@ -221,13 +220,10 @@ fun MdOutlinedTextField(
 }
 
 
-class MdTextFieldScope(val elementScope: ElementScope<HTMLElement>) {
-    enum class Slot(val value: String) {
+class MdTextFieldScope(val elementScope: ElementScope<HTMLElement>) : SlotScope<MdTextFieldScope.Slot> {
+    enum class Slot(override val value: String) : ISlot {
         LeadingIcon("leading-icon"), TrailingIcon("trailing-icon")
     }
-
-    fun AttrsScope<*>.slot(value: Slot) =
-        slot(value.value)
 }
 
 object TextareaInputType : InputType.InputTypeWithStringValue("textarea")

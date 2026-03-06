@@ -13,3 +13,8 @@ fun <TElement : HTMLElement> AttrsScope<TElement>.onInput(
     listener: (SyntheticEvent<TElement>) -> Unit
 ) =
     addEventListener(EventsListenerScope.INPUT, listener)
+
+fun <TElement : HTMLElement> AttrsScope<TElement>.onChange(
+    listener: (SyntheticEvent<TElement>) -> Unit
+) =
+    addEventListener(EventsListenerScope.CHANGE, listener)

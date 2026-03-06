@@ -2,10 +2,10 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.html.material3.attributes.indeterminate
-import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.*
-import org.jetbrains.compose.web.dom.ElementScope
+import org.jetbrains.compose.web.dom.AttrBuilderContext
+import org.jetbrains.compose.web.dom.ContentBuilder
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
 
@@ -13,6 +13,7 @@ import org.w3c.dom.HTMLElement
 https://github.com/material-components/material-web/blob/main/docs/components/checkbox.md
 https://material-web.dev/components/checkbox/
 https://material-web.dev/components/checkbox/stories/
+https://m3.material.io/components/checkbox/overview
 */
 
 @JsModule("@material/web/checkbox/checkbox.js")
@@ -27,14 +28,14 @@ fun MdCheckbox(
     value: String? = null,
     name: String? = null,
     form: String? = null,
-    attrs: Attrs<HTMLElement>? = null,
-    content: (@Composable ElementScope<HTMLElement>.() -> Unit)? = null
+    attrs: AttrBuilderContext<HTMLElement>? = null,
+    content: ContentBuilder<HTMLElement>? = null
 ) {
     CheckboxImport // Load the web component
 
     TagElement("md-checkbox", {
         attr("touch-target", "wrapper")
-        checked?.let { attr("checked", it) }
+        attrIfNotNull("checked", checked)
         disabled(disabled)
         indeterminate(indeterminate)
         required(required)
@@ -59,8 +60,8 @@ fun MdCheckbox(
     value: String? = null,
     name: String? = null,
     form: String? = null,
-    attrs: Attrs<HTMLElement>? = null,
-    content: (@Composable ElementScope<HTMLElement>.() -> Unit)? = null
+    attrs: AttrBuilderContext<HTMLElement>? = null,
+    content: ContentBuilder<HTMLElement>? = null
 ) {
     val checked: Boolean?
     val indeterminate: Boolean?

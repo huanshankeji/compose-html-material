@@ -1,11 +1,10 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
-import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.*
-import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
+import org.jetbrains.compose.web.dom.AttrBuilderContext
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
@@ -15,6 +14,7 @@ import org.w3c.dom.HTMLElement
 https://github.com/material-components/material-web/blob/main/docs/components/icon-button.md
 https://material-web.dev/components/icon-button/
 https://material-web.dev/components/icon-button/stories/
+https://m3.material.io/components/icon-buttons/overview
  */
 
 @JsModule("@material/web/iconbutton/icon-button.js")
@@ -42,7 +42,7 @@ private fun CommonMdIconButton(
     selected: Boolean?,
     type: String?,
     value: String?,
-    attrs: Attrs<HTMLElement>?,
+    attrs: AttrBuilderContext<HTMLElement>?,
     content: @Composable MdIconButtonScope.() -> Unit
 ) =
     @Suppress("RemoveExplicitTypeArguments")
@@ -50,11 +50,11 @@ private fun CommonMdIconButton(
         tagName,
         {
             disabled(disabled)
-            flipIconInRtl?.let { attr("flip-icon-in-rtl", it) }
+            attrIfNotNull("flip-icon-in-rtl", flipIconInRtl)
             href(href)
             target(target)
-            ariaLabelSelected?.let { attr("aria-label-selected", it) }
-            toggle?.let { attr("toggle", it) }
+            attrIfNotNull("aria-label-selected", ariaLabelSelected)
+            attrIfNotNull("toggle", toggle)
             selected(selected)
             type(type)
             value(value)
@@ -77,7 +77,7 @@ fun MdIconButton(
     selected: Boolean? = null,
     type: String? = null,
     value: String? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: @Composable MdIconButtonScope.() -> Unit
 ) {
     IconButtonImport // Load the web component
@@ -109,7 +109,7 @@ fun MdFilledIconButton(
     selected: Boolean? = null,
     type: String? = null,
     value: String? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: @Composable MdIconButtonScope.() -> Unit
 ) {
     FilledIconButtonImport // Load the web component
@@ -141,7 +141,7 @@ fun MdFilledTonalIconButton(
     selected: Boolean? = null,
     type: String? = null,
     value: String? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: @Composable MdIconButtonScope.() -> Unit
 ) {
     FilledTonalIconButtonImport // Load the web component
@@ -173,7 +173,7 @@ fun MdOutlinedIconButton(
     selected: Boolean? = null,
     type: String? = null,
     value: String? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: @Composable MdIconButtonScope.() -> Unit
 ) {
     OutlinedIconButtonImport // Load the web component
@@ -195,7 +195,12 @@ fun MdOutlinedIconButton(
 }
 
 
-class MdIconButtonScope(val elementScope: ElementScope<HTMLElement>) {
+class MdIconButtonScope(val elementScope: ElementScope<HTMLElement>) : SlotScope<MdIconButtonScope.Slot> {
+    enum class Slot(override val value: String) : ISlot {
+        Selected("selected")
+    }
+
+    @Deprecated("Use slot(Slot.Selected) instead.", ReplaceWith("this.slot(MdIconButtonScope.Slot.Selected)"))
     fun AttrsScope<*>.slotEqSelected() =
-        slot("selected")
+        slot(Slot.Selected)
 }

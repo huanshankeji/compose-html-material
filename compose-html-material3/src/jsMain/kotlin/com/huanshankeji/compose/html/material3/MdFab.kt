@@ -1,11 +1,10 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
-import com.huanshankeji.compose.web.attributes.Attrs
-import com.huanshankeji.compose.web.attributes.attr
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.label
-import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
+import org.jetbrains.compose.web.dom.AttrBuilderContext
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
@@ -14,6 +13,7 @@ import org.w3c.dom.HTMLElement
 https://github.com/material-components/material-web/blob/main/docs/components/fab.md
 https://material-web.dev/components/fab/
 https://material-web.dev/components/fab/stories/
+https://m3.material.io/components/floating-action-button/overview
  */
 
 @JsModule("@material/web/fab/fab.js")
@@ -29,14 +29,14 @@ private fun CommonMdFab(
     size: String?,
     label: String?,
     lowered: Boolean?,
-    attrs: Attrs<HTMLElement>?,
+    attrs: AttrBuilderContext<HTMLElement>?,
     content: @Composable (MdFabScope.() -> Unit)?
 ) =
     TagElement(tagName, {
-        variant?.let { attr("variant", it) }
-        size?.let { attr("size", it) }
+        attrIfNotNull("variant", variant)
+        attrIfNotNull("size", size)
         label?.let { label(it) }
-        lowered?.let { attr("lowered", it) }
+        attrIfNotNull("lowered", lowered)
 
         attrs?.invoke(this)
     }, content?.let {
@@ -49,7 +49,7 @@ fun MdFab(
     size: String? = null,
     label: String? = null,
     lowered: Boolean? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: @Composable (MdFabScope.() -> Unit)?
 ) {
     FabImport // Load the web component
@@ -63,7 +63,7 @@ fun MdBrandedFab(
     size: String? = null,
     label: String? = null,
     lowered: Boolean? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: @Composable (MdFabScope.() -> Unit)?
 ) {
     BrandedFabImport // Load the web component
@@ -72,7 +72,12 @@ fun MdBrandedFab(
 }
 
 
-class MdFabScope(val elementScope: ElementScope<HTMLElement>) {
+class MdFabScope(val elementScope: ElementScope<HTMLElement>) : SlotScope<MdFabScope.Slot> {
+    enum class Slot(override val value: String) : ISlot {
+        Icon("icon")
+    }
+
+    @Deprecated("Use slot(Slot.Icon) instead.", ReplaceWith("this.slot(MdFabScope.Slot.Icon)"))
     fun AttrsScope<*>.slotEqIcon() =
-        slot("icon")
+        slot(Slot.Icon)
 }
