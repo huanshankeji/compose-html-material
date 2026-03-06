@@ -233,7 +233,7 @@ fun MdComponentName(
 
 ### Key Dependencies
 - **Kotlin:** 2.3.10
-- **Compose Multiplatform:** 1.10.1
+- **Compose Multiplatform:** 1.10.2
 - **Kobweb:** 0.23.3 (provides Compose HTML extensions, now published to Maven Central)
 - **Material Web:** 2.4.1 (NPM dependency)
 - **Dokka:** 2.1.0 (documentation generation)
