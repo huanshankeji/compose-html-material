@@ -198,7 +198,7 @@ This project uses Kotlin's binary compatibility validator (`kotlinx.validation`)
   3. Material Web stories
   4. Material Design 3 component guidelines (https://m3.material.io/components/)
 - **Always verify that all links are accessible (not 404) before adding them to documentation comments**
-- **For parameters or slots that cannot be found in the official component documentation, always add a reference link (e.g., to the component source code) in an inline comment immediately before those parameters**
+- **For parameters or slots that cannot be found in the official component documentation, always add a reference link (e.g., to the component source code, demo code, or stories/Storyboard source code) in an inline comment immediately before those parameters. Use GitHub permalinks with precisely selected lines.**
 
 ## Code Conventions & Patterns
 

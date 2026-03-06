@@ -27,7 +27,7 @@ fun MdSnackbar(
     actionText: String? = null,
     fixed: Boolean? = null,
     timeout: Number? = null,
-    // https://github.com/maicol07/material-web-additions/blob/main/snackbar/internal/snackbar.ts
+    // https://github.com/maicol07/material-web-additions/blob/096590484ce31dfb18d8e2d1998989ed933328e1/snackbar/internal/snackbar.ts#L12-L16
     onAction: (() -> Unit)? = null,
     onOpen: (() -> Unit)? = null,
     onOpened: (() -> Unit)? = null,
@@ -57,7 +57,7 @@ fun MdSnackbar(
     }
 }
 
-// https://github.com/maicol07/material-web-additions/blob/main/snackbar/internal/snackbar.ts
+// https://github.com/maicol07/material-web-additions/blob/096590484ce31dfb18d8e2d1998989ed933328e1/snackbar/internal/snackbar.ts#L46-L54
 @ExperimentalComposeHtmlMaterialApi
 class MdSnackbarScope(val elementScope: ElementScope<HTMLElement>) : SlotScope<MdSnackbarScope.Slot> {
     enum class Slot(override val value: String) : ISlot {

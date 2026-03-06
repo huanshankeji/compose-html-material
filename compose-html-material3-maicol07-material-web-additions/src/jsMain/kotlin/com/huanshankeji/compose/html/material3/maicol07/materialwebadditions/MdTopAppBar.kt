@@ -88,7 +88,7 @@ fun MdLargeTopAppBar(
     CommonMdTopAppBar("md-large-top-app-bar", sticky, attrs, content)
 }
 
-// https://github.com/maicol07/material-web-additions/blob/main/top-app-bar/internal/top-app-bar.ts
+// https://github.com/maicol07/material-web-additions/blob/096590484ce31dfb18d8e2d1998989ed933328e1/top-app-bar/internal/top-app-bar.ts#L21-L31
 @ExperimentalComposeHtmlMaterialApi
 class MdTopAppBarScope(val elementScope: ElementScope<HTMLElement>) : SlotScope<MdTopAppBarScope.Slot> {
     enum class Slot(override val value: String) : ISlot {
