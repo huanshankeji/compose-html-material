@@ -129,7 +129,7 @@ This repository provides **Material 3 wrapper components for Compose HTML** base
      - `test-and-check`: Runs `./gradlew check` with JDK 17
      - `dependency-submission`: Submits dependency graph to GitHub
    - **Action:** Uses `huanshankeji/.github/actions/gradle-test-and-check@v0.2.0`
-   - **CRITICAL:** Your code changes MUST pass `./gradlew check` locally before pushing
+   - **CRITICAL:** Your code changes MUST pass `./gradlew check` locally before pushing. If `check` fails solely due to `apiCheck` failures, use `./gradlew publishToMavenLocal` as an alternative validation and leave running `apiDump` for the human developer.
 
 2. **`site-gh-pages.yml` (Documentation Deployment)**
    - **Trigger:** Push/PR to `release` branch, manual dispatch
@@ -148,6 +148,8 @@ This ensures:
 - API compatibility is maintained (binary compatibility validator)
 - No breaking changes to public APIs
 
+If `check` fails **solely** due to `apiCheck` failures (public APIs changed), use `./gradlew publishToMavenLocal` as the alternative validation and leave `apiDump` for the human developer.
+
 ## Development Workflow
 
 ### Making Code Changes
@@ -158,7 +160,12 @@ This ensures:
 
 2. **After making changes:**
    - Run `./gradlew check` to validate
-   - If adding new public APIs, run `./gradlew apiDump` to update `.klib.api` files
+   - **Do NOT run `apiDump` automatically** — even if `check` fails due to `apiCheck` failures on `.klib.api` files. Leave running `apiDump` for the human developer after they have reviewed the API changes. Running `apiDump` automatically generates unnecessary Git-tracked churn before the developer has had a chance to review the API surface. The only exception is if you are **very confident** you have completely and correctly finished all the task goals, the API changes are exactly as intended, and no further API edits from the developer will be needed.
+   - If `check` fails **solely** due to `apiCheck` failures (because public APIs have changed), validate using:
+     ```bash
+     ./gradlew publishToMavenLocal
+     ```
+     Then leave running `apiDump` for the human developer to perform after reviewing API changes.
    - If changing existing APIs, review `.klib.api` diffs carefully (breaking changes require version bumps)
 
 3. **Testing changes locally:**
@@ -170,7 +177,7 @@ This ensures:
 This project uses Kotlin's binary compatibility validator (`kotlinx.validation`):
 - Public API signatures are tracked in `api/*.klib.api` files
 - Breaking changes will fail the `check` task
-- To update API files after intentional changes: `./gradlew apiDump`
+- To update API files after intentional changes: `./gradlew apiDump` — **but do NOT run this automatically**. Leave it for the human developer to run after reviewing the API surface. Only run it yourself if you are **very confident** all task goals are complete and no further API edits will be needed.
 - ALWAYS review API changes carefully before committing
 
 ### Version Management
@@ -282,8 +289,8 @@ You can test changes in the `demo` module of [compose-multiplatform-html-unified
 | Validate all changes | `./gradlew check` | Before every commit |
 | Build everything | `./gradlew build` | Verify all modules compile |
 | Clean build | `./gradlew clean build` | Troubleshooting |
-| Update API signatures | `./gradlew apiDump` | After public API changes |
-| Test locally | `./gradlew publishToMavenLocal` | Test changes in other projects |
+| Update API signatures | `./gradlew apiDump` | **Human developer only** — after reviewing API surface changes; do NOT run automatically |
+| Test locally / fallback validation | `./gradlew publishToMavenLocal` | Test changes in other projects; also use as fallback when `check` fails solely due to `apiCheck` failures |
 | Generate docs | `./gradlew generateSite` | Build documentation (auto-deployed by GitHub Actions) |
 | List all tasks | `./gradlew tasks` | Discover available tasks |
 
@@ -295,7 +302,8 @@ You can test changes in the `demo` module of [compose-multiplatform-html-unified
 
 ### API check fails after changes
 - Review the API diff: `git diff */api/*.klib.api`
-- If changes are intentional: `./gradlew apiDump` to update
+- **Do NOT run `apiDump` automatically** — leave it for the human developer to run after reviewing the API changes
+- If `check` fails solely due to `apiCheck`, use `./gradlew publishToMavenLocal` as an alternative validation instead
 - If changes are breaking, consider if version bump is needed
 
 ### Gradle daemon issues
@@ -304,7 +312,7 @@ You can test changes in the `demo` module of [compose-multiplatform-html-unified
 
 ## Important Notes
 
-1. **ALWAYS run `./gradlew check` before committing** to catch issues early
+1. **Run `./gradlew check` to validate before committing.** If it fails **solely** due to `apiCheck` failures, use `./gradlew publishToMavenLocal` as an alternative validation, and leave `apiDump` for the human developer to run after reviewing the API changes.
 2. **Never commit changes to `.gradle/`, `build/`, `.kotlin/`, or `.idea/` directories** (already in .gitignore)
 3. **This is a library, not an application** - there's no main method or runnable app
 4. **Material 2 components are legacy** - focus work on Material 3 (`compose-html-material3`)
