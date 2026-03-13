@@ -6,13 +6,20 @@ Material 3 wrapper components for Compose HTML based on [Material Web](https://g
 
 For unified multiplatform APIs which are more akin to those in `androidx.compose`, check out [Compose Multiplatform HTML Unified](https://github.com/huanshankeji/compose-multiplatform-html-unified) which also depends on this library. Also see its [side-by-side demo site](https://huanshankeji.github.io/compose-multiplatform-html-unified/) for the visual effects of the components.
 
-For Material 2, you are recommended to check out [KMDC](https://github.com/mpetuska/kmdc) instead. ~~For information on our obsolete work on legacy Material 2 components, check out [the legacy README](/legacy/README.md).~~ **Note: Our legacy Material 2 module (`compose-html-material-legacy`) is no longer maintained and should not be used for new projects.**
+For Material 2, you are recommended to check out [KMDC](https://github.com/mpetuska/kmdc) instead. For information on our obsolete work on legacy Material 2 components, check out [the legacy README](/legacy/README.md). Note that this is no longer maintained and should not be used for new projects.
 
 [Check out the API documentation here.](https://huanshankeji.github.io/compose-html-material/api-documentation/index.html)
 
 ## Supported components
 
-Not all components of Material Web are supported yet (see [#11](https://github.com/huanshankeji/compose-html-material/issues/11)). Also, not all Material Design components are supported by Material Web yet (see [their roadmap](https://github.com/material-components/material-web/blob/main/docs/roadmap.md) and [Material Web being in maintaince mode](https://github.com/material-components/material-web/discussions/5642)).
+Not all Material Design components are supported because not all of them are supported by the underlying libraries. For more details see:
+
+- for Material Web:
+   - [maintenance mode announcement](https://github.com/material-components/material-web/discussions/5642)
+   - [roadmap](https://github.com/material-components/material-web/blob/main/docs/roadmap.md)
+- for Material Web Additions:
+   - [GitHub repo](https://github.com/maicol07/material-web-additions)
+   - [the website with component docs](https://material-web-additions.maicol07.it/)
 
 Here is a list of supported component APIs:
 
@@ -89,15 +96,17 @@ In short, there are 3 ways to add the Material Symbols & Icons dependency:
    First add the dependency in your build script:
 
    ```kotlin
-   implementation(npm("material-symbols", "0.17.4"))
+   implementation(npm("material-symbols", "0.40.2"))
    ```
 
-   And then import the icons in your program. For example you can use CommonJS `require`:
+   And then import the icons in your program. For example to import it with `@JsModule`:
 
    ```kotlin
-   external fun require(module: String): dynamic
+   @JsModule("material-symbols/outlined.css")
+   private external object MaterialSymbolsOutlinedImport
+
    fun main() {
-       require("material-symbols/outlined.css")
+       MaterialSymbolsOutlinedImport
        renderComposableInBody { App() }
    }
    ```
