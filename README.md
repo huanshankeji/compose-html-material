@@ -15,7 +15,7 @@ For Material 2, you are recommended to check out [KMDC](https://github.com/mpetu
 Not all Material Design components are supported because not all of them are supported by the underlying libraries. For more details see:
 
 - for Material Web:
-   - [maintaince mode announcement](https://github.com/material-components/material-web/discussions/5642)
+   - [maintenance mode announcement](https://github.com/material-components/material-web/discussions/5642)
    - [roadmap](https://github.com/material-components/material-web/blob/main/docs/roadmap.md)
 - for Material Web Additions:
    - [GitHub repo](https://github.com/maicol07/material-web-additions)
