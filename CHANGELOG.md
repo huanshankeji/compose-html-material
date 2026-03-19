@@ -1,6 +1,6 @@
 # Change log
 
-## v0.4.0 / 2014-10-19
+## v0.4.0 / 2024-10-19
 
 * bump Kotlin to 2.0.10 and Compose to 1.7.0
 * Add the menu composables `MdMenu`, `MdMenuItem`, and `MdSubMenu`
