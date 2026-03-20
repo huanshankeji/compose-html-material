@@ -1,5 +1,5 @@
 import com.huanshankeji.team.ShreckYe
-import com.huanshankeji.team.pomForTeamDefaultOpenSource
+import com.huanshankeji.team.setUpPomForTeamDefaultOpenSource
 
 plugins {
     `lib-conventions`
@@ -27,13 +27,15 @@ kotlin {
     }
 }
 
-publishing.publications.withType<MavenPublication> {
-    pomForTeamDefaultOpenSource(
-        project,
-        "Compose HTML Material 3 - additional components based on maicol07's Material Web Additions",
-        "Material Web Additions components for Compose HTML based on [maicol07's Material Web Additions](https://github.com/maicol07/material-web-additions)",
-        "2026"
-    ) {
-        ShreckYe()
+mavenPublishing {
+    pom {
+        setUpPomForTeamDefaultOpenSource(
+            project,
+            "Compose HTML Material 3 - additional components based on maicol07's Material Web Additions",
+            "Material Web Additions components for Compose HTML based on [maicol07's Material Web Additions](https://github.com/maicol07/material-web-additions)",
+            "2026"
+        ) {
+            ShreckYe()
+        }
     }
 }
