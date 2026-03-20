@@ -8,4 +8,5 @@ fun StyleScope.width(value: String) =
 fun StyleScope.height(value: String) =
     property("height", value)
 
+@Deprecated("Use the style functions in `com.varabyte.kobweb.compose.css` with `FitContent` instead.")
 const val FIT_CONTENT = "fit-content"
