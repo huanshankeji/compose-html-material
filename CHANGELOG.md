@@ -24,33 +24,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add the `compose-html-material3-maicol07-material-web-additions` module with snackbar and top app bar components (`MdSnackbar`, `MdSmallTopAppBar`, `MdCenterAlignedTopAppBar`, `MdMediumTopAppBar`, `MdLargeTopAppBar`) based on [maicol07's Material Web Additions](https://github.com/maicol07/material-web-additions) (#32).
 - Add `content` parameter to `MdCheckbox` and `MdSwitch` (#19).
 - Add `@ExperimentalComposeHtmlMaterialApi` opt-in annotation for experimental APIs.
-- Add the `SlotScope` interface and slot enums for type-safe component slot management.
-- Add `IMdItemScope` with common slots for item components.
-- Add event attribute extensions in `compose-html-common` and `compose-html-material3`.
-- Add `id` and `disabled` parameters to `MdRadio`, and `id` and `ariaControls` parameters to tab components.
-- Add the `onRemove` event parameter to `MdInputChip`, and the `onCancel` event parameter and an additional `icon` slot to `MdDialog`.
-- Add `AttrsScope<TElement>.onChange` event shortcut for `MdSlider`.
+- Add the extracted `SlotScope` interface and slot enums for type-safe component slot management.
+- Add the extracted `IMdItemScope` interface with common slots for item components.
+- Add some event attribute extensions in `compose-html-common` and `compose-html-material3`.
 
 ### Changed
 
 - Bump dependencies to the latest.
-  - Kotlin 2.3.10
-  - Compose Multiplatform 1.10.2
+  - Kotlin 2.3.20
+  - Compose Multiplatform 1.10.3
   - Kobweb 0.24.0
-  - Gradle 9.3.1
+  - Gradle 9.4.1
 - Support ES2015 compilation target by replacing `require()` with ES module imports (#18).
 - Improve Material 3 component wrappers with enums and consistent patterns (#22):
   - Use enums for slot values instead of `slotEq...` functions.
   - Revamp some APIs with new official Compose HTML typealiases and reorganize `toElementScopeContent` functions.
   - Reuse `MenuPositioning` for `SelectMenuAlign`.
-- Revert the changes made due to Kotlin 2.0.0's type inference issue (#14).
 
 ### Fixed
 
 - Fix `MdMenuArgs` bugs and add missing `attrs = null` defaults across components (#30).
 - Fix the bug that the legacy module was still published.
 - Fix a bug caused by a typo "typehead" → "typeahead".
-- Fix the unconventional `MdChipSet` parameter order.
 
 ### Internal
 
@@ -62,6 +57,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove the Maven repository for Kobweb since it's published to Maven Central now.
 - Refactor CI to use extracted actions (#15).
 - Onboard with GitHub Copilot.
+- Revert the changes made due to Kotlin 2.0.0's type inference issue (#14).
 
 ## [0.4.0] - 2024-10-19
 
