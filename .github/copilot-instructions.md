@@ -7,9 +7,9 @@ This repository provides **Material 3 wrapper components for Compose HTML** base
 **Key Points:**
 - **Type:** Kotlin/JS library (not an application)
 - **Size:** Small to medium (~4 main modules)
-- **Language:** Kotlin 2.3.10
-- **Frameworks:** Compose HTML 1.10.2, Kobweb 0.24.0
-- **Build System:** Gradle 9.3.1 with Kotlin DSL
+- **Language:** Kotlin 2.3.20
+- **Frameworks:** Compose HTML 1.10.3, Kobweb 0.24.0
+- **Build System:** Gradle 9.4.1 with Kotlin DSL
 - **Target Runtime:** JavaScript/Browser (Kotlin/JS)
 - **Published to:** Maven Central
 
@@ -68,7 +68,7 @@ This repository provides **Material 3 wrapper components for Compose HTML** base
 
 ### Environment Requirements
 - **JDK 17** (Temurin distribution recommended) - CRITICAL: The CI uses JDK 17, always ensure compatibility
-- **Gradle 9.3.1** (via wrapper, automatically downloaded)
+- **Gradle 9.4.1** (via wrapper, automatically downloaded)
 - **Internet access** for downloading dependencies from Maven Central
 
 ### Build Commands
@@ -122,7 +122,9 @@ This repository provides **Material 3 wrapper components for Compose HTML** base
 
 1. **Gradle Daemon startup delays**: First build in a session takes longer while Gradle daemon starts. Subsequent builds are much faster.
 
-2. **Kotlin compiler warnings about version mismatch**: You may see warnings like "WARNING: Unsupported Kotlin plugin version" in the buildSrc compilation. These are typically non-fatal and relate to the Kotlin version mismatch between buildSrc (2.3.10) and Gradle's embedded Kotlin version.
+2. **Kotlin compiler warnings about version mismatch**: You may see warnings like "WARNING: Unsupported Kotlin plugin
+   version" in the buildSrc compilation. These are typically non-fatal and relate to the Kotlin version mismatch between
+   buildSrc (2.3.20) and Gradle's embedded Kotlin version.
 
 ## CI/CD Workflows
 
@@ -178,7 +180,7 @@ If `check` fails **solely** due to `apiCheck` failures (public APIs changed), us
 
 3. **Testing changes locally:**
    - Use `./gradlew publishToMavenLocal`
-   - Create/update a test project that depends on `com.huanshankeji:compose-html-material3:0.4.1-SNAPSHOT`
+   - Create/update a test project that depends on `com.huanshankeji:compose-html-material3:0.5.0-SNAPSHOT`
    - Verify the component works in a real Compose HTML application
 
 ### API Compatibility
@@ -190,7 +192,7 @@ This project uses Kotlin's binary compatibility validator (`kotlinx.validation`)
 
 ### Version Management
 - Current version defined in: `buildSrc/src/main/kotlin/VersionsAndDependencies.kt`
-- Current version: `0.4.1-SNAPSHOT`
+- Current version: `0.5.0-SNAPSHOT`
 - Release versions should not have `-SNAPSHOT` suffix
 
 ## Design Guidelines and Documentation
@@ -248,8 +250,9 @@ fun MdComponentName(
 ## Dependencies
 
 ### Key Dependencies
-- **Kotlin:** 2.3.10
-- **Compose Multiplatform:** 1.10.2
+
+- **Kotlin:** 2.3.20
+- **Compose Multiplatform:** 1.10.3
 - **Kobweb:** 0.24.0 (provides Compose HTML extensions, now published to Maven Central)
 - **Material Web:** 2.4.1 (NPM dependency)
 - **Material Web Additions:** 1.8.0 (NPM dependency for `compose-html-material3-maicol07-material-web-additions` module)
