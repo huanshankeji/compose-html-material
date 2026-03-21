@@ -1,12 +1,10 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
-import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.disabled
 import com.huanshankeji.compose.web.attributes.ext.label
-import com.huanshankeji.compose.web.attributes.slot
-import org.jetbrains.compose.web.attributes.AttrsScope
+import org.jetbrains.compose.web.dom.AttrBuilderContext
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
@@ -14,11 +12,12 @@ import org.w3c.dom.HTMLElement
 /*
 https://github.com/material-components/material-web/blob/main/labs/navigationtab/internal/navigation-tab.ts
 https://github.com/material-components/material-web/blob/main/labs/navigationbar/demo/stories.ts (navigation bar storybook)
+https://material-web.dev/components/navigation-bar/
+https://m3.material.io/components/navigation-bar/overview
  */
 
-// a workaround for probably a bug, needed since Kotlin 2.0.0 because of "Cannot infer type for this parameter. Please specify it explicitly."
-private fun (@Composable MdNavigationTabScope.() -> Unit).toHTMLElementContent(): @Composable ElementScope<HTMLElement>.() -> Unit =
-    { MdNavigationTabScope(this).(this@toHTMLElementContent)() }
+@JsModule("@material/web/labs/navigationtab/navigation-tab.js")
+private external object NavigationTabImport
 
 @MaterialWebLabsApi
 @Composable
@@ -29,10 +28,10 @@ fun MdNavigationTab(
     label: String? = null,
     badgeValue: String? = null,
     showBadge: Boolean? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: @Composable (MdNavigationTabScope.() -> Unit)?
 ) {
-    require("@material/web/labs/navigationtab/navigation-tab.js")
+    NavigationTabImport // Load the web component
 
     TagElement("md-navigation-tab", {
         disabled(disabled)
@@ -43,14 +42,12 @@ fun MdNavigationTab(
         attrIfNotNull("show-badge", showBadge)
 
         attrs?.invoke(this)
-    }, content?.toHTMLElementContent())
+    }, content?.let { { MdNavigationTabScope(this).it() } })
 }
 
-class MdNavigationTabScope(val elementScope: ElementScope<HTMLElement>) {
-    enum class Slot(val stringValue: String) {
+class MdNavigationTabScope(val elementScope: ElementScope<HTMLElement>) : SlotScope<MdNavigationTabScope.Slot> {
+    // https://github.com/search?q=repo%3Amaterial-components%2Fmaterial-web%20path%3A%2F%5Elabs%5C%2Fnavigationtab%5C%2F%2F%20active-icon&type=code
+    enum class Slot(override val value: String) : ISlot {
         ActiveIcon("active-icon"), InactiveIcon("inactive-icon")
     }
-
-    fun AttrsScope<*>.slot(value: Slot) =
-        slot(value.stringValue)
 }

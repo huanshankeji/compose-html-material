@@ -3,10 +3,10 @@ package com.huanshankeji.compose.web
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.web.attributes.attrs
 import com.huanshankeji.compose.web.attributes.plus
-import com.huanshankeji.compose.web.css.FIT_CONTENT
 import com.huanshankeji.compose.web.css.Styles
-import com.huanshankeji.compose.web.css.width
 import com.huanshankeji.compose.web.css.wrapInAttrs
+import com.varabyte.kobweb.compose.css.Width
+import com.varabyte.kobweb.compose.css.width
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.AttrBuilderContext
 import org.jetbrains.compose.web.dom.ContentBuilder
@@ -46,7 +46,7 @@ fun Column(
     Flexbox(attrs<HTMLDivElement> {
         style {
             flexDirection(FlexDirection.Column)
-            if (fitContent) width(FIT_CONTENT)
+            if (fitContent) width(Width.FitContent)
         }
     } + attrs, content)
 

@@ -2,38 +2,61 @@
 
 [![Maven Central](https://img.shields.io/maven-central/v/com.huanshankeji/compose-html-material3)](https://search.maven.org/artifact/com.huanshankeji/compose-html-material3)
 
-Material 3 wrapper components for Compose HTML based on [Material Web](https://github.com/material-components/material-web)
+Material 3 wrapper components for Compose HTML based on [Material Web](https://github.com/material-components/material-web) and [maicol07's Material Web Additions](https://github.com/maicol07/material-web-additions)
 
-For unified multiplatform APIs which are more akin to those in `androidx.compose`, check out [Compose Multiplatform Material](https://github.com/huanshankeji/compose-multiplatform-material) which also depends on this library.
+For unified multiplatform APIs which are more akin to those in `androidx.compose`, check out [Compose Multiplatform HTML Unified](https://github.com/huanshankeji/compose-multiplatform-html-unified) which also depends on this library. Also see its [side-by-side demo site](https://huanshankeji.github.io/compose-multiplatform-html-unified/) for the visual effects of the components.
 
-For Material 2 support, you are recommended to check out [KMDC](https://github.com/mpetuska/kmdc) instead. For information on our obsolete work on legacy Material 2 components, check out [the legacy README](/legacy/README.md).
+For Material 2, you are recommended to check out [KMDC](https://github.com/mpetuska/kmdc) instead. For information on our obsolete work on legacy Material 2 components, check out [the legacy README](/legacy/README.md). Note that this is no longer maintained and should not be used for new projects.
+
+[Check out the API documentation here.](https://huanshankeji.github.io/compose-html-material/api-documentation/index.html)
 
 ## Supported components
 
-Not all components of Material Web are supported yet. Also, not all Material Design components are supported by Material Web yet (see [their roadmap](https://github.com/material-components/material-web/blob/main/docs/roadmap.md)).
+Not all Material Design components are supported because not all of them are supported by the underlying libraries. For more details see:
 
-Here is a list of supported compoent APIs:
+- for Material Web:
+   - [maintenance mode announcement](https://github.com/material-components/material-web/discussions/5642)
+   - [roadmap](https://github.com/material-components/material-web/blob/main/docs/roadmap.md)
+- for Material Web Additions:
+   - [GitHub repo](https://github.com/maicol07/material-web-additions)
+   - [the website with component docs](https://material-web-additions.maicol07.it/)
+
+Here is a list of supported component APIs:
 
 - `MdElevatedButton`, `MdFilledButton`, `MdFilledTonalButton`, `MdOutlinedButton`, `MdTextButton`
 - `MdCheckbox`
+- `MdAssistChip`, `MdFilterChip`, `MdInputChip`, `MdSuggestionChip`, `MdChipSet`
+- `MdDialog`
+- `MdDivider`
 - `MdFab`, `MdBrandedFab`
 - `MdIcon`
 - `MdIconButton`, `MdFilledIconButton`, `MdFilledTonalIconButton`, `MdOutlinedIconButton`
 - `MdList`, `MdListItem`
 - `MdMenu`, `MdMenuItem`, `MdSubMenu`
 - `MdLinearProgress`, `MdCircularProgress`
+- `MdRadio`
+- `MdFilledSelect`, `MdOutlinedSelect`, `MdSelectOption`
+- `MdSlider`
 - `MdSwitch`, `LabelWithMdSwitch`
+- `MdTabs`, `MdPrimaryTab`, `MdSecondaryTab`
 - `MdFilledTextField`, `MdOutlinedTextField`
+
+**Note:** Some Material Web components like `elevation`, `focus-ring`, and `ripple` are not wrapped in this library as they are styling/utility components typically used internally by other components, not directly in application code.
 
 ### "labs" components
 
 Here is a list of supported component APIs in the [Material Web "labs" directory](https://github.com/material-components/material-web/tree/main/labs), which "contains experimental features that are not recommended for production" as they state:
 
-- `MdElevatedCard`, `MdOutlinedCard`
+- `MdBadge`
+- `MdElevatedCard`, `MdFilledCard`, `MdOutlinedCard`
+- `MdItem`
 - `MdNavigationBar`
+- `MdNavigationDrawer`, `MdNavigationDrawerModal`
 - `MdNavigationTab`
+- `MdOutlinedSegmentedButton`
+- `MdOutlinedSegmentedButtonSet`
 
-You should opt-in to `@MaterialWebLabsApi` to use them.
+You should opt in to `@MaterialWebLabsApi` to use them.
 
 ## Brief Instructions
 
@@ -54,12 +77,29 @@ kotlin {
 }
 ```
 
-This project depends on [Kobweb](https://github.com/varabyte/kobweb) which is not published to Maven Central yet, so you have to add the following Maven repository:
+### `compose-html-material3-maicol07-material-web-additions`
+
+There is an additional module `compose-html-material3-maicol07-material-web-additions` that adds more Material 3 components from the [maicol07 Material Web Additions](https://github.com/maicol07/material-web-additions) library. This library was chosen because its style closely follows the original Material Web library's API patterns. It adds components missing in the original Material Web, such as Snackbar and Top App Bar.
+
+**Supported component APIs:**
+
+- `MdSnackbar`
+- `MdSmallTopAppBar`, `MdCenterAlignedTopAppBar`, `MdMediumTopAppBar`, `MdLargeTopAppBar`
+
+You should opt in to `@MaterialWebAdditionsApi` to use them.
+
+To add this module as a dependency:
 
 ```kotlin
-repositories {
-    mavenCentral()
-    maven("https://us-central1-maven.pkg.dev/varabyte-repos/public")
+kotlin {
+    sourceSets {
+        jsMain {
+            dependencies {
+                // ...
+                implementation("com.huanshankeji:compose-html-material3-maicol07-material-web-additions:$version")
+            }
+        }
+    }
 }
 ```
 
@@ -82,15 +122,17 @@ In short, there are 3 ways to add the Material Symbols & Icons dependency:
    First add the dependency in your build script:
 
    ```kotlin
-   implementation(npm("material-symbols", "0.17.4"))
+   implementation(npm("material-symbols", "0.40.2"))
    ```
 
-   And then import the icons in your program. For example you can use CommonJS `require`:
+   And then import the icons in your program. For example to import it with `@JsModule`:
 
    ```kotlin
-   external fun require(module: String): dynamic
+   @JsModule("material-symbols/outlined.css")
+   private external object MaterialSymbolsOutlinedImport
+
    fun main() {
-       require("material-symbols/outlined.css")
+       MaterialSymbolsOutlinedImport
        renderComposableInBody { App() }
    }
    ```

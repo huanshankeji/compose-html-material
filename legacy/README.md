@@ -1,5 +1,12 @@
 # Compose HTML Material (legacy Material 2)
 
+> [!WARNING]
+> **This module is obsolete and NO LONGER MAINTAINED.**
+> 
+> - No bug fixes, updates, or improvements will be made to this module
+> - For Material 2 components, please use [KMDC](https://github.com/mpetuska/kmdc) instead
+> - For Material 3 components, use the main `compose-html-material3` module
+
 [![Maven Central](https://img.shields.io/maven-central/v/com.huanshankeji/compose-html-material-legacy)](https://search.maven.org/artifact/com.huanshankeji/compose-html-material-legacy)
 [![Gradle Plugin Portal](https://img.shields.io/gradle-plugin-portal/v/com.huanshankeji.compose-html-material-conventions-legacy)](https://plugins.gradle.org/plugin/com.huanshankeji.compose-html-material-conventions-legacy)
 

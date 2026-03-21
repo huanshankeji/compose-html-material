@@ -2,8 +2,8 @@ package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
 import com.huanshankeji.compose.html.material3.attributes.indeterminate
-import com.huanshankeji.compose.web.attributes.Attrs
 import com.huanshankeji.compose.web.attributes.attrIfNotNull
+import org.jetbrains.compose.web.dom.AttrBuilderContext
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
@@ -12,17 +12,24 @@ import org.w3c.dom.HTMLElement
 https://github.com/material-components/material-web/blob/main/docs/components/progress.md
 https://material-web.dev/components/progress/
 https://material-web.dev/components/progress/stories/
+https://m3.material.io/components/progress-indicators/overview
  */
+
+@JsModule("@material/web/progress/linear-progress.js")
+private external object LinearProgressImport
+
+@JsModule("@material/web/progress/circular-progress.js")
+private external object CircularProgressImport
 
 @Composable
 private fun CommonMdProgress(
     tagName: String,
-    attrsBefore: Attrs<HTMLElement>?,
+    attrsBefore: AttrBuilderContext<HTMLElement>?,
     value: Number?,
     max: Number?,
     indeterminate: Boolean?,
     fourColor: Boolean?,
-    attrs: Attrs<HTMLElement>?,
+    attrs: AttrBuilderContext<HTMLElement>?,
     content: @Composable (ElementScope<HTMLElement>.() -> Unit)?
 ) =
     TagElement(tagName, {
@@ -43,10 +50,10 @@ fun MdLinearProgress(
     max: Number? = null,
     indeterminate: Boolean? = null,
     fourColor: Boolean? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: @Composable (ElementScope<HTMLElement>.() -> Unit)? = null
 ) {
-    require("@material/web/progress/linear-progress.js")
+    LinearProgressImport // Load the web component
 
     CommonMdProgress(
         "md-linear-progress",
@@ -61,10 +68,10 @@ fun MdCircularProgress(
     max: Number? = null,
     indeterminate: Boolean? = null,
     fourColor: Boolean? = null,
-    attrs: Attrs<HTMLElement>? = null,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: @Composable (ElementScope<HTMLElement>.() -> Unit)? = null
 ) {
-    require("@material/web/progress/circular-progress.js")
+    CircularProgressImport // Load the web component
 
     CommonMdProgress(
         "md-circular-progress",

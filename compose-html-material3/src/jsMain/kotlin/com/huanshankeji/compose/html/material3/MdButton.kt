@@ -1,10 +1,11 @@
 package com.huanshankeji.compose.html.material3
 
 import androidx.compose.runtime.Composable
-import com.huanshankeji.compose.web.attributes.Attrs
+import com.huanshankeji.compose.web.attributes.attrIfNotNull
 import com.huanshankeji.compose.web.attributes.ext.*
-import com.huanshankeji.compose.web.attributes.slot
 import org.jetbrains.compose.web.attributes.AttrsScope
+import org.jetbrains.compose.web.dom.AttrBuilderContext
+import org.jetbrains.compose.web.dom.ContentBuilder
 import org.jetbrains.compose.web.dom.ElementScope
 import org.jetbrains.compose.web.dom.TagElement
 import org.w3c.dom.HTMLElement
@@ -13,15 +14,23 @@ import org.w3c.dom.HTMLElement
 https://github.com/material-components/material-web/blob/main/docs/components/button.md
 https://material-web.dev/components/button/
 https://material-web.dev/components/button/stories/
+https://m3.material.io/components/buttons/overview
 */
 
-/*
-// TODO not working
 @JsModule("@material/web/button/elevated-button.js")
-external class MdElevatedButton /* : Element */ // TODO
+private external object ElevatedButtonImport
 
-private var toImport = true
-*/
+@JsModule("@material/web/button/filled-button.js")
+private external object FilledButtonImport
+
+@JsModule("@material/web/button/filled-tonal-button.js")
+private external object FilledTonalButtonImport
+
+@JsModule("@material/web/button/outlined-button.js")
+private external object OutlinedButtonImport
+
+@JsModule("@material/web/button/text-button.js")
+private external object TextButtonImport
 
 private fun commonButtonAttrs(
     disabled: Boolean?,
@@ -33,14 +42,14 @@ private fun commonButtonAttrs(
     value: String?,
     name: String?,
     form: String?,
-    attrs: Attrs<HTMLElement>?
-): Attrs<HTMLElement> =
+    attrs: AttrBuilderContext<HTMLElement>?
+): AttrBuilderContext<HTMLElement> =
     {
         disabled(disabled)
         href(href)
         target(target)
-        trailingIcon?.let { attr("trailing-icon", it.toString()) }
-        hasIcon?.let { attr("has-icon", it.toString()) }
+        attrIfNotNull("trailing-icon", trailingIcon)
+        attrIfNotNull("has-icon", hasIcon)
         type(type)
         value(value)
         name(name)
@@ -49,10 +58,8 @@ private fun commonButtonAttrs(
         attrs?.invoke(this)
     }
 
-private fun (@Composable MdButtonScope.() -> Unit)?.toElementScopeContent(): (@Composable ElementScope<HTMLElement>.() -> Unit)? =
-    this?.let {
-        { MdButtonScope(this).it() }
-    }
+private fun (@Composable MdButtonScope.() -> Unit)?.toElementScopeContentBuilder(): ContentBuilder<HTMLElement>? =
+    toElementScopeContentBuilder(::MdButtonScope)
 
 @Composable
 private fun CommonButton(
@@ -66,14 +73,14 @@ private fun CommonButton(
     value: String?,
     name: String?,
     form: String?, // The form ID
-    attrs: Attrs<HTMLElement>?,
+    attrs: AttrBuilderContext<HTMLElement>?,
     content: (@Composable MdButtonScope.() -> Unit)?
 ) =
     //TagElement({ MdElevatedButton().asDynamic() }, { TODO() }) { TODO() }
     TagElement(
         tagName,
         commonButtonAttrs(disabled, href, target, trailingIcon, hasIcon, type, value, name, form, attrs),
-        content.toElementScopeContent()
+        content.toElementScopeContentBuilder()
     )
 
 @Composable
@@ -87,19 +94,10 @@ fun MdElevatedButton(
     value: String? = null,
     name: String? = null,
     form: String? = null,
-    attrs: Attrs<HTMLElement>?,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdButtonScope.() -> Unit)?
 ) {
-    /*
-        // TODO not working
-        if (toImport) {
-            MdElevatedButton()
-            toImport = false
-        }
-        */
-    // `require` can't be wrapped in `CommonButton` taken a `module` parameter because it seems to be processed by Webpack, JS `require` only takes constants.
-    // It seems there is no need to put this in an effect block, because it seems on Compose HTML recomposition happens exactly when there is a need to re-invoke a composable.
-    require("@material/web/button/elevated-button.js")
+    ElevatedButtonImport // Load the web component
 
     CommonButton(
         "md-elevated-button",
@@ -119,10 +117,10 @@ fun MdFilledButton(
     value: String? = null,
     name: String? = null,
     form: String? = null, // The form ID
-    attrs: Attrs<HTMLElement>?,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdButtonScope.() -> Unit)?
 ) {
-    require("@material/web/button/filled-button.js")
+    FilledButtonImport // Load the web component
 
     CommonButton(
         "md-filled-button",
@@ -142,10 +140,10 @@ fun MdFilledTonalButton(
     value: String? = null,
     name: String? = null,
     form: String? = null, // The form ID
-    attrs: Attrs<HTMLElement>?,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdButtonScope.() -> Unit)?
 ) {
-    require("@material/web/button/filled-tonal-button.js")
+    FilledTonalButtonImport // Load the web component
 
     CommonButton(
         "md-filled-tonal-button",
@@ -165,10 +163,10 @@ fun MdOutlinedButton(
     value: String? = null,
     name: String? = null,
     form: String? = null, // The form ID
-    attrs: Attrs<HTMLElement>?,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdButtonScope.() -> Unit)?
 ) {
-    require("@material/web/button/outlined-button.js")
+    OutlinedButtonImport // Load the web component
 
     CommonButton(
         "md-outlined-button",
@@ -188,10 +186,10 @@ fun MdTextButton(
     value: String? = null,
     name: String? = null,
     form: String? = null, // The form ID
-    attrs: Attrs<HTMLElement>?,
+    attrs: AttrBuilderContext<HTMLElement>? = null,
     content: (@Composable MdButtonScope.() -> Unit)?
 ) {
-    require("@material/web/button/text-button.js")
+    TextButtonImport // Load the web component
 
     CommonButton(
         "md-text-button",
@@ -201,7 +199,12 @@ fun MdTextButton(
 }
 
 
-class MdButtonScope(val elementScope: ElementScope<HTMLElement>) {
+class MdButtonScope(val elementScope: ElementScope<HTMLElement>) : SlotScope<MdButtonScope.Slot> {
+    enum class Slot(override val value: String) : ISlot {
+        Icon("icon")
+    }
+
+    @Deprecated("Use slot(Slot.Icon) instead.", ReplaceWith("this.slot(MdButtonScope.Slot.Icon)"))
     fun AttrsScope<*>.slotEqIcon() =
-        slot("icon")
+        slot(Slot.Icon)
 }

@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["*"]
+#  pull_request:
+#    branches: [ "*" ]
+
+jobs:
+  test-and-check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: huanshankeji/.github/actions/gradle-test-and-check@v0.2.0
+        with:
+          jdk-versions: 17-temurin
+
+  dependency-submission:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: huanshankeji/.github/actions/gradle-dependency-submission@v0.2.0
+        with:
+          jdk-versions: 17-temurin
