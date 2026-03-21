@@ -1,5 +1,5 @@
 import com.huanshankeji.team.ShreckYe
-import com.huanshankeji.team.pomForTeamDefaultOpenSource
+import com.huanshankeji.team.setUpPomForTeamDefaultOpenSource
 
 plugins {
     `lib-conventions`
@@ -18,13 +18,15 @@ kotlin {
     }
 }
 
-publishing.publications.withType<MavenPublication> {
-    pomForTeamDefaultOpenSource(
-        project,
-        "Huanshankeji Compose HTML common",
-        "Huanshankeji's common code for Compose HTML",
-        "2023"
-    ) {
-        ShreckYe()
+mavenPublishing {
+    pom {
+        setUpPomForTeamDefaultOpenSource(
+            project,
+            "Huanshankeji Compose HTML common",
+            "Huanshankeji's common code for Compose HTML",
+            "2023"
+        ) {
+            ShreckYe()
+        }
     }
 }
