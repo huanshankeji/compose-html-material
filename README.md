@@ -137,7 +137,7 @@ In short, there are 3 ways to add the Material Symbols & Icons dependency:
    }
    ```
 
-   If you are familiar with web development and Kotlin/JS, you can depend on the stylesheet in any way that works and you prefer. For example, you can use `@JsModule` corresponding to the UMD import, or configure it as a Webpack entry point. See the following docs fore more details:
+   If you are familiar with web development and Kotlin/JS, you can depend on the stylesheet in any way that works and you prefer. For example, you can configure it as a Webpack entry point. See the following docs fore more details:
    1. [JavaScript modules | Kotlin Documentation](https://kotlinlang.org/docs/js-modules.html)
    1. [the "webpack configuration file" section in Set up a Kotlin/JS project | Kotlin Documentation](https://kotlinlang.org/docs/js-project-setup.html#webpack-configuration-file)
    1. [Code Splitting | webpack](https://webpack.js.org/guides/code-splitting/)
