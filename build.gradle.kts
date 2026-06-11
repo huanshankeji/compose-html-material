@@ -6,7 +6,7 @@ tasks.wrapper {
 
 plugins {
     id("org.jetbrains.dokka")
-    id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.18.1"
+    id("com.huanshankeji.team.root-project-conventions")
 }
 
 dependencies {
@@ -28,11 +28,4 @@ tasks.register<Sync>("generateSite") {
         into("api-documentation")
     }
     from(layout.projectDirectory.dir("site"))
-}
-
-apiValidation {
-    @OptIn(kotlinx.validation.ExperimentalBCVApi::class)
-    klib {
-        enabled = true
-    }
 }

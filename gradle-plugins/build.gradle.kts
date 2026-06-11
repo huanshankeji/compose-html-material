@@ -15,18 +15,18 @@ dependencies {
 }
 
 
+version = rootProject.version
+
 generateKotlinSources(
     sourceFiles = listOf(
         SourceFile(
             "GeneratedVersions.kt",
-            "const val projectVersion = \"$projectVersion\"\n"
+            "const val projectVersion = \"$version\"\n"
         )
     )
 )
 
-
 group = "com.huanshankeji"
-version = projectVersion
 
 gradlePlugin {
     website.set("https://github.com/huanshankeji/compose-html-material")

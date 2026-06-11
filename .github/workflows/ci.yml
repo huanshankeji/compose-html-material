@@ -1,0 +1,13 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["*"]
+
+jobs:
+  ci:
+    uses: huanshankeji/.github/.github/workflows/ci.yml@improve-cross-repo-dependency
+    with:
+      jdk-versions: 17-temurin
+      runs-on: ubuntu-latest
