@@ -7,7 +7,7 @@ pluginManagement {
 
 plugins {
     id("public-open-source-dependency-repositories") version
-        "0.12.0-dev-commit-b1d2ff00e3ad91229d65136b8735ad189f2b0262"
+        "0.12.0-dev-commit-0bca1ba009f63b52ae3d5fe1b4cc5a466b8b61b5"
 }
 
 publicOpenSourceDependencyRepositories {
