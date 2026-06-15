@@ -3,7 +3,7 @@ import com.huanshankeji.CommonDependencies
 val projectBaseVersion = "0.5.0"
 
 val gradleCommonPluginsVersion =
-    "0.12.0-dev-commit-7fe538f8906aa9460a73cd32390005180fab633e"
+    "0.12.0-dev-commit-b1d2ff00e3ad91229d65136b8735ad189f2b0262"
 
 object DependencyVersions {
     // https://github.com/varabyte/kobweb/releases
