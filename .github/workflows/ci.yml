@@ -3,11 +3,12 @@ name: CI
 on:
   workflow_dispatch:
   push:
-    branches: ["*"]
+    branches: ["**"]
 
 jobs:
   ci:
-    uses: huanshankeji/.github/.github/workflows/ci.yml@improve-cross-repo-dependency
+    uses: huanshankeji/.github/.github/workflows/gradle-ci.yml@improve-cross-repo-dependency
+    secrets: inherit
     with:
       jdk-versions: 17-temurin
       runs-on: ubuntu-latest
