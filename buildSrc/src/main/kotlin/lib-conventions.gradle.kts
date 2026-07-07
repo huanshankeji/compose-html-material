@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation
+
 plugins {
     id("common-conventions")
     id("lib-conventions-without-publishing")
@@ -12,4 +14,7 @@ kotlin {
             target.set("es2015")
         }
     }
+
+    @OptIn(ExperimentalAbiValidation::class)
+    abiValidation()
 }
