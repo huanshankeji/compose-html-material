@@ -4,6 +4,9 @@ pluginManagement {
         gradlePluginPortal()
         exclusiveContent {
             forRepository {
+                mavenLocal()
+            }
+            forRepository {
                 maven {
                     // Resolves the gradle-common settings plugin when it is not in mavenLocal().
                     // Mirrors gradle-common credential resolution; its APIs cannot be called from settings.gradle.kts:
@@ -25,6 +28,8 @@ pluginManagement {
 }
 
 plugins {
+    id("com.huanshankeji.base-settings-conventions") version
+        "0.12.0-dev-commit-99eef7d1f0a66457d59584439a68fd3cf5cac1cb"
     id("com.huanshankeji.team.gitversioning.public-open-source-dependency-repositories") version
         "0.12.0-dev-commit-99eef7d1f0a66457d59584439a68fd3cf5cac1cb"
 }
