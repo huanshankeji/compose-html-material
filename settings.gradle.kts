@@ -35,7 +35,6 @@ plugins {
 
 publicOpenSourceDependencyRepositories {
     huanshankejiMavenLocal()
-    githubPackages("kotlin-common")
     mavenCentralExcludingHuanshankejiNonStable()
 }
 
