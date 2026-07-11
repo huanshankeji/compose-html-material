@@ -1,6 +1,5 @@
 pluginManagement {
     repositories {
-        mavenLocal()
         gradlePluginPortal()
         exclusiveContent {
             forRepository {
@@ -21,7 +20,7 @@ pluginManagement {
                 }
             }
             filter {
-                includeVersionByRegex("com\\.huanshankeji", ".*", ".*-dev-commit-[0-9a-f]+$")
+                includeVersionByRegex("com\\.huanshankeji", ".*", ".*-dev-commit-[0-9a-f]+.*")
             }
         }
     }
