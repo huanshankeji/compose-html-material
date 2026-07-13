@@ -1,3 +1,4 @@
+import com.huanshankeji.artifacts.googleWithContentFiltering
 import com.huanshankeji.team.artifacts.mavenCentralExcludingHuanshankeji
 
 pluginManagement {
@@ -46,6 +47,7 @@ plugins {
 dependencyResolutionManagement {
     repositories {
         mavenCentralExcludingHuanshankeji()
+        googleWithContentFiltering()
     }
 }
 

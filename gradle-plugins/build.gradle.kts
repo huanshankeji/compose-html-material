@@ -6,10 +6,6 @@ plugins {
     //id("com.gradle.plugin-publish") version "1.2.1"
 }
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     implementation(kotlin("gradle-plugin"))
 }
