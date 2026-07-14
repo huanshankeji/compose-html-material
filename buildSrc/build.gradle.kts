@@ -1,14 +1,14 @@
+import org.gradle.api.artifacts.dsl.RepositoryHandler
+
 plugins {
     `kotlin-dsl`
 }
 
-repositories {
-    mavenLocal()
-    gradlePluginPortal()
-}
+apply(from = "../gradle/classpath-bootstrap.gradle.kts")
+@Suppress("UNCHECKED_CAST")
+(extra["repositories"] as RepositoryHandler.() -> Unit)(repositories)
 
-val gradleCommonPluginsVersion =
-    "0.12.0-dev-commit-656d3d5f54d76c571b79f96ecc236cb54b013f50"
+val gradleCommonPluginsVersion = extra["gradleCommonPluginsVersion"]
 
 dependencies {
     implementation(kotlin("gradle-plugin", "2.4.0"))
