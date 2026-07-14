@@ -19,6 +19,7 @@ jobs:
           jdk-versions: 17-temurin
 
   dependency-submission:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: write
