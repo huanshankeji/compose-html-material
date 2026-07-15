@@ -35,5 +35,5 @@ extra["repositories"] = fun RepositoryHandler.() {
     }
 }
 
-extra["gradleCommonPluginsVersion"] = "0.12.0-dev-commit-656d3d5f54d76c571b79f96ecc236cb54b013f50"
+extra["gradleCommonPluginsVersion"] = "0.12.0-dev-commit-2aaff2decf99d831d03ac4a0837a382504ad93e7"
 

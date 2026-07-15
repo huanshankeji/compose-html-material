@@ -19,3 +19,12 @@ dependencies {
     implementation("com.huanshankeji:kotlin-common-project-gradle-plugins:$gradleCommonPluginsVersion")
     implementation("org.jetbrains.dokka:dokka-gradle-plugin:2.2.0")
 }
+
+kotlin {
+    compilerOptions {
+        optIn.addAll(
+            "com.huanshankeji.GradleCommonExperimentalApi",
+        )
+        //freeCompilerArgs.add("-Xcontext-parameters")
+    }
+}
