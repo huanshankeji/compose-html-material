@@ -1,4 +1,4 @@
-import com.huanshankeji.gitversioning.devCommitVersionProvider
+import com.huanshankeji.gitversioning.devCommitOrReleaseVersionProvider
 
 plugins {
     id("com.huanshankeji.kotlin-multiplatform-js-browser-conventions")
@@ -6,4 +6,4 @@ plugins {
     id("org.jetbrains.compose")
 }
 
-version = providers.devCommitVersionProvider(projectBaseVersion).get()
+version = providers.devCommitOrReleaseVersionProvider(projectBaseVersion, isRelease).get()

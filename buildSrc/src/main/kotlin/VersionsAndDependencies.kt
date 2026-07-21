@@ -1,6 +1,7 @@
 import com.huanshankeji.CommonDependencies
 
 val projectBaseVersion = "0.5.0"
+val isRelease = false
 
 object DependencyVersions {
     // https://github.com/varabyte/kobweb/releases
