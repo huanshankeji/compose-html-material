@@ -8,7 +8,7 @@ on:
 
 jobs:
   ci:
-    uses: huanshankeji/.github/.github/workflows/gradle-ci.yml@v0.4.0
+    uses: huanshankeji/.github/.github/workflows/gradle-ci.yml@v0.4.1
     secrets: inherit
     with:
       jdk-versions: 17-temurin
