@@ -1,8 +1,14 @@
 import org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation
 
 plugins {
-    id("common-conventions")
     id("lib-conventions-without-publishing")
+    id("com.huanshankeji.team.with-group")
+    id("com.huanshankeji.team.gitversioning.opensourceconvention.githubpackages.publish")
+    id("com.huanshankeji.team.dokka.github-dokka-convention")
+}
+
+gitVersioningOpenSourceConventionGithubPackagesPublish {
+    signAllPublicationsIfRelease(isRelease)
 }
 
 kotlin {
