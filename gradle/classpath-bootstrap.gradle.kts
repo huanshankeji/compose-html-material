@@ -8,7 +8,7 @@ extra["repositories"] = fun RepositoryHandler.() {
     gradlePluginPortal()
     /*
     Adapted (simplified) from:
-    https://github.com/huanshankeji/gradle-common/blob/main/kotlin-common/gradle-library/src/main/kotlin/com/huanshankeji/gitversioning/opensourceconvention/Repository.kt
+    https://github.com/huanshankeji/gradle-common/blob/main/kotlin-common/gradle-library/src/main/kotlin/com/huanshankeji/gitversioning/opensourceconvention/githubpackages/Repository.kt
     */
     exclusiveContent {
         forRepository {
