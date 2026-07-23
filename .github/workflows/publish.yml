@@ -7,7 +7,7 @@ on:
 
 jobs:
   publish:
-    uses: huanshankeji/.github/.github/workflows/open-source-convention-gradle-maven-publish.yml@v0.4.1
+    uses: huanshankeji/.github/.github/workflows/open-source-convention-gradle-maven-publish.yml@v0.5.2
     secrets: inherit
     with:
       jdk-versions: 17-temurin
