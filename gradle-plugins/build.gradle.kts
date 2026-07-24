@@ -4,6 +4,7 @@ import com.huanshankeji.generateKotlinSources
 plugins {
     `kotlin-dsl`
     //id("com.gradle.plugin-publish") version "1.2.1"
+    com.huanshankeji.team.`with-group`
 }
 
 dependencies {
@@ -11,7 +12,7 @@ dependencies {
 }
 
 
-version = rootProject.version
+version = providers.projectVersion()
 
 generateKotlinSources(
     sourceFiles = listOf(
@@ -21,8 +22,6 @@ generateKotlinSources(
         )
     )
 )
-
-group = "com.huanshankeji"
 
 gradlePlugin {
     website.set("https://github.com/huanshankeji/compose-html-material")

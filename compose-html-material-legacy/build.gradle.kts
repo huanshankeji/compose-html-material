@@ -1,5 +1,5 @@
 plugins {
-    `lib-conventions`
+    `lib-conventions-without-publishing`
 }
 
 kotlin {
