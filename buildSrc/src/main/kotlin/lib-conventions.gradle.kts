@@ -1,7 +1,13 @@
+import org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation
+
 plugins {
     id("lib-conventions-without-publishing")
-    id("com.huanshankeji.maven-central-publish-conventions")
+    id("com.huanshankeji.team.gitversioning.opensourceconvention.githubpackages.publish")
     id("com.huanshankeji.team.dokka.github-dokka-convention")
+}
+
+gitVersioningOpenSourceConventionGithubPackagesPublish {
+    signAllPublicationsIfRelease(isRelease)
 }
 
 kotlin {
@@ -13,4 +19,7 @@ kotlin {
             target.set("es2015")
         }
     }
+
+    @OptIn(ExperimentalAbiValidation::class)
+    abiValidation()
 }

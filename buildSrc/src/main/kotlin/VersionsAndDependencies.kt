@@ -1,6 +1,13 @@
 import com.huanshankeji.CommonDependencies
+import com.huanshankeji.gitversioning.devCommitOrReleaseVersionProvider
+import org.gradle.api.provider.ProviderFactory
 
-const val projectVersion = "0.5.0-SNAPSHOT"
+val projectBaseVersion = "0.5.0"
+val isRelease = false
+
+fun ProviderFactory.projectVersion(): String =
+    devCommitOrReleaseVersionProvider(projectBaseVersion, isRelease).get()
+
 
 object DependencyVersions {
     // https://github.com/varabyte/kobweb/releases
