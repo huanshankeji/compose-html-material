@@ -1,8 +1,8 @@
 import org.jetbrains.dokka.gradle.tasks.DokkaGeneratePublicationTask
 
 plugins {
-    id("org.jetbrains.dokka")
     id("com.huanshankeji.root-project-conventions")
+    id("org.jetbrains.dokka")
 }
 
 dependencies {
