@@ -12,12 +12,8 @@ gitVersioningOpenSourceConventionGithubPackagesPublish {
 
 kotlin {
     js {
-        // not needed with `target.set("es2015")` below
+        // not needed with ES2015 from `com.huanshankeji.kotlin-multiplatform-js-browser-conventions`
         //useEsModules()
-
-        compilerOptions {
-            target.set("es2015")
-        }
     }
 
     @OptIn(ExperimentalAbiValidation::class)
