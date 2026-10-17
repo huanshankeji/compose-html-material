@@ -8,7 +8,7 @@ apply(from = "../gradle/classpath-bootstrap.gradle.kts")
 @Suppress("UNCHECKED_CAST")
 (extra["repositories"] as RepositoryHandler.() -> Unit)(repositories)
 
-val kotlinVersion = "2.4.0"
+val kotlinVersion = "2.4.21"
 val gradleCommonPluginsVersion = extra["gradleCommonPluginsVersion"]
 
 dependencies {

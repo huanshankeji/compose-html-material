@@ -14,7 +14,7 @@ dependencies {
     }
 }
 
-val dokkaGeneratePublicationHtml by tasks.getting(DokkaGeneratePublicationTask::class)
+val dokkaGeneratePublicationHtml = tasks.named<DokkaGeneratePublicationTask>("dokkaGeneratePublicationHtml")
 tasks.register<Sync>("generateSite") {
     group = "site"
 
