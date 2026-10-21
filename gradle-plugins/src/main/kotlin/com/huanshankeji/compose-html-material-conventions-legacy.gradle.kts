@@ -8,7 +8,7 @@ plugins {
 
 kotlin {
     sourceSets {
-        val jsMain by getting {
+        getByName("jsMain") {
             dependencies {
                 implementation("com.huanshankeji:compose-html-material-legacy:$projectVersion")
 

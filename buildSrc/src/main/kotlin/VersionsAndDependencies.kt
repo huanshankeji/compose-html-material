@@ -1,4 +1,5 @@
 import com.huanshankeji.CommonDependencies
+import com.huanshankeji.CommonVersions
 import com.huanshankeji.gitversioning.devCommitOrReleaseVersionProvider
 import org.gradle.api.provider.ProviderFactory
 
@@ -26,4 +27,4 @@ object DependencyVersions {
     val mdc = "13.0.0"
 }
 
-val commonDependencies = CommonDependencies()
+val commonDependencies = CommonDependencies(CommonVersions(kotlin = "2.4.21"))
