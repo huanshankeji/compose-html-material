@@ -7,7 +7,7 @@ plugins {
 
 kotlin {
     sourceSets {
-        getByName("jsMain") {
+        jsMain {
             dependencies {
                 implementation(compose.html.core)
                 implementation(compose.runtime)
