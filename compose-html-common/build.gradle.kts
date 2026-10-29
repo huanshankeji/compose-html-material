@@ -7,7 +7,7 @@ plugins {
 
 kotlin {
     sourceSets {
-        val jsMain by getting {
+        jsMain {
             dependencies {
                 implementation(compose.html.core)
                 implementation(compose.runtime)
