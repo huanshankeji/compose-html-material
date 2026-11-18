@@ -1,3 +1,5 @@
-# Archived Copilot instructions
+# Archived instructions
 
-Do not read or update `copilot-instructions.md` in this directory. Use the root [AGENTS.md](../../AGENTS.md) for current instructions.
+Do not read or update `copilot-instructions.md` or `agents-before-init.md` in this directory.
+
+Repository guidance belongs in the root `AGENTS.md`.
