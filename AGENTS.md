@@ -1,6 +1,6 @@
 # Repository Guidelines
 
-Agents must read the [Huanshankeji agent instructions](https://github.com/huanshankeji/.github/blob/main/docs/general-agent-instructions.md) and follow their task-specific reading requirements before working on this repository.
+Before working in this repository, **load and read** the [Huanshankeji general agent instructions](https://github.com/huanshankeji/.github/blob/main/docs/general-agent-instructions.md) as the required organization-wide baseline. A skipped or failed load, or an unread document, is a blocking error until the document is in context and has been read. Follow the baseline's task-specific reading requirements.
 
 ## Project Structure
 
